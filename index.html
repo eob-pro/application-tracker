@@ -4,9 +4,110 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Application Tracker</title>
+    <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div id="app">
+      <header class="app-header">
+        <h1>Application Tracker</h1>
+        <nav class="tabs" role="tablist">
+          <button type="button" id="tab-btn-list" class="tab active" role="tab" aria-selected="true" data-tab="list">List</button>
+          <button type="button" id="tab-btn-add" class="tab" role="tab" aria-selected="false" data-tab="add">Add</button>
+          <button type="button" id="tab-btn-companies" class="tab" role="tab" aria-selected="false" data-tab="companies">Companies</button>
+        </nav>
+      </header>
+
+      <div id="tab-list" class="tab-panel active" role="tabpanel">
+        <div id="filter-bar" class="filter-bar"></div>
+        <ul id="applications-list" class="applications-list"></ul>
+      </div>
+
+      <div id="tab-companies" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Companies applied to</h2>
+        <ul id="companies-list" class="companies-list"></ul>
+      </div>
+
+      <div id="tab-add" class="tab-panel" role="tabpanel">
+      <form id="add-form" class="add-form">
+        <h2>Add application</h2>
+        <div class="form-group">
+          <label for="company">Company *</label>
+          <input id="company" name="company" type="text" list="company-list" placeholder="Company name (adds to index if new)" required />
+          <datalist id="company-list"></datalist>
+        </div>
+        <div class="form-group">
+          <label for="position">Position</label>
+          <input id="position" name="position" type="text" placeholder="Job title / role" />
+        </div>
+        <div class="form-group">
+          <label for="scope">Scope</label>
+          <input id="scope" name="scope" type="text" placeholder="Department, product, etc." />
+        </div>
+        <div class="form-group">
+          <label for="jobId">Job ID</label>
+          <input id="jobId" name="jobId" type="text" placeholder="Requisition ID from career site" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status"></select>
+          </div>
+          <div class="form-group">
+            <label for="sourceId">Source</label>
+            <select id="sourceId" name="sourceId"></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="originalListingDate">Original listing date</label>
+            <input id="originalListingDate" name="originalListingDate" type="date" />
+          </div>
+          <div class="form-group">
+            <label for="endedAt">End date</label>
+            <input id="endedAt" name="endedAt" type="date" placeholder="e.g. when you were notified (not hired, etc.)" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="originalPostingUrl">Original posting URL</label>
+          <input id="originalPostingUrl" name="originalPostingUrl" type="url" placeholder="https://..." />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="atsSystem">ATS / Recruiting system</label>
+            <select id="atsSystem" name="atsSystem"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="resumeVersion">Resume version</label>
+          <input id="resumeVersion" name="resumeVersion" type="text" list="resumeVersion-list" placeholder="Filename or e.g. LinkedIn" />
+          <datalist id="resumeVersion-list"></datalist>
+        </div>
+        <div class="form-group">
+          <label for="coverLetterUsed">Cover letter used</label>
+          <input id="coverLetterUsed" name="coverLetterUsed" type="text" list="coverLetterUsed-list" placeholder="Filename or description" />
+          <datalist id="coverLetterUsed-list"></datalist>
+        </div>
+        <div class="form-group checkboxes">
+          <label class="checkbox-label">
+            <input id="customCoverLetter" name="customCoverLetter" type="checkbox" />
+            Custom cover letter
+          </label>
+          <label class="checkbox-label">
+            <input id="customResume" name="customResume" type="checkbox" />
+            Custom resume
+          </label>
+        </div>
+        <button type="submit" class="primary">Add application</button>
+      </form>
+
+      <div class="import-section">
+        <h2>Import backfill</h2>
+        <p class="import-hint">Use <a href="parse-pdf.html" target="_blank">parse-pdf.html</a> to convert your job history PDF to JSON, then select the file here to merge into the tracker.</p>
+        <input type="file" id="import-file" accept=".json" />
+      </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
   </body>
 </html>

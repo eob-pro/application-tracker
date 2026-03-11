@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bulk mark as Not Hired</title>
+  <style>
+    body { font-family: system-ui; max-width: 480px; margin: 2rem auto; padding: 0 1rem; background: #000; color: #e8e8e8; text-align: center; }
+    h1 { font-size: 1.25rem; }
+    p { color: #b0b0b0; }
+    a { color: #60a5fa; }
+  </style>
+</head>
+<body>
+  <h1>Bulk updating status to Not Hired…</h1>
+  <p id="msg">Matching and updating applications.</p>
+  <script>
+    (function() {
+      var STORAGE_APPS = 'application-tracker-applications';
+
+      // List of { date, company, position } to mark as not_hired (date = YYYY-MM-DD)
+      var toMark = [
+        { date: '2025-03-05', company: 'NBCU', position: 'Product Operations Manager' },
+        { date: '2025-03-05', company: 'CVS Health', position: 'Director, Technology Product Management' },
+        { date: '2025-03-05', company: 'Chanel', position: 'Group Director, Client Data Product Owner' },
+        { date: '2025-03-05', company: 'Hasbro', position: 'Principal Technical Product Manager' },
+        { date: '2025-03-04', company: 'Smarsh', position: 'Senior Principal, Product Management' },
+        { date: '2025-03-04', company: 'McQuarie Group', position: 'Real Assets Digital and AI - Digital Solutions Owner' },
+        { date: '2025-03-04', company: 'Microsoft', position: 'Principal Product Manager - Publisher Content Marketplace' },
+        { date: '2025-03-04', company: 'Blackrock Financial', position: 'Head of Product Ops, Aladdin Product Management' },
+        { date: '2025-03-03', company: 'Smartly', position: 'Chief of Staff to the CPO' },
+        { date: '2025-03-03', company: 'Nextiva', position: 'Director, Product, AI Agent Platform' },
+        { date: '2025-03-03', company: 'Andreesen Horowitz', position: 'Partner 22 Growth Product' },
+        { date: '2025-03-03', company: 'Uber', position: 'Lead Product Manager, Uber Direct' },
+        { date: '2025-03-03', company: 'Dropbox', position: 'Sr. Director, Product Management - Multi Product Ecosystem' },
+        { date: '2025-03-03', company: 'Highmark Health', position: 'Director Digital Product Management' },
+        { date: '2025-03-03', company: 'Gap Inc', position: 'Director, Product Management - Wayfinding' },
+        { date: '2025-02-27', company: 'Playlist', position: 'Senior Director, Product Management' },
+        { date: '2025-02-26', company: 'Clear', position: 'Director of Product, Travel' },
+        { date: '2025-02-25', company: 'Bain & Company', position: 'Lead Product Mgmt & Innovation' },
+        { date: '2025-02-25', company: 'Verizon', position: 'Director Experience Management - My Verizon App' },
+        { date: '2025-02-24', company: 'Disney', position: 'Principal Product Manager, Content Mobilization-Disney Digital Entertainment' },
+        { date: '2025-02-24', company: 'Disney', position: 'Senior Product Mgr II' },
+        { date: '2025-02-19', company: 'Amex', position: 'Strategic Planning & Digital Product Operations' },
+        { date: '2025-02-19', company: 'Verifone', position: 'Director of Product Innovation' },
+        { date: '2025-02-19', company: 'WorkHero', position: 'Founding Product Manager' },
+        { date: '2025-02-17', company: 'Nike', position: 'Principal Technical Product Manager' },
+        { date: '2025-02-17', company: 'Super.com', position: 'Director of Product, Core Experience' },
+        { date: '2025-02-17', company: 'OneMain Financial', position: 'Director of Product' },
+        { date: '2025-02-12', company: 'Otis', position: 'Director, Digital Product Management' },
+        { date: '2025-02-12', company: 'Amazon', position: 'Principal Product Manager - Technical, External Services, AWS Developer Tools' },
+        { date: '2025-02-10', company: 'MongoDB', position: 'Lead, Product Manager, API Experience' },
+        { date: '2025-02-05', company: 'Stripe', position: 'Product Lead, Connect' },
+        { date: '2025-02-05', company: 'Okta', position: 'Principal Product Manager, Login' },
+        { date: '2025-02-05', company: 'Fanduel', position: 'Lead Product Manager, New Ventures' },
+        { date: '2025-02-04', company: 'Wonder', position: 'VP of Customer Experience' },
+        { date: '2025-02-04', company: 'Amazon Sports', position: 'Sports Strategy Principal' },
+        { date: '2025-02-04', company: 'Stubhub', position: 'Staff Product Manager seller experience' },
+        { date: '2025-02-04', company: 'Early Warning', position: 'Sr Director Product Digital Assets' },
+        { date: '2025-02-04', company: 'Mastercard', position: 'Director Product Management - Technical' },
+        { date: '2025-02-04', company: 'Western Union', position: 'VP Digital Product NA' },
+        { date: '2025-02-04', company: 'Posh', position: 'head of Product' },
+        { date: '2025-02-04', company: 'Geico', position: 'Conversational UI thing' },
+        { date: '2025-02-04', company: 'Teleskope', position: 'Director of Product' },
+        { date: '2025-02-04', company: 'Datadog', position: 'Director, Product Management - Core Platforms' },
+        { date: '2025-02-03', company: 'fanduel', position: 'senior product manager, discovery & experiences' },
+        { date: '2025-02-03', company: 'ASAPP', position: 'Director of Product' },
+        { date: '2025-02-03', company: 'Amazon', position: 'Sports strategy principal' },
+        { date: '2025-01-28', company: 'DirecTV', position: 'Director Product Management' },
+        { date: '2025-01-28', company: 'Roku', position: 'Senior Director Viewer Experience' },
+        { date: '2025-01-27', company: 'SambaTV', position: 'Sr Director Data Products & Identity' },
+        { date: '2025-01-27', company: 'Fanduel', position: 'Lead Product Manager, Platform' },
+        { date: '2025-01-27', company: 'Gartner', position: 'Director, Product' },
+        { date: '2025-01-20', company: 'City of New York', position: 'Associate Director of Product' },
+        { date: '2025-01-20', company: 'Versant', position: 'Product Manager, Emerging Publishing' },
+        { date: '2025-01-20', company: 'comcast', position: 'director, data platforms' },
+        { date: '2025-01-20', company: 'comcast', position: 'product owner, data platforms' }
+      ];
+
+      function norm(s) { return (s || '').toLowerCase().trim(); }
+      function appDate(app) {
+        if (app.statusHistory && app.statusHistory[0] && app.statusHistory[0].date)
+          return app.statusHistory[0].date.slice(0, 10);
+        return (app.createdAt || '').slice(0, 10);
+      }
+
+      try {
+        var raw = localStorage.getItem(STORAGE_APPS);
+        var applications = raw ? JSON.parse(raw) : [];
+        var matchKeys = {};
+        toMark.forEach(function(m) {
+          matchKeys[m.date + '|' + norm(m.company) + '|' + norm(m.position)] = true;
+        });
+        var updated = 0;
+        applications = applications.map(function(app) {
+          var d = appDate(app);
+          var c = norm(app.company);
+          var p = norm(app.position);
+          var key = d + '|' + c + '|' + p;
+          if (!matchKeys[key]) return app;
+          if (app.status === 'not_hired') return app;
+          updated++;
+          var statusHistory = (app.statusHistory || []).concat({
+            status: 'not_hired',
+            date: new Date().toISOString()
+          });
+          return Object.assign({}, app, {
+            status: 'not_hired',
+            statusHistory: statusHistory,
+            updatedAt: new Date().toISOString()
+          });
+        });
+        localStorage.setItem(STORAGE_APPS, JSON.stringify(applications));
+        document.getElementById('msg').textContent = 'Updated ' + updated + ' application(s) to Not Hired. Redirecting…';
+        setTimeout(function() { window.location.href = 'index.html'; }, 1200);
+      } catch (e) {
+        document.getElementById('msg').textContent = 'Error: ' + e.message;
+      }
+    })();
+  </script>
+</body>
+</html>

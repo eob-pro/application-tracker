@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parse job history PDF</title>
+  <style>
+    body { font-family: system-ui; max-width: 640px; margin: 1rem auto; padding: 0 1rem; background: #0d0d0d; color: #e8e8e8; }
+    h1 { font-size: 1.25rem; }
+    input[type="file"] { margin: 0.5rem 0; }
+    button { padding: 0.5rem 1rem; background: #fff; color: #000; border: none; border-radius: 6px; cursor: pointer; margin-right: 0.5rem; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #out { margin-top: 1rem; font-size: 0.875rem; color: #b0b0b0; }
+    #count { font-weight: 600; color: #fff; }
+    a { color: #60a5fa; }
+  </style>
+</head>
+<body>
+  <h1>Import job history from PDF</h1>
+  <p>Select your job history PDF. Entries are grouped by application date. Strikethrough could not be detected from PDF text — all entries are marked &quot;applied&quot;; change to &quot;not hired&quot; in the tracker as needed.</p>
+  <input type="file" id="file" accept=".pdf" />
+  <br />
+  <button id="parse" disabled>Parse PDF</button>
+  <button id="download" disabled>Download JSON</button>
+  <div id="out"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    const { getDocument } = pdfjsLib;
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    let parsedApplications = [];
+
+    const DATE_RE = /^(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[a-z]*\.?\s*(\d{1,2})(st|nd|rd|th)?(\s*(?:—|–|-)?\s*(\d{4}))?/i;
+    const MONTHS = { jan:1,january:1,feb:2,february:2,mar:3,march:3,apr:4,april:4,may:5,jun:6,june:6,jul:7,july:7,aug:8,august:8,sep:9,september:9,oct:10,october:10,nov:11,november:11,dec:12,december:12 };
+
+    function parseDate(s) {
+      const m = s.trim().match(DATE_RE);
+      if (!m) return null;
+      const monthName = m[1].toLowerCase().replace(/\./g, '');
+      const month = MONTHS[monthName] || 1;
+      const day = parseInt(m[2], 10);
+      const year = parseInt(m[5], 10) || 2025;
+      return year + '-' + String(month).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+    }
+
+    function isDateLine(line) {
+      return DATE_RE.test(line.trim()) && line.length < 30;
+    }
+
+    function isNoise(line) {
+      const t = line.trim();
+      if (!t) return true;
+      if (/^[\d\.\s]+$/.test(t) || /^--\s*\d+\s+of\s+\d+\s*--/.test(t)) return true;
+      if (/^https?:\/\//i.test(t)) return true;
+      if (t === 'job history' || t === '●') return true;
+      if (/^(Fractional thing|Applied to Fractional|Signed up for|Reply from|Outreach for|Finish city|Set up Teamwork|email from some guy|can I use this|Before Times|signed up for paypal)$/i.test(t)) return true;
+      if (/^\(Open\)$/.test(t) || t === 'recommended' || t === 'Shopify - no specific listing' || t === 'Meta non-specific position') return true;
+      if (/^(Peak6 something|Something else, Twilio|TopTal whatever|PAR senior director)/i.test(t)) return true;
+      return false;
+    }
+
+    function extractJobId(text) {
+      let id = null;
+      const m1 = text.match(/\((?:Job Number:)?\s*([A-Za-z0-9_-]+)\)/i);
+      if (m1) id = m1[1];
+      const m2 = text.match(/\(ID:\s*([A-Za-z0-9_-]+)\)/i);
+      if (m2) id = m2[1];
+      const m3 = text.match(/\b(JOBREQ[A-Za-z0-9]+|JREQ[A-Za-z0-9]+|Job_Req_[A-Za-z0-9]+|R-?\d+|JR[A-Za-z0-9]+)\b/i);
+      if (m3) id = m3[1];
+      const m4 = text.match(/,\s*(\d{6,})\s*$/);
+      if (m4) id = m4[1];
+      return id || '';
+    }
+
+    function parseCompanyPosition(line) {
+      const jobId = extractJobId(line);
+      let clean = line
+        .replace(/\s*\(Job Number:\s*[^)]+\)/gi, '')
+        .replace(/\s*\(ID:\s*[^)]+\)/gi, '')
+        .replace(/\s*\([A-Za-z0-9_-]+\)\s*$/g, '')
+        .replace(/\s*,\s*(\d{6,})\s*$/g, '')
+        .replace(/\s*JOBREQ[A-Za-z0-9]+\s*$/gi, '')
+        .replace(/\s*JREQ[A-Za-z0-9]+\s*$/gi, '')
+        .replace(/\s*Job_Req_[A-Za-z0-9]+\s*$/gi, '')
+        .replace(/\s*R-?\d+\s*$/g, '')
+        .replace(/\s*JR[A-Za-z0-9]+\s*$/gi, '')
+        .trim();
+      const titleWords = /^(Director|Principal|VP|Lead|Head of|Sr\.?|Staff|Associate|Group|Manager|Product Manager|Technical)/i;
+      const commaIdx = clean.indexOf(',');
+      let company, position;
+      if (commaIdx === -1) {
+        const at = clean.indexOf(' @ ');
+        if (at !== -1) {
+          position = clean.slice(0, at).trim();
+          company = clean.slice(at + 3).trim();
+        } else {
+          company = '';
+          position = clean;
+        }
+      } else {
+        const first = clean.slice(0, commaIdx).trim();
+        const rest = clean.slice(commaIdx + 1).trim();
+        if (titleWords.test(first) && rest.length < 50 && !titleWords.test(rest)) {
+          company = rest;
+          position = first;
+        } else {
+          company = first;
+          position = rest;
+        }
+      }
+      if (company && position && position.length > 2) {
+        return { company, position: position.replace(/\s+/g, ' ').trim(), jobId };
+      }
+      return null;
+    }
+
+    function parsePdfText(text) {
+      const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const entries = [];
+      let currentDate = null;
+      let buffer = '';
+
+      function flushBuffer() {
+        if (!buffer) return;
+        const parsed = parseCompanyPosition(buffer);
+        if (parsed && currentDate) {
+          entries.push({
+            appliedDate: currentDate,
+            company: parsed.company,
+            position: parsed.position,
+            jobId: parsed.jobId,
+            status: 'applied',
+            sourceId: 'linkedin',
+            statusHistory: [{ status: 'applied', date: currentDate + 'T12:00:00.000Z' }],
+          });
+        }
+        buffer = '';
+      }
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (isNoise(line)) continue;
+        if (isDateLine(line)) {
+          flushBuffer();
+          currentDate = parseDate(line);
+          continue;
+        }
+        const isContinuation = buffer && (
+          line.startsWith('-') ||
+          (line.startsWith('(') && !line.includes(',')) ||
+          (/^[A-Za-z0-9_-]+$/.test(line) && line.length < 20) ||
+          (/^\d+$/.test(line) && line.length <= 10)
+        );
+        if (isContinuation) {
+          buffer += ' ' + line;
+        } else {
+          if (buffer) flushBuffer();
+          buffer = line;
+        }
+      }
+      flushBuffer();
+      return entries;
+    }
+
+    document.getElementById('file').onchange = function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      document.getElementById('parse').disabled = false;
+      document.getElementById('parse').onclick = async function() {
+        this.disabled = true;
+        document.getElementById('out').textContent = 'Loading PDF…';
+        try {
+          const data = await file.arrayBuffer();
+          const pdf = await getDocument(data).promise;
+          let fullText = '';
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            const items = content.items.map(it => ({
+              str: it.str,
+              y: it.transform ? it.transform[5] : 0,
+              x: it.transform ? it.transform[4] : 0
+            }));
+            items.sort((a, b) => (b.y - a.y) || (a.x - b.x));
+            fullText += items.map(it => it.str).join(' ') + '\n';
+          }
+          parsedApplications = parsePdfText(fullText);
+          document.getElementById('out').innerHTML = 'Parsed <span id="count">' + parsedApplications.length + '</span> applications. Download JSON and then use Import in the Application Tracker.';
+          document.getElementById('download').disabled = false;
+        } catch (err) {
+          document.getElementById('out').textContent = 'Error: ' + err.message;
+        }
+        this.disabled = false;
+      };
+    };
+
+    document.getElementById('download').onclick = function() {
+      const blob = new Blob([JSON.stringify(parsedApplications, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'applications-backfill.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    };
+  </script>
+</body>
+</html>

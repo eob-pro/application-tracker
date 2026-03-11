@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bulk update dates to 2026</title>
+  <style>
+    body { font-family: system-ui; max-width: 480px; margin: 2rem auto; padding: 0 1rem; background: #000; color: #e8e8e8; text-align: center; }
+    h1 { font-size: 1.25rem; }
+    p { color: #b0b0b0; }
+    a { color: #60a5fa; }
+  </style>
+</head>
+<body>
+  <h1>Updating 2025 dates to 2026…</h1>
+  <p id="msg">Processing applications.</p>
+  <script>
+    (function() {
+      var STORAGE_APPS = 'application-tracker-applications';
+
+      function to2026(iso) {
+        if (!iso || typeof iso !== 'string') return iso;
+        return iso.replace(/^2025-/, '2026-');
+      }
+
+      try {
+        var raw = localStorage.getItem(STORAGE_APPS);
+        var applications = raw ? JSON.parse(raw) : [];
+        var updated = 0;
+        applications = applications.map(function(app) {
+          var changed = false;
+          if (app.createdAt && app.createdAt.indexOf('2025-') === 0) {
+            app.createdAt = to2026(app.createdAt);
+            changed = true;
+          }
+          if (app.updatedAt && app.updatedAt.indexOf('2025-') === 0) {
+            app.updatedAt = to2026(app.updatedAt);
+            changed = true;
+          }
+          if (app.statusHistory && Array.isArray(app.statusHistory)) {
+            app.statusHistory = app.statusHistory.map(function(entry) {
+              if (entry.date && entry.date.indexOf('2025-') === 0) {
+                changed = true;
+                return { status: entry.status, date: to2026(entry.date) };
+              }
+              return entry;
+            });
+          }
+          if (changed) updated++;
+          return app;
+        });
+        localStorage.setItem(STORAGE_APPS, JSON.stringify(applications));
+        document.getElementById('msg').textContent = 'Updated ' + updated + ' application(s) to 2026. Redirecting…';
+        setTimeout(function() { window.location.href = 'index.html'; }, 1200);
+      } catch (e) {
+        document.getElementById('msg').textContent = 'Error: ' + e.message;
+      }
+    })();
+  </script>
+</body>
+</html>

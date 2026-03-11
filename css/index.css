@@ -15,11 +15,93 @@ body {
   background: #000;
 }
 
-#root {
-  max-width: 720px;
+#app {
+  max-width: min(1400px, 96vw);
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   color: #e8e8e8;
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.tabs .tab {
+  padding: 0.5rem 1rem;
+  font-size: 0.9375rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #1a1a1a;
+  color: #b0b0b0;
+}
+
+.tabs .tab:hover {
+  color: #e8e8e8;
+  border-color: #666;
+}
+
+.tabs .tab.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.panel-title {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.companies-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.companies-list .company-item {
+  background: #0d0d0d;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.9375rem;
+  color: #e8e8e8;
+}
+
+.companies-list .company-item.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem;
+  color: #b0b0b0;
+  border: 1px dashed #444;
 }
 
 h1 {
@@ -148,6 +230,34 @@ label {
   gap: 0.5rem;
 }
 
+.import-section {
+  background: #0d0d0d;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.import-section h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.import-hint {
+  font-size: 0.875rem;
+  color: #b0b0b0;
+  margin: 0 0 0.5rem;
+}
+
+.import-section a {
+  color: #60a5fa;
+}
+
+.import-section input[type="file"] {
+  margin: 0;
+}
+
 .filter-bar {
   margin-bottom: 1rem;
   display: flex;
@@ -256,6 +366,9 @@ label {
 
 .tag.source { background: #1e3a5f; color: #93c5fd; border-color: #3b82f6; }
 .tag.ats { background: #312e81; color: #a5b4fc; border-color: #6366f1; }
+.tag.ended { background: #451a1a; color: #fca5a5; border-color: #b91c1c; }
+.tag.link { background: #0f172a; color: #7dd3fc; border-color: #0ea5e9; text-decoration: none; }
+.tag.link:hover { text-decoration: underline; }
 
 .application-item {
   flex-wrap: wrap;

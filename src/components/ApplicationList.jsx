@@ -1,13 +1,5 @@
-import { useState } from 'react'
 import ApplicationItem from './ApplicationItem.jsx'
-
-const STATUS_OPTIONS = [
-  { value: 'all', label: 'All' },
-  { value: 'applied', label: 'Applied' },
-  { value: 'interviewing', label: 'Interviewing' },
-  { value: 'offer', label: 'Offer' },
-  { value: 'rejected', label: 'Rejected' },
-]
+import { STATUS_OPTIONS_WITH_ALL } from '../schema.js'
 
 export default function ApplicationList({
   applications,
@@ -19,7 +11,7 @@ export default function ApplicationList({
   return (
     <>
       <div className="filter-bar">
-        {STATUS_OPTIONS.map((opt) => (
+        {STATUS_OPTIONS_WITH_ALL.map((opt) => (
           <button
             key={opt.value}
             type="button"
