@@ -15,6 +15,7 @@
           <button type="button" id="tab-btn-add" class="tab" role="tab" aria-selected="false" data-tab="add">Add</button>
           <button type="button" id="tab-btn-companies" class="tab" role="tab" aria-selected="false" data-tab="companies">Companies</button>
           <button type="button" id="tab-btn-summary" class="tab" role="tab" aria-selected="false" data-tab="summary">Summary</button>
+          <button type="button" id="tab-btn-today" class="tab" role="tab" aria-selected="false" data-tab="today">Today's summary</button>
         </nav>
       </header>
 
@@ -32,6 +33,12 @@
         <h2 class="panel-title">Summary report</h2>
         <button type="button" id="export-backup-btn" class="primary">Export local data</button>
         <div id="summary-content" class="summary-content"></div>
+      </div>
+
+      <div id="tab-today" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Today's summary</h2>
+        <p id="today-summary-date" class="today-summary-date"></p>
+        <div id="today-summary-content" class="today-summary-content"></div>
       </div>
 
       <div id="tab-add" class="tab-panel" role="tabpanel">

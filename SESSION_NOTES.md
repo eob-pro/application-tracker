@@ -28,24 +28,29 @@ Summary of what was built in this thread so you can pick up where you left off.
 
 ## Data model (localStorage)
 
-- **application-tracker-applications** — array of apps: company, position, scope, jobId, status, statusHistory, sourceId, originalListingDate, **originalPostingUrl**, atsSystem, resumeVersion, coverLetterUsed, customCoverLetter, customResume, **endedAt**, createdAt, updatedAt.
+- **application-tracker-applications** — array of apps: company, position, scope, jobId, status, statusHistory, sourceId, originalListingDate, **originalPostingUrl**, atsSystem, **location**, **attendancePolicy**, resumeVersion, coverLetterUsed, customCoverLetter, customResume, **endedAt**, createdAt, updatedAt.
 - **application-tracker-companies** — unique company names (index for add-form datalist). **Uniqueness is by lowercased name;** case variants (e.g. Disney / disney) are merged to one canonical spelling (most frequent in apps). Migration `mergeCompaniesByCase()` runs on load.
-- Statuses: to_apply | applied | screened | interviewed | not_hired. Each status change has a timestamp in `statusHistory`.
+- **application-tracker-locations** — unique location names (used to power the location datalist; seeded with “New York City” and “Los Angeles Metro”, then extended from apps).
+- Statuses: to_apply | applied | screened | interviewed | not_hired | **closed**. Each status change has a timestamp in `statusHistory`.
 
 ## UI and behavior
 
-- **Tabs:** List | Add | Companies. List shows applications; Add has form + import; Companies shows A–Z list of companies applied to.
+- **Tabs:** List | Add | Companies | **Summary**. List shows applications; Add has form + import; Companies shows A–Z list of companies applied to; Summary shows a report and export.
 - **List sort:** Applications sorted by applied date descending (newest first). Uses more horizontal viewport.
 - **Applied date:** Add and edit forms include an "Applied date" field so you can set or change when you applied; this updates the first status-history date used for sorting and display.
 - **End date:** Optional “End date” (endedAt) per application (e.g. when notified not hired); in add/edit forms and list.
 - **Original posting URL:** Optional URL per application; add/edit forms; in list, shown as a “Posting” link tag (`.tag.link`).
+- **Location:** Add and edit forms include a **Location** text + datalist field. The datalist is seeded with “New York City” and “Los Angeles Metro” and grows as you add new locations; location is displayed inline in the list.
+- **Attendance policy:** Add and edit forms include an **Attendance policy** select with options: —, Hybrid, Remote, In-person. Shown as a tag in the list.
 - **Resume version & cover letter:** Add and edit forms have **datalists** populated from previously used values (getResumeVersions / getCoverLetterValues; fillResumeVersionDatalist / fillCoverLetterDatalist).
 - **Import from URL (experimental):** On Add tab, paste a public job URL → “Fetch & parse” fetches via CORS proxy (api.allorigins.win), parses HTML for JSON-LD JobPosting (title, hiringOrganization, identifier, datePosted) and fallbacks (og:title, og:site_name, h1, data-job-id), then pre-fills the add form. User reviews and submits.
 - **“To apply” emphasis:** List rows with status `to_apply` get class `application-item--to-apply`: lighter background (#1c1c1c) and left border accent (#6b7280) so they stand out; other statuses unchanged.
+- **Summary tab:** Shows totals (total apps, advanced beyond applied, not_hired counts and %), outcomes (% responded beyond applied, % not_hired, % still waiting, average age of open apps), and a per-day applications chart from earliest applied date.
+- **Export local data:** On the Summary tab, **Export local data** downloads a JSON snapshot of `applications`, `companies`, and `locations` (`localdata-backup-YYYYMMDD.json`) that you can move into `localdata/` and commit.
 
 ## ATS / recruiting system options
 
-In `js/app.js` and `src/schema.js`: Teamworks, Greenhouse, Workday, Lever, **Rippling**, iCIMS, Taleo, **Company site**, Other.
+In `js/app.js` and `src/schema.js`: Teamworks, Greenhouse, Workday, Lever, **Rippling**, iCIMS, **Oracle**, Taleo, **Company site**, Other.
 
 ## One-time / backfill flows (already run or available)
 
@@ -68,4 +73,4 @@ Stored in `.cursor/rules/environment.mdc`: MacBook Air, Safari for authenticated
 
 - Add more sources/ATS in `js/app.js` (and `src/schema.js` if using React).
 - Refine parse-pdf.html if PDF layout changes.
-- Add applied-date field to the React version in `src/` if desired.
+- Add richer summary visualizations or filters (e.g. breakdown by location, attendance policy, or ATS) if needed.

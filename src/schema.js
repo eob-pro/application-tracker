@@ -27,6 +27,7 @@ export const SOURCE_OPTIONS = [
 // ATS / recruiting system used by the company
 export const ATS_OPTIONS = [
   { value: '', label: '—' },
+  { value: 'avature', label: 'Avature' },
   { value: 'teamworks', label: 'Teamworks' },
   { value: 'greenhouse', label: 'Greenhouse' },
   { value: 'workday', label: 'Workday' },

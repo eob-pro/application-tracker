@@ -37,6 +37,7 @@
 
   var ATS_OPTIONS = [
     { value: '', label: '—' },
+    { value: 'avature', label: 'Avature' },
     { value: 'teamworks', label: 'Teamworks' },
     { value: 'greenhouse', label: 'Greenhouse' },
     { value: 'workday', label: 'Workday' },
@@ -1041,6 +1042,65 @@
     });
   }
 
+  function getTodayETDateString() {
+    return new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  }
+
+  function getDateStringInET(isoDate) {
+    if (!isoDate) return '';
+    var d = new Date(isoDate);
+    return isNaN(d.getTime()) ? '' : d.toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  }
+
+  function getAppliedToday() {
+    var todayET = getTodayETDateString();
+    var results = [];
+    applications.forEach(function (app) {
+      var hist = app.statusHistory || [];
+      for (var i = 0; i < hist.length; i++) {
+        if (hist[i].status === 'applied' && getDateStringInET(hist[i].date) === todayET) {
+          results.push({ app: app, appliedAt: hist[i].date });
+          break;
+        }
+      }
+    });
+    results.sort(function (a, b) { return new Date(b.appliedAt) - new Date(a.appliedAt); });
+    return results;
+  }
+
+  function renderTodaySummary() {
+    var dateEl = document.getElementById('today-summary-date');
+    var container = document.getElementById('today-summary-content');
+    if (!container) return;
+    var todayET = getTodayETDateString();
+    var label = new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    if (dateEl) dateEl.textContent = label + ' (ET)';
+    var list = getAppliedToday();
+    container.innerHTML = '';
+    var countEl = document.createElement('p');
+    countEl.className = 'today-summary-count';
+    countEl.textContent = list.length + ' application' + (list.length === 1 ? '' : 's') + ' set to Applied today.';
+    container.appendChild(countEl);
+    var ul = document.createElement('ul');
+    ul.className = 'today-summary-list';
+    if (list.length === 0) {
+      var empty = document.createElement('li');
+      empty.className = 'empty-state';
+      empty.textContent = 'None yet today.';
+      ul.appendChild(empty);
+    } else {
+      list.forEach(function (item) {
+        var li = document.createElement('li');
+        li.className = 'today-summary-item';
+        var company = (item.app.company || '').trim() || '—';
+        var role = (item.app.position || '').trim() || '—';
+        li.textContent = company + ' — ' + role;
+        ul.appendChild(li);
+      });
+    }
+    container.appendChild(ul);
+  }
+
   function renderSummary() {
     var container = document.getElementById('summary-content');
     if (!container) return;
@@ -1208,12 +1268,14 @@
     var addTab = document.querySelector('.tabs [data-tab="add"]');
     var companiesTab = document.querySelector('.tabs [data-tab="companies"]');
     var summaryTab = document.querySelector('.tabs [data-tab="summary"]');
+    var todayTab = document.querySelector('.tabs [data-tab="today"]');
     var listPanel = document.getElementById('tab-list');
     var addPanel = document.getElementById('tab-add');
     var companiesPanel = document.getElementById('tab-companies');
     var summaryPanel = document.getElementById('tab-summary');
-    var tabs = [listTab, addTab, companiesTab, summaryTab];
-    var panels = [listPanel, addPanel, companiesPanel, summaryPanel];
+    var todayPanel = document.getElementById('tab-today');
+    var tabs = [listTab, addTab, companiesTab, summaryTab, todayTab];
+    var panels = [listPanel, addPanel, companiesPanel, summaryPanel, todayPanel];
     tabs.forEach(function (t) { if (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); } });
     panels.forEach(function (p) { if (p) p.classList.remove('active'); });
     if (tabId === 'list' && listTab && listPanel) {
@@ -1230,6 +1292,10 @@
       summaryTab.classList.add('active'); summaryTab.setAttribute('aria-selected', 'true');
       summaryPanel.classList.add('active');
       renderSummary();
+    } else if (tabId === 'today' && todayTab && todayPanel) {
+      todayTab.classList.add('active'); todayTab.setAttribute('aria-selected', 'true');
+      todayPanel.classList.add('active');
+      renderTodaySummary();
     }
   }
 
@@ -1238,10 +1304,12 @@
     var addBtn = document.getElementById('tab-btn-add');
     var companiesBtn = document.getElementById('tab-btn-companies');
     var summaryBtn = document.getElementById('tab-btn-summary');
+    var todayBtn = document.getElementById('tab-btn-today');
     if (listBtn) listBtn.addEventListener('click', function () { switchToTab('list'); });
     if (addBtn) addBtn.addEventListener('click', function () { switchToTab('add'); });
     if (companiesBtn) companiesBtn.addEventListener('click', function () { switchToTab('companies'); });
     if (summaryBtn) summaryBtn.addEventListener('click', function () { switchToTab('summary'); });
+    if (todayBtn) todayBtn.addEventListener('click', function () { switchToTab('today'); });
 
     var exportBtn = document.getElementById('export-backup-btn');
     if (exportBtn) {
