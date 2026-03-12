@@ -33,6 +33,7 @@ export const ATS_OPTIONS = [
   { value: 'lever', label: 'Lever' },
   { value: 'rippling', label: 'Rippling' },
   { value: 'icims', label: 'iCIMS' },
+  { value: 'oracle', label: 'Oracle' },
   { value: 'taleo', label: 'Taleo' },
   { value: 'company_site', label: 'Company site' },
   { value: 'other', label: 'Other' },
