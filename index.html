@@ -14,6 +14,7 @@
           <button type="button" id="tab-btn-list" class="tab active" role="tab" aria-selected="true" data-tab="list">List</button>
           <button type="button" id="tab-btn-add" class="tab" role="tab" aria-selected="false" data-tab="add">Add</button>
           <button type="button" id="tab-btn-companies" class="tab" role="tab" aria-selected="false" data-tab="companies">Companies</button>
+          <button type="button" id="tab-btn-summary" class="tab" role="tab" aria-selected="false" data-tab="summary">Summary</button>
         </nav>
       </header>
 
@@ -25,6 +26,12 @@
       <div id="tab-companies" class="tab-panel" role="tabpanel">
         <h2 class="panel-title">Companies applied to</h2>
         <ul id="companies-list" class="companies-list"></ul>
+      </div>
+
+      <div id="tab-summary" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Summary report</h2>
+        <button type="button" id="export-backup-btn" class="primary">Export local data</button>
+        <div id="summary-content" class="summary-content"></div>
       </div>
 
       <div id="tab-add" class="tab-panel" role="tabpanel">
@@ -44,6 +51,11 @@
           <input id="scope" name="scope" type="text" placeholder="Department, product, etc." />
         </div>
         <div class="form-group">
+          <label for="location">Location</label>
+          <input id="location" name="location" type="text" list="location-list" placeholder="City / region (e.g. New York City)" />
+          <datalist id="location-list"></datalist>
+        </div>
+        <div class="form-group">
           <label for="jobId">Job ID</label>
           <input id="jobId" name="jobId" type="text" placeholder="Requisition ID from career site" />
         </div>
@@ -58,6 +70,16 @@
           </div>
         </div>
         <div class="form-row">
+          <div class="form-group">
+            <label for="attendancePolicy">Attendance policy</label>
+            <select id="attendancePolicy" name="attendancePolicy"></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appliedDate">Applied date</label>
+            <input id="appliedDate" name="appliedDate" type="date" title="When you applied (leave blank for today)" />
+          </div>
           <div class="form-group">
             <label for="originalListingDate">Original listing date</label>
             <input id="originalListingDate" name="originalListingDate" type="date" />
@@ -99,6 +121,16 @@
         </div>
         <button type="submit" class="primary">Add application</button>
       </form>
+
+      <div class="import-section import-from-url">
+        <h2>Import from URL <span class="experimental-badge">Experimental</span></h2>
+        <p class="import-hint">Paste a public job posting URL to try to extract company, position, and job ID into the form above. Works best with pages that use standard job schema (e.g. LinkedIn, Greenhouse, Workday).</p>
+        <div class="url-import-row">
+          <input type="url" id="import-url-input" placeholder="https://..." />
+          <button type="button" id="import-url-btn" class="primary">Fetch &amp; parse</button>
+        </div>
+        <p id="import-url-status" class="import-url-status" aria-live="polite"></p>
+      </div>
 
       <div class="import-section">
         <h2>Import backfill</h2>

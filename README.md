@@ -33,6 +33,28 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173).
 
+## Backing up local data
+
+The tracker stores your applications and indexes in the browser via `localStorage`. To back that data up alongside the project:
+
+1. Open the app and go to the **Summary** tab.
+2. Click **Export local data**.  
+   This downloads a JSON file named like `localdata-backup-YYYYMMDD.json` containing:
+   - `applications` — all application records
+   - `companies` — company index
+   - `locations` — location index
+3. Move the downloaded file into the project's `localdata/` folder.
+4. Commit it to git:
+
+```bash
+cd /Users/cuchulainn/WebstormProjects/application-tracker
+git add localdata/localdata-backup-YYYYMMDD.json
+git commit -m "Backup local data"
+git push origin main
+```
+
+You can repeat this any time you want a snapshot of your current local data.
+
 ## GitHub
 
 This project is set up to live in the GitHub repo **application-tracker**.

@@ -12,6 +12,7 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
   const [jobId, setJobId] = useState('')
   const [status, setStatus] = useState('to_apply')
   const [sourceId, setSourceId] = useState('linkedin')
+  const [appliedDate, setAppliedDate] = useState('')
   const [originalListingDate, setOriginalListingDate] = useState('')
   const [atsSystem, setAtsSystem] = useState('')
   const [resumeVersion, setResumeVersion] = useState('')
@@ -31,6 +32,7 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
       jobId: jobId.trim(),
       status,
       sourceId,
+      appliedDate: appliedDate.trim() || undefined,
       originalListingDate: originalListingDate.trim() || undefined,
       atsSystem: atsSystem.trim(),
       resumeVersion: resumeVersion.trim(),
@@ -44,6 +46,7 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
     setJobId('')
     setStatus('to_apply')
     setSourceId('linkedin')
+    setAppliedDate('')
     setOriginalListingDate('')
     setAtsSystem('')
     setResumeVersion('')
@@ -139,6 +142,16 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
       </div>
 
       <div className="form-row">
+        <div className="form-group">
+          <label htmlFor="appliedDate">Applied date</label>
+          <input
+            id="appliedDate"
+            type="date"
+            value={appliedDate}
+            onChange={(e) => setAppliedDate(e.target.value)}
+            title="When you applied (leave blank for today)"
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="originalListingDate">Original listing date</label>
           <input

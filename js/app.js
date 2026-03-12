@@ -3,6 +3,7 @@
 
   var STORAGE_APPS = 'application-tracker-applications';
   var STORAGE_COMPANIES = 'application-tracker-companies';
+  var STORAGE_LOCATIONS = 'application-tracker-locations';
 
   var STATUS_OPTIONS = [
     { value: 'to_apply', label: 'To apply' },
@@ -10,6 +11,7 @@
     { value: 'screened', label: 'Screened' },
     { value: 'interviewed', label: 'Interviewed' },
     { value: 'not_hired', label: 'Not hired' },
+    { value: 'closed', label: 'Closed' },
   ];
 
   var STATUS_OPTIONS_WITH_ALL = [
@@ -23,6 +25,14 @@
     { value: 'teamworks', label: 'Teamworks' },
     { value: 'glassdoor', label: 'Glassdoor' },
     { value: 'lensa', label: 'Lensa' },
+    { value: 'company_website', label: 'Company web site' },
+  ];
+
+  var ATTENDANCE_OPTIONS = [
+    { value: '', label: '—' },
+    { value: 'hybrid', label: 'Hybrid' },
+    { value: 'remote', label: 'Remote' },
+    { value: 'in_person', label: 'In-person' },
   ];
 
   var ATS_OPTIONS = [
@@ -64,7 +74,7 @@
     if (app.statusHistory && Array.isArray(app.statusHistory)) return app;
     var status = app.status || 'to_apply';
     var statusMap = { interviewing: 'interviewed', rejected: 'not_hired', offer: 'interviewed' };
-    var mappedStatus = statusMap[app.status] || (['to_apply', 'applied', 'screened', 'interviewed', 'not_hired'].indexOf(app.status) >= 0 ? app.status : status);
+    var mappedStatus = statusMap[app.status] || (['to_apply', 'applied', 'screened', 'interviewed', 'not_hired', 'closed'].indexOf(app.status) >= 0 ? app.status : status);
     var statusHistory = app.appliedDate
       ? [{ status: 'applied', date: new Date(app.appliedDate).toISOString() }]
       : [createStatusHistoryEntry(mappedStatus)];
@@ -80,6 +90,8 @@
       originalListingDate: app.originalListingDate ?? '',
       originalPostingUrl: app.originalPostingUrl ?? '',
       atsSystem: app.atsSystem ?? '',
+      location: app.location ?? '',
+      attendancePolicy: app.attendancePolicy ?? '',
       resumeVersion: app.resumeVersion ?? '',
       coverLetterUsed: app.coverLetterUsed ?? '',
       customCoverLetter: app.customCoverLetter ?? false,
@@ -108,6 +120,18 @@
     var stored = loadJson(STORAGE_COMPANIES, []);
     var combined = Array.from(new Set(stored.concat(fromApps)));
     return combined.sort(function (a, b) { return companyKey(a).localeCompare(companyKey(b)); });
+  }
+
+  function loadLocations() {
+    var apps = loadApplications();
+    var fromApps = [];
+    for (var i = 0; i < apps.length; i++) {
+      if (apps[i].location) fromApps.push(apps[i].location);
+    }
+    var stored = loadJson(STORAGE_LOCATIONS, []);
+    var defaults = ['New York City', 'Los Angeles Metro'];
+    var combined = Array.from(new Set(defaults.concat(stored, fromApps)));
+    return combined.sort(function (a, b) { return a.toLowerCase().localeCompare(b.toLowerCase()); });
   }
 
   function mergeCompaniesByCase() {
@@ -176,9 +200,17 @@
     return value;
   }
 
+  function getAppliedDateValue(app) {
+    var d = (app.statusHistory && app.statusHistory[0] && app.statusHistory[0].date) || app.createdAt;
+    if (!d) return '';
+    var str = typeof d === 'string' ? d : new Date(d).toISOString();
+    return str.slice(0, 10);
+  }
+
   // --- State
   var applications = loadApplications();
   var companies = loadCompanies();
+  var locations = loadLocations();
   mergeCompaniesByCase();
   var statusFilter = 'all';
   var editingId = null;
@@ -196,14 +228,27 @@
     return trimmed;
   }
 
+  function ensureLocation(name) {
+    var trimmed = (name || '').trim();
+    if (!trimmed) return trimmed;
+    if (locations.indexOf(trimmed) >= 0) return trimmed;
+    locations.push(trimmed);
+    locations.sort(function (a, b) { return a.toLowerCase().localeCompare(b.toLowerCase()); });
+    saveJson(STORAGE_LOCATIONS, locations);
+    return trimmed;
+  }
+
   function saveApplications() {
     saveJson(STORAGE_APPS, applications);
   }
 
   function addApplication(payload) {
     var company = ensureCompany((payload.company || '').trim()) || (payload.company || '').trim();
+    var location = ensureLocation((payload.location || '').trim()) || (payload.location || '').trim();
     var status = payload.status || 'to_apply';
-    var statusHistory = payload.statusHistory || [createStatusHistoryEntry(status)];
+    var appliedDateStr = (payload.appliedDate || '').trim();
+    var firstDate = appliedDateStr ? (appliedDateStr.length === 10 ? appliedDateStr + 'T12:00:00.000Z' : appliedDateStr) : new Date().toISOString();
+    var statusHistory = payload.statusHistory || [{ status: status, date: firstDate }];
     applications.unshift({
       id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(36).slice(2),
       company: company,
@@ -216,6 +261,8 @@
       originalListingDate: (payload.originalListingDate || '').trim() || undefined,
       originalPostingUrl: (payload.originalPostingUrl || '').trim() || undefined,
       atsSystem: (payload.atsSystem || '').trim(),
+      location: location,
+      attendancePolicy: (payload.attendancePolicy || '').trim(),
       resumeVersion: (payload.resumeVersion || '').trim(),
       coverLetterUsed: (payload.coverLetterUsed || '').trim(),
       customCoverLetter: !!payload.customCoverLetter,
@@ -234,9 +281,20 @@
       if (updates.company != null) {
         updates.company = ensureCompany((updates.company || '').trim()) || (updates.company || '').trim();
       }
+      if (updates.location != null) {
+        updates.location = ensureLocation((updates.location || '').trim()) || (updates.location || '').trim();
+      }
+      var appliedDate = updates.appliedDate;
+      delete updates.appliedDate;
       var next = Object.assign({}, app, updates, { updatedAt: new Date().toISOString() });
       if (updates.status != null && updates.status !== app.status) {
         next.statusHistory = (app.statusHistory || []).concat(createStatusHistoryEntry(updates.status));
+      }
+      if (appliedDate !== undefined) {
+        var hist = next.statusHistory && next.statusHistory.length ? next.statusHistory.slice() : [{ status: next.status || 'applied', date: new Date().toISOString() }];
+        var iso = (appliedDate.length === 10 ? appliedDate + 'T12:00:00.000Z' : appliedDate);
+        hist[0] = { status: hist[0].status, date: iso };
+        next.statusHistory = hist;
       }
       applications[i] = next;
       break;
@@ -259,6 +317,13 @@
     return list;
   }
 
+  function getAppliedDateValue(app) {
+    var d = (app.statusHistory && app.statusHistory[0] && app.statusHistory[0].date) || app.createdAt;
+    if (!d) return '';
+    var str = typeof d === 'string' ? d : new Date(d).toISOString();
+    return str.slice(0, 10);
+  }
+
   // --- DOM: populate selects
   function fillSelect(id, options) {
     var el = document.getElementById(id);
@@ -279,6 +344,17 @@
     companies.forEach(function (c) {
       var option = document.createElement('option');
       option.value = c;
+      list.appendChild(option);
+    });
+  }
+
+  function fillLocationDatalist() {
+    var list = document.getElementById('location-list');
+    if (!list) return;
+    list.innerHTML = '';
+    locations.forEach(function (loc) {
+      var option = document.createElement('option');
+      option.value = loc;
       list.appendChild(option);
     });
   }
@@ -346,6 +422,7 @@
   function renderApplicationItem(app) {
     var li = document.createElement('li');
     li.className = 'application-item';
+    if (app.status === 'to_apply') li.classList.add('application-item--to-apply');
     li.dataset.id = app.id;
 
     if (editingId === app.id) {
@@ -371,6 +448,12 @@
       scope.textContent = 'Scope: ' + app.scope;
       meta.appendChild(scope);
     }
+    if (app.location) {
+      var loc = document.createElement('span');
+      loc.className = 'location';
+      loc.textContent = app.location;
+      meta.appendChild(loc);
+    }
     if (app.jobId) {
       var jobId = document.createElement('span');
       jobId.className = 'job-id';
@@ -393,6 +476,12 @@
     tags.className = 'tags';
     tags.appendChild(makeTag(getSourceLabel(app.sourceId), 'source'));
     if (app.atsSystem) tags.appendChild(makeTag(getAtsLabel(app.atsSystem), 'ats'));
+    if (app.attendancePolicy) {
+      var attendanceLabel = app.attendancePolicy === 'hybrid' ? 'Hybrid' :
+        app.attendancePolicy === 'remote' ? 'Remote' :
+        app.attendancePolicy === 'in_person' ? 'In-person' : app.attendancePolicy;
+      tags.appendChild(makeTag(attendanceLabel, 'attendance'));
+    }
     if (app.originalListingDate) tags.appendChild(makeTag('Listed: ' + formatDate(app.originalListingDate)));
     if (app.originalPostingUrl) {
       var link = document.createElement('a');
@@ -478,6 +567,25 @@
       wrap.appendChild(g);
     });
 
+    var locationGroup = document.createElement('div');
+    locationGroup.className = 'form-group';
+    locationGroup.innerHTML = '<label>Location</label>';
+    var locationInput = document.createElement('input');
+    locationInput.id = 'edit-location';
+    locationInput.type = 'text';
+    locationInput.setAttribute('list', 'edit-location-list');
+    locationInput.value = app.location || '';
+    var locationDatalist = document.createElement('datalist');
+    locationDatalist.id = 'edit-location-list';
+    locations.forEach(function (loc) {
+      var o = document.createElement('option');
+      o.value = loc;
+      locationDatalist.appendChild(o);
+    });
+    locationGroup.appendChild(locationInput);
+    locationGroup.appendChild(locationDatalist);
+    wrap.appendChild(locationGroup);
+
     var row1 = document.createElement('div');
     row1.className = 'form-row';
     var statusGroup = document.createElement('div');
@@ -512,6 +620,14 @@
 
     var row2 = document.createElement('div');
     row2.className = 'form-row';
+    var appliedDateGroup = document.createElement('div');
+    appliedDateGroup.className = 'form-group';
+    appliedDateGroup.innerHTML = '<label>Applied date</label>';
+    var appliedDateInput = document.createElement('input');
+    appliedDateInput.id = 'edit-appliedDate';
+    appliedDateInput.type = 'date';
+    appliedDateInput.value = getAppliedDateValue(app);
+    appliedDateGroup.appendChild(appliedDateInput);
     var dateGroup = document.createElement('div');
     dateGroup.className = 'form-group';
     dateGroup.innerHTML = '<label>Original listing date</label>';
@@ -529,6 +645,7 @@
     endedInput.placeholder = 'e.g. when you were notified (not hired, etc.)';
     endedInput.value = app.endedAt ? app.endedAt.slice(0, 10) : '';
     endedGroup.appendChild(endedInput);
+    row2.appendChild(appliedDateGroup);
     row2.appendChild(dateGroup);
     row2.appendChild(endedGroup);
     wrap.appendChild(row2);
@@ -629,6 +746,8 @@
         jobId: document.getElementById('edit-jobId').value.trim(),
         status: document.getElementById('edit-status').value,
         sourceId: document.getElementById('edit-sourceId').value,
+        location: document.getElementById('edit-location').value.trim(),
+        appliedDate: document.getElementById('edit-appliedDate').value.trim() || undefined,
         originalListingDate: document.getElementById('edit-originalListingDate').value.trim() || undefined,
         originalPostingUrl: document.getElementById('edit-originalPostingUrl').value.trim() || undefined,
         endedAt: document.getElementById('edit-endedAt').value.trim() || undefined,
@@ -680,7 +799,9 @@
     fillSelect('status', STATUS_OPTIONS);
     fillSelect('sourceId', SOURCE_OPTIONS);
     fillSelect('atsSystem', ATS_OPTIONS);
+    fillSelect('attendancePolicy', ATTENDANCE_OPTIONS);
     fillCompanyDatalist();
+    fillLocationDatalist();
     fillResumeVersionDatalist();
     fillCoverLetterDatalist();
 
@@ -697,10 +818,13 @@
         jobId: (form.jobId && form.jobId.value || '').trim(),
         status: (form.status && form.status.value) || 'to_apply',
         sourceId: (form.sourceId && form.sourceId.value) || 'linkedin',
+        location: (form.location && form.location.value || '').trim(),
+        appliedDate: (form.appliedDate && form.appliedDate.value || '').trim() || undefined,
         originalListingDate: (form.originalListingDate && form.originalListingDate.value || '').trim() || undefined,
         originalPostingUrl: (form.originalPostingUrl && form.originalPostingUrl.value || '').trim() || undefined,
         endedAt: (form.endedAt && form.endedAt.value || '').trim() || undefined,
         atsSystem: (form.atsSystem && form.atsSystem.value || '').trim(),
+        attendancePolicy: (form.attendancePolicy && form.attendancePolicy.value || '').trim(),
         resumeVersion: (form.resumeVersion && form.resumeVersion.value || '').trim(),
         coverLetterUsed: (form.coverLetterUsed && form.coverLetterUsed.value || '').trim(),
         customCoverLetter: !!(form.customCoverLetter && form.customCoverLetter.checked),
@@ -710,7 +834,9 @@
       form.status.value = 'to_apply';
       form.sourceId.value = 'linkedin';
       form.atsSystem.value = '';
+      form.attendancePolicy.value = '';
       fillCompanyDatalist();
+      fillLocationDatalist();
       fillResumeVersionDatalist();
       fillCoverLetterDatalist();
       renderList();
@@ -750,6 +876,8 @@
         status: status,
         statusHistory: statusHistory,
         sourceId: row.sourceId || 'linkedin',
+        location: ensureLocation((row.location || '').trim()) || (row.location || '').trim(),
+        attendancePolicy: (row.attendancePolicy || '').trim(),
         originalListingDate: (row.originalListingDate || '').trim() || undefined,
         originalPostingUrl: (row.originalPostingUrl || '').trim() || undefined,
         atsSystem: (row.atsSystem || '').trim(),
@@ -761,11 +889,109 @@
         updatedAt: new Date().toISOString(),
       });
       ensureCompany(company);
+      if (company) ensureLocation(company);
       added++;
     });
     saveApplications();
     saveJson(STORAGE_COMPANIES, companies);
     return added;
+  }
+
+  var CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+  function parseJobPage(html, sourceUrl) {
+    var out = { originalPostingUrl: sourceUrl || '' };
+    if (!html || typeof html !== 'string') return out;
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    if (!doc) return out;
+
+    function getMeta(name) {
+      var el = doc.querySelector('meta[property="' + name + '"], meta[name="' + name + '"]');
+      return el && el.getAttribute('content') ? el.getAttribute('content').trim() : '';
+    }
+
+    var jsonLdScripts = doc.querySelectorAll('script[type="application/ld+json"]');
+    for (var i = 0; i < jsonLdScripts.length; i++) {
+      try {
+        var raw = jsonLdScripts[i].textContent.trim();
+        var data = JSON.parse(raw);
+        var items = Array.isArray(data) ? data : (data['@graph'] ? data['@graph'] : [data]);
+        for (var j = 0; j < items.length; j++) {
+          var item = items[j];
+          var type = item['@type'];
+          if (type === 'JobPosting' || (type && type.indexOf('JobPosting') !== -1)) {
+            if (item.title && !out.position) out.position = item.title;
+            if (item.hiringOrganization) {
+              var org = item.hiringOrganization;
+              var name = typeof org === 'string' ? org : (org.name || '');
+              if (name && !out.company) out.company = name;
+            }
+            if (item.identifier) {
+              var id = item.identifier;
+              var idVal = typeof id === 'string' ? id : (id.value || id['@id'] || '');
+              if (idVal && !out.jobId) out.jobId = String(idVal).replace(/^.*\/([^/]+)$/, '$1');
+            }
+            if (item.datePosted && !out.originalListingDate) {
+              var d = item.datePosted;
+              if (d.length >= 10) out.originalListingDate = d.slice(0, 10);
+            }
+            break;
+          }
+        }
+      } catch (e) { /* ignore invalid JSON */ }
+    }
+
+    if (!out.position) out.position = getMeta('og:title') || (doc.querySelector('h1') && doc.querySelector('h1').textContent.trim()) || '';
+    if (!out.company) out.company = getMeta('og:site_name') || '';
+    var jobIdEl = doc.querySelector('[data-job-id], [data-requisition-id], .job-id, .jobId, .requisition-id');
+    if (!out.jobId && jobIdEl) out.jobId = (jobIdEl.getAttribute('data-job-id') || jobIdEl.getAttribute('data-requisition-id') || jobIdEl.textContent || '').trim();
+
+    return out;
+  }
+
+  function fillAddFormFromParsed(data) {
+    var form = document.getElementById('add-form');
+    if (!form) return;
+    if (data.company) { var c = form.querySelector('[name="company"]'); if (c) c.value = data.company; }
+    if (data.position) { var p = form.querySelector('[name="position"]'); if (p) p.value = data.position; }
+    if (data.scope) { var s = form.querySelector('[name="scope"]'); if (s) s.value = data.scope; }
+    if (data.jobId) { var j = form.querySelector('[name="jobId"]'); if (j) j.value = data.jobId; }
+    if (data.originalPostingUrl) { var u = form.querySelector('[name="originalPostingUrl"]'); if (u) u.value = data.originalPostingUrl; }
+    if (data.originalListingDate) { var d = form.querySelector('[name="originalListingDate"]'); if (d) d.value = data.originalListingDate; }
+  }
+
+  function initImportFromUrl() {
+    var input = document.getElementById('import-url-input');
+    var btn = document.getElementById('import-url-btn');
+    var statusEl = document.getElementById('import-url-status');
+    if (!btn || !input) return;
+    btn.addEventListener('click', function () {
+      var url = (input.value || '').trim();
+      if (!url) {
+        if (statusEl) { statusEl.textContent = 'Please enter a URL.'; statusEl.className = 'import-url-status error'; }
+        return;
+      }
+      if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+      if (statusEl) { statusEl.textContent = 'Fetching…'; statusEl.className = 'import-url-status'; }
+      btn.disabled = true;
+      fetch(CORS_PROXY + encodeURIComponent(url))
+        .then(function (res) { return res.text(); })
+        .then(function (html) {
+          var parsed = parseJobPage(html, url);
+          fillAddFormFromParsed(parsed);
+          if (statusEl) {
+            statusEl.textContent = 'Parsed. Review the form above and submit to add.';
+            statusEl.className = 'import-url-status success';
+          }
+        })
+        .catch(function (err) {
+          if (statusEl) {
+            statusEl.textContent = 'Could not fetch URL: ' + (err.message || 'network error');
+            statusEl.className = 'import-url-status error';
+          }
+        })
+        .then(function () { btn.disabled = false; });
+    });
   }
 
   function initImport() {
@@ -814,15 +1040,179 @@
     });
   }
 
+  function renderSummary() {
+    var container = document.getElementById('summary-content');
+    if (!container) return;
+    var total = applications.length;
+    var totalAdvanced = 0;
+    var totalNotHired = 0;
+    var respondedCount = 0;
+    var waitingCount = 0;
+    var openAges = [];
+    var dailyCounts = {};
+    var earliest = null;
+    var latest = null;
+    var today = new Date();
+
+    applications.forEach(function (app) {
+      var appliedStr = getAppliedDateValue(app);
+      var appliedDate = appliedStr ? new Date(appliedStr + 'T00:00:00Z') : null;
+      if (appliedDate && !isNaN(appliedDate.getTime())) {
+        var key = appliedStr;
+        dailyCounts[key] = (dailyCounts[key] || 0) + 1;
+        if (!earliest || appliedDate < earliest) earliest = appliedDate;
+        if (!latest || appliedDate > latest) latest = appliedDate;
+      }
+
+      var status = app.status || 'to_apply';
+      // Consider a job as "responded" only if it advanced beyond "applied"
+      if (status !== 'to_apply' && status !== 'applied') respondedCount++;
+      if (status !== 'to_apply' && status !== 'applied') totalAdvanced++;
+      if (status === 'not_hired') totalNotHired++;
+      if (status === 'to_apply' || status === 'applied') {
+        waitingCount++;
+        if (appliedDate && !isNaN(appliedDate.getTime())) {
+          var diffMs = today - appliedDate;
+          if (diffMs >= 0) openAges.push(diffMs / 86400000);
+        }
+      }
+    });
+
+    var pct = function (part, whole) {
+      if (!whole) return '0%';
+      return ((part / whole) * 100).toFixed(1) + '%';
+    };
+
+    var avgAge = openAges.length
+      ? (openAges.reduce(function (sum, v) { return sum + v; }, 0) / openAges.length).toFixed(1)
+      : '0.0';
+
+    var dates = Object.keys(dailyCounts).sort();
+    var maxCount = 0;
+    for (var i = 0; i < dates.length; i++) {
+      if (dailyCounts[dates[i]] > maxCount) maxCount = dailyCounts[dates[i]];
+    }
+
+    container.innerHTML = '';
+
+    var totalsSection = document.createElement('div');
+    totalsSection.className = 'summary-grid';
+    var m1 = document.createElement('div');
+    m1.className = 'summary-metric';
+    m1.innerHTML = '<h3>Total applications</h3><div class="value">' + total + '</div>';
+    var m2 = document.createElement('div');
+    m2.className = 'summary-metric';
+    m2.innerHTML = '<h3>Advanced beyond applied</h3><div class="value">' + totalAdvanced + '</div><div class="sub">' + pct(totalAdvanced, total) + ' of all</div>';
+    var m3 = document.createElement('div');
+    m3.className = 'summary-metric';
+    m3.innerHTML = '<h3>Not hired (all time)</h3><div class="value">' + totalNotHired + '</div><div class="sub">' + pct(totalNotHired, total) + ' of all</div>';
+    totalsSection.appendChild(m1);
+    totalsSection.appendChild(m2);
+    totalsSection.appendChild(m3);
+    container.appendChild(totalsSection);
+
+    var pctSection = document.createElement('div');
+    var pctTitle = document.createElement('h3');
+    pctTitle.className = 'summary-section-title';
+    pctTitle.textContent = 'Outcomes for applied jobs';
+    pctSection.appendChild(pctTitle);
+    var pctGrid = document.createElement('div');
+    pctGrid.className = 'summary-grid';
+    var p1 = document.createElement('div');
+    p1.className = 'summary-metric';
+    p1.innerHTML = '<h3>Responded in any way</h3><div class="value">' + pct(respondedCount, total) + '</div><div class="sub">' + respondedCount + ' of ' + total + '</div>';
+    var p2 = document.createElement('div');
+    p2.className = 'summary-metric';
+    p2.innerHTML = '<h3>Ended as not hired</h3><div class="value">' + pct(totalNotHired, total) + '</div><div class="sub">' + totalNotHired + ' of ' + total + '</div>';
+    var p3 = document.createElement('div');
+    p3.className = 'summary-metric';
+    p3.innerHTML = '<h3>Still waiting</h3><div class="value">' + pct(waitingCount, total) + '</div><div class="sub">' + waitingCount + ' open</div>';
+    var p4 = document.createElement('div');
+    p4.className = 'summary-metric';
+    p4.innerHTML = '<h3>Avg age of open apps</h3><div class="value">' + avgAge + ' days</div>';
+    pctGrid.appendChild(p1);
+    pctGrid.appendChild(p2);
+    pctGrid.appendChild(p3);
+    pctGrid.appendChild(p4);
+    pctSection.appendChild(pctGrid);
+    container.appendChild(pctSection);
+
+    var chartTitle = document.createElement('h3');
+    chartTitle.className = 'summary-section-title';
+    chartTitle.textContent = 'Applications per day';
+    container.appendChild(chartTitle);
+
+    var chart = document.createElement('div');
+    chart.className = 'summary-chart';
+    if (!dates.length) {
+      var empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.textContent = 'No applications yet to chart.';
+      chart.appendChild(empty);
+    } else {
+      dates.forEach(function (d) {
+        var row = document.createElement('div');
+        row.className = 'summary-chart-row';
+        var label = document.createElement('div');
+        label.className = 'summary-chart-label';
+        label.textContent = d;
+        var barWrap = document.createElement('div');
+        barWrap.className = 'summary-chart-bar-wrap';
+        var bar = document.createElement('div');
+        bar.className = 'summary-chart-bar';
+        var width = maxCount ? Math.max(4, (dailyCounts[d] / maxCount) * 100) : 0;
+        bar.style.width = width + '%';
+        barWrap.appendChild(bar);
+        var countEl = document.createElement('div');
+        countEl.className = 'summary-chart-count';
+        countEl.textContent = dailyCounts[d];
+        row.appendChild(label);
+        row.appendChild(barWrap);
+        row.appendChild(countEl);
+        chart.appendChild(row);
+      });
+    }
+    container.appendChild(chart);
+  }
+
+  function exportLocalData() {
+    try {
+      var apps = localStorage.getItem(STORAGE_APPS);
+      var companies = localStorage.getItem(STORAGE_COMPANIES);
+      var locationsRaw = localStorage.getItem(STORAGE_LOCATIONS);
+      var backup = {
+        applications: apps ? JSON.parse(apps) : [],
+        companies: companies ? JSON.parse(companies) : [],
+        locations: locationsRaw ? JSON.parse(locationsRaw) : locations.slice(),
+        exportedAt: new Date().toISOString(),
+      };
+      var json = JSON.stringify(backup, null, 2);
+      var blob = new Blob([json], { type: 'application/json;charset=utf-8' });
+      var a = document.createElement('a');
+      var now = new Date();
+      var y = now.getFullYear();
+      var m = String(now.getMonth() + 1).padStart(2, '0');
+      var d = String(now.getDate()).padStart(2, '0');
+      a.download = 'localdata-backup-' + y + m + d + '.json';
+      a.href = URL.createObjectURL(blob);
+      a.click();
+      URL.revokeObjectURL(a.href);
+    } catch (e) {
+      alert('Could not export data: ' + (e.message || e));
+    }
+  }
+
   function switchToTab(tabId) {
     var listTab = document.querySelector('.tabs [data-tab="list"]');
     var addTab = document.querySelector('.tabs [data-tab="add"]');
     var companiesTab = document.querySelector('.tabs [data-tab="companies"]');
+    var summaryTab = document.querySelector('.tabs [data-tab="summary"]');
     var listPanel = document.getElementById('tab-list');
     var addPanel = document.getElementById('tab-add');
     var companiesPanel = document.getElementById('tab-companies');
-    var tabs = [listTab, addTab, companiesTab];
-    var panels = [listPanel, addPanel, companiesPanel];
+    var summaryPanel = document.getElementById('tab-summary');
+    var tabs = [listTab, addTab, companiesTab, summaryTab];
+    var panels = [listPanel, addPanel, companiesPanel, summaryPanel];
     tabs.forEach(function (t) { if (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); } });
     panels.forEach(function (p) { if (p) p.classList.remove('active'); });
     if (tabId === 'list' && listTab && listPanel) {
@@ -835,6 +1225,10 @@
       companiesTab.classList.add('active'); companiesTab.setAttribute('aria-selected', 'true');
       companiesPanel.classList.add('active');
       renderCompaniesList();
+    } else if (tabId === 'summary' && summaryTab && summaryPanel) {
+      summaryTab.classList.add('active'); summaryTab.setAttribute('aria-selected', 'true');
+      summaryPanel.classList.add('active');
+      renderSummary();
     }
   }
 
@@ -842,14 +1236,22 @@
     var listBtn = document.getElementById('tab-btn-list');
     var addBtn = document.getElementById('tab-btn-add');
     var companiesBtn = document.getElementById('tab-btn-companies');
+    var summaryBtn = document.getElementById('tab-btn-summary');
     if (listBtn) listBtn.addEventListener('click', function () { switchToTab('list'); });
     if (addBtn) addBtn.addEventListener('click', function () { switchToTab('add'); });
     if (companiesBtn) companiesBtn.addEventListener('click', function () { switchToTab('companies'); });
+    if (summaryBtn) summaryBtn.addEventListener('click', function () { switchToTab('summary'); });
+
+    var exportBtn = document.getElementById('export-backup-btn');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', exportLocalData);
+    }
   }
 
   // --- Init
   initForm();
   initImport();
+  initImportFromUrl();
   initTabs();
   renderFilterBar();
   renderList();

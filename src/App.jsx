@@ -35,7 +35,7 @@ function migrateApplication(app) {
     ? [{ status: 'applied', date: new Date(app.appliedDate).toISOString() }]
     : [createStatusHistoryEntry(status)]
   const statusMap = { interviewing: 'interviewed', rejected: 'not_hired', offer: 'interviewed' }
-  const mappedStatus = statusMap[app.status] || (['to_apply', 'applied', 'screened', 'interviewed', 'not_hired'].includes(app.status) ? app.status : status)
+  const mappedStatus = statusMap[app.status] || (['to_apply', 'applied', 'screened', 'interviewed', 'not_hired', 'closed'].includes(app.status) ? app.status : status)
   return {
     id: app.id,
     company: app.company || '',
@@ -93,7 +93,11 @@ export default function App() {
   function addApplication(application) {
     ensureCompany(application.company)
     const status = application.status || 'to_apply'
-    const statusHistory = application.statusHistory || [createStatusHistoryEntry(status)]
+    const appliedDateStr = (application.appliedDate || '').trim()
+    const firstDate = appliedDateStr
+      ? (appliedDateStr.length === 10 ? appliedDateStr + 'T12:00:00.000Z' : appliedDateStr)
+      : new Date().toISOString()
+    const statusHistory = application.statusHistory || [{ status, date: firstDate }]
     setApplications((prev) => [
       {
         id: crypto.randomUUID(),
@@ -118,15 +122,21 @@ export default function App() {
   }
 
   function updateApplication(id, updates) {
+    const { appliedDate, ...rest } = updates
     setApplications((prev) =>
       prev.map((app) => {
         if (app.id !== id) return app
-        const next = { ...app, ...updates, updatedAt: new Date().toISOString() }
+        const next = { ...app, ...rest, updatedAt: new Date().toISOString() }
         if (updates.status != null && updates.status !== app.status) {
           next.statusHistory = [
             ...(app.statusHistory || []),
             createStatusHistoryEntry(updates.status),
           ]
+        }
+        if (appliedDate !== undefined) {
+          const hist = next.statusHistory?.length ? [...next.statusHistory] : [{ status: next.status || 'applied', date: new Date().toISOString() }]
+          hist[0] = { ...hist[0], date: appliedDate.length === 10 ? appliedDate + 'T12:00:00.000Z' : appliedDate }
+          next.statusHistory = hist
         }
         return next
       })

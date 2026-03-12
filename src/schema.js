@@ -5,6 +5,7 @@ export const STATUS_OPTIONS = [
   { value: 'screened', label: 'Screened' },
   { value: 'interviewed', label: 'Interviewed' },
   { value: 'not_hired', label: 'Not hired' },
+  { value: 'closed', label: 'Closed' },
 ]
 
 export const STATUS_OPTIONS_WITH_ALL = [
@@ -20,6 +21,7 @@ export const SOURCE_OPTIONS = [
   { value: 'teamworks', label: 'Teamworks' },
   { value: 'glassdoor', label: 'Glassdoor' },
   { value: 'lensa', label: 'Lensa' },
+  { value: 'company_website', label: 'Company web site' },
 ]
 
 // ATS / recruiting system used by the company

@@ -1,0 +1,14 @@
+---
+description: User environment and preferences for development
+alwaysApply: true
+---
+
+# User environment & preferences
+
+When helping with this developer's projects, assume:
+
+- **Machine:** MacBook Air (macOS).
+- **Browser for authenticated sites:** Safari (use Safari when suggesting login flows, OAuth, or anything that involves signing in to web apps).
+- **Local dev server port:** Prefer port **8080** for localhost (e.g. `http://localhost:8080` when suggesting dev servers, URLs, or config).
+
+Use these defaults unless the user or project specifies otherwise.

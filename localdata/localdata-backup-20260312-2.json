@@ -1,0 +1,4859 @@
+{
+  "applications": [
+    {
+      "id": "199d5b02-91f5-4206-8841-89072644b1f8",
+      "company": "Walmart",
+      "position": "Group Director, Product Management",
+      "scope": "",
+      "jobId": "R-2438251",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-12T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalPostingUrl": "https://careers.walmart.com/us/en/jobs/R-2438251?source=Job_Board_LinkedIn&utm_source=Job_Board_LinkedIn&utm_campaign=69841242443&_ccid=17616727775626e0uu2ms",
+      "atsSystem": "company_site",
+      "location": "Hoboken, NJ",
+      "attendancePolicy": "hybrid",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-12T19:20:57.042Z",
+      "updatedAt": "2026-03-12T19:20:57.042Z"
+    },
+    {
+      "id": "04dfae6c-49a3-474e-99bd-d76bb5652dc9",
+      "company": "Elucid",
+      "position": "Senior Director of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-12T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "2026-03-12",
+      "originalPostingUrl": "https://www.linkedin.com/jobs/view/4374511604/?trk=eml-email_job_alert_digest_01-primary_job_list-0-jobcard_body_5_jobid_4374511604_ssid_1737782483_fmid_17j0e~mm25udb1~gz&refId=kGmwnhK%2FlnTEOcDtJ%2BgQMw%3D%3D&trackingId=djGisIYYIwPIigihSZljYw%3D%3D",
+      "atsSystem": "",
+      "location": "Boston, MA",
+      "attendancePolicy": "in_person",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "eric_obrien_cover_letter_v2.pdf",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-12T19:16:50.543Z",
+      "updatedAt": "2026-03-12T19:16:50.543Z"
+    },
+    {
+      "id": "b372b66b-1483-40e4-b749-fa8d90ceaa39",
+      "company": "Raya",
+      "position": "Vice President of Products",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "to_apply",
+          "date": "2026-03-12T12:00:00.000Z"
+        },
+        {
+          "status": "applied",
+          "date": "2026-03-12T18:15:04.774Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalPostingUrl": "https://www.linkedin.com/jobs/view/4382456354/?trk=eml-email_job_alert_digest_01-primary_job_list-0-jobcard_body_1_jobid_4382456354_ssid_8292032354_fmid_17j0e~mmnlg53o~6r&refId=8riJhKh7qpIiWjN7rC%2BYvQ%3D%3D&trackingId=EzAXUpMX3u%2Byqbvcj5OkKw%3D%3D",
+      "atsSystem": "other",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "None",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-12T18:14:46.318Z",
+      "updatedAt": "2026-03-12T18:19:55.807Z",
+      "location": "New York City"
+    },
+    {
+      "id": "f818a06e-fc20-4b5d-a104-2810804e9f8c",
+      "company": "Amex",
+      "position": "Senior Manager-Digital Product Management",
+      "scope": "Digital",
+      "jobId": "26003206",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "to_apply",
+          "date": "2026-03-12T12:00:00.000Z"
+        },
+        {
+          "status": "applied",
+          "date": "2026-03-12T18:33:12.815Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalPostingUrl": "https://axp.taleo.net/careersection/2/jobdetail.ftl?job=26003206&lang=en&src=JPN-CTE",
+      "atsSystem": "taleo",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "eric_obrien_cover_letter_v2.pdf",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-12T17:59:03.866Z",
+      "updatedAt": "2026-03-12T18:34:27.665Z",
+      "location": "New York City"
+    },
+    {
+      "id": "bcb83dbd-bacb-4264-afc6-2d9b92b0defe",
+      "company": "National Womens' Soccer League",
+      "position": "Director, Technical Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "screened",
+      "statusHistory": [
+        {
+          "status": "screened",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-12T17:31:15.607Z",
+      "updatedAt": "2026-03-12T17:36:25.290Z"
+    },
+    {
+      "id": "0bb247ba-c833-46fe-a4a7-cab93bf930f6",
+      "company": "Sunbit",
+      "position": "Principal Product Manager",
+      "scope": "Agent Experience & AI",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "to_apply",
+          "date": "2026-03-12T12:00:00.000Z"
+        },
+        {
+          "status": "applied",
+          "date": "2026-03-12T18:38:09.850Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalPostingUrl": "https://sunbit.com/careers/?job=A6.76D",
+      "atsSystem": "other",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "eric_obrien_cover_letter_v2.pdf",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T23:24:16.062Z",
+      "updatedAt": "2026-03-12T18:38:09.850Z",
+      "location": ""
+    },
+    {
+      "id": "9e0358bf-dc44-4211-9866-ac5babdeed38",
+      "company": "Fidelity Investments",
+      "position": "Director, Product Management",
+      "scope": "",
+      "jobId": "2124775",
+      "status": "closed",
+      "statusHistory": [
+        {
+          "status": "to_apply",
+          "date": "2026-03-11T12:00:00.000Z"
+        },
+        {
+          "status": "closed",
+          "date": "2026-03-12T19:15:59.598Z"
+        }
+      ],
+      "sourceId": "glassdoor",
+      "originalListingDate": "2026-03-10",
+      "originalPostingUrl": "https://jobs.fidelity.com/en/jobs/2124775/director-product-management/",
+      "atsSystem": "company_site",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T23:19:39.713Z",
+      "updatedAt": "2026-03-12T19:15:59.598Z",
+      "location": ""
+    },
+    {
+      "id": "385a5e03-c472-4c2c-a2b3-8fce798f0938",
+      "company": "Industrious",
+      "position": "Product Lead",
+      "scope": "Coworking New Products",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T23:04:59.249Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalPostingUrl": "https://www.industriousoffice.com/careers?ashby_jid=0468ea47-5736-418d-a390-b8a948d6a4bb#open-positions",
+      "atsSystem": "other",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "eric_obrien_cover_letter_v2.pdf",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T23:04:59.249Z",
+      "updatedAt": "2026-03-11T23:04:59.249Z"
+    },
+    {
+      "id": "2db64696-9a24-4d5b-a278-17cd6944d943",
+      "company": "Profound",
+      "position": "Senior Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T22:50:45.549Z"
+        }
+      ],
+      "sourceId": "theladders",
+      "originalPostingUrl": "https://www.tryprofound.com/careers/e43062d5-1657-4066-a3cc-2e3315693b28",
+      "atsSystem": "company_site",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "eric_obrien_cover_letter_v2.pdf",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:50:45.549Z",
+      "updatedAt": "2026-03-11T22:54:15.226Z"
+    },
+    {
+      "id": "a39d375c-7b3f-4c52-b60e-c4680b400861",
+      "company": "Hearth",
+      "position": "Senior Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T22:47:02.696Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "rippling",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "eric_obrien_cover_letter_v2.pdf",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:47:02.696Z",
+      "updatedAt": "2026-03-11T23:01:13.425Z",
+      "originalPostingUrl": "https://ats.rippling.com/en-US/hearth-careers/jobs/504c2b8f-3015-4062-9746-96d7167a1125"
+    },
+    {
+      "id": "9e3c8560-3d59-4cd9-b20d-03dbbb7532aa",
+      "company": "City of New York",
+      "position": "Assistant Deputy Commissioner",
+      "scope": "IT TRANSFORMATION, APPLICATION DEVELOPMENT, AND OPERATIONS",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-15T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:32:25.518Z"
+    },
+    {
+      "id": "9d5114f0-7003-4381-8b10-7bf4473b0b2f",
+      "company": "Unity",
+      "position": "Director of Products",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:32:02.023Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:32:02.022Z"
+    },
+    {
+      "id": "4389968b-3b6f-4dd9-8a4e-4272e9ecd2ec",
+      "company": "Disney",
+      "position": "principal product manager xr",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:31:09.569Z"
+    },
+    {
+      "id": "71a8f4cd-772b-4962-84a9-a1e1b3a4bad0",
+      "company": "City of New York",
+      "position": "Assistant commissioner of app development",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:30:39.052Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:30:39.052Z"
+    },
+    {
+      "id": "033b11b3-dbca-409d-917f-609b637539da",
+      "company": "Bronx District Attorney's Office",
+      "position": "Director of App Development",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:30:58.686Z"
+    },
+    {
+      "id": "7efb35d1-abae-420f-b897-5e9e43e69b7e",
+      "company": "Wizards of the Coast",
+      "position": "Director, Product Management, Trading Card Games",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:30:15.836Z"
+    },
+    {
+      "id": "9c1d0218-a157-4029-82e2-eb75f96ce827",
+      "company": "Dow Jones",
+      "position": "Principal Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:30:01.671Z"
+    },
+    {
+      "id": "ee4ba75e-7706-408e-a33e-2e894554847a",
+      "company": "LonelyPlanet",
+      "position": "Dir of Product Strategy",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "6e5128d6-e5c7-4dcd-90c7-b7f1872f79fb",
+      "company": "LonelyPlanet",
+      "position": "Dir of Growth / Membership",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "884a0643-18ce-4c1e-8001-353885792c0c",
+      "company": "Warner Brothers",
+      "position": "Staff Product Manager, Editorial Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-13T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:29:47.836Z"
+    },
+    {
+      "id": "110e9cec-ebf6-4b55-9735-630ac764eadf",
+      "company": "The New York Times Company",
+      "position": "technical director, foundations",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-20T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:33:19.509Z"
+    },
+    {
+      "id": "7175c417-58a6-4f01-b2b3-ba86e23aab98",
+      "company": "comcast",
+      "position": "product owner, data platforms",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-20T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "94130a36-a5af-4d4b-8a9c-72e2f27d2fa4",
+      "company": "comcast",
+      "position": "director, data platforms",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-20T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "278206e3-9aec-4e52-a55f-19d2d4bffea3",
+      "company": "Fox",
+      "position": "VP Product Operations",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-20T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:33:06.254Z"
+    },
+    {
+      "id": "d83478d6-1e4e-4d12-bceb-8159a24a9df3",
+      "company": "MTA",
+      "position": "Director of product management",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-20T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "1a1b8a72-e296-498f-94ce-a4d555319150",
+      "company": "morgan & morgan",
+      "position": "group product manager",
+      "scope": "",
+      "jobId": "",
+      "status": "screened",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-20T12:00:00.000Z"
+        },
+        {
+          "status": "screened",
+          "date": "2026-03-11T22:29:37.652Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:29:37.652Z"
+    },
+    {
+      "id": "7d13a601-7225-453b-907d-2e68b82f615c",
+      "company": "Versant",
+      "position": "Product Manager, Emerging Publishing",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-20T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "84c78fd6-6c5d-40e0-8edc-9de948e6fb59",
+      "company": "City of New York",
+      "position": "Associate Director of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-20T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "e7e57b44-c9ad-40e5-b9fb-21753cefb732",
+      "company": "Gartner",
+      "position": "Director, Product",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-27T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "dc682122-2b51-4faf-b7ea-07166fe8c2c6",
+      "company": "Google",
+      "position": "Vice President, Product Management, Editor Tools",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-27T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "f29f0187-1767-4909-b918-e0313bd8f05f",
+      "company": "Fanduel",
+      "position": "Lead Product Manager, Platform",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-27T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "baf6da02-e98a-4e04-99db-25c1f9bc0f28",
+      "company": "SambaTV",
+      "position": "Sr Director Data Products & Identity",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-27T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "6b48efe7-1be1-4047-a6dd-34e7ceefdf83",
+      "company": "Coca Cola Co",
+      "position": "Director of Product Management, Platform Capabiliities",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-27T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "71d72dcf-abee-49a8-b85a-d3cd630d0be8",
+      "company": "Roku",
+      "position": "Senior Director Viewer Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-28T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "400cc975-1336-4c45-8ab4-f4d4afe4e1ce",
+      "company": "Opentable",
+      "position": "VP Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-28T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "37ebd090-4f7a-4357-ad3f-211c0f8d7508",
+      "company": "Mozilla",
+      "position": "Director Product ODIN",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-28T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "04a41402-685c-4e52-a1d6-e65a565fa340",
+      "company": "Mozilla",
+      "position": "Director Product Generative AI",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-28T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "058eff6e-8faf-441e-8839-7a29936c1988",
+      "company": "DirecTV",
+      "position": "Director Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-01-28T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "c7835afd-dfb7-47d7-892b-b375fd38a2d4",
+      "company": "Amazon",
+      "position": "Principal Product Manager, Amazon Now",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "7a707517-2170-430b-a9dc-18990d3226cf",
+      "company": "LinkedIn",
+      "position": "Principal Product Manager, Moonshots",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:03:09.418Z"
+    },
+    {
+      "id": "21f78914-6ee4-4443-b9d7-b6b48805bd0c",
+      "company": "Amazon",
+      "position": "Sports strategy principal",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.418Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "69195010-a414-429a-8d4a-3163531cb2fe",
+      "company": "Major League Soccer",
+      "position": "Director, IT Projects",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:33:38.137Z"
+    },
+    {
+      "id": "77ed4d73-b859-429b-9ed7-3c0f8f9758d0",
+      "company": "ASAPP",
+      "position": "Director of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "e5724a38-f4ef-4a49-b159-6ad661f947e1",
+      "company": "Amazon",
+      "position": "Principal Product Manager",
+      "scope": "MGM Studios / Tech, Prime Video",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-12T17:29:21.196Z"
+    },
+    {
+      "id": "5fdb82c2-3837-4a82-8bef-102b26a43d93",
+      "company": "Github",
+      "position": "Director Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "92398886-0cf0-46e9-b011-954620d21c46",
+      "company": "StockX",
+      "position": "VP Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "1862ea99-0569-4f85-89e0-d6aad765ca1d",
+      "company": "Fanduel",
+      "position": "senior product manager, discovery & experiences",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "96f050d7-8faa-4e0b-b62f-8aaaf34326c6",
+      "company": "Gusto",
+      "position": "Head of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "14f0c7b0-e40f-42f4-83e3-3b7939b059cd",
+      "company": "Netflix",
+      "position": "Group Product Manager, Live & Sports",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "f818a113-c487-40fb-ac84-642c07e5a811",
+      "company": "NBC",
+      "position": "Senior Director, Mobile Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "8620a222-d8a2-487f-9e1a-12c1dee0963b",
+      "company": "Datadog",
+      "position": "Director, Product Management - Core Platforms",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "078554cf-06d5-4af9-a710-326630ab66e1",
+      "company": "Elevate",
+      "position": "Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "ffb3a932-7445-4e16-bfda-286155dde669",
+      "company": "Teleskope",
+      "position": "Director of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "53ac196f-7bac-413a-90ff-5b96fb5baaee",
+      "company": "Geico",
+      "position": "Conversational UI thing",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "325c2eb7-b8f0-44a5-9eac-71cde358f73e",
+      "company": "USA Today",
+      "position": "VP Product, Platform",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "4e36cda3-2d0f-4b44-84e3-aab3ad63754c",
+      "company": "Posh",
+      "position": "head of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "f5bdfa75-5f2b-44c2-a81c-863c2a455740",
+      "company": "Western Union",
+      "position": "VP Digital Product NA",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "bdf5703b-626b-4443-8f5e-d66e7f4831ff",
+      "company": "Mastercard",
+      "position": "Director Product Management - Technical",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "8da362af-51a2-4dce-b15b-4a8ddd76e40d",
+      "company": "Early Warning",
+      "position": "Sr Director Product Digital Assets",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "5ade56d3-ec6d-49ff-bb64-d185c312b523",
+      "company": "Stubhub",
+      "position": "Staff Product Manager seller experience",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "e50af00d-d66a-4677-955e-9e4ca8b78818",
+      "company": "Hearst",
+      "position": "VP Data & AI products",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "0d0627a6-b2b6-488e-9c6d-297e66bf80de",
+      "company": "Amazon",
+      "position": "principal product manager",
+      "scope": "prime video discovery & personalization",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:33:58.152Z"
+    },
+    {
+      "id": "4b40e753-9579-43f0-bac4-b45871c8e524",
+      "company": "Amazon Sports",
+      "position": "Sports Strategy Principal",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "e92b7037-50e5-4f88-8558-ca859b47844c",
+      "company": "Wonder",
+      "position": "VP of Customer Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "b89f15c5-6c00-4301-b4ce-cb7d617a294f",
+      "company": "Shoplift",
+      "position": "VP Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "43fe44c8-9c6a-4972-82a8-fc2c3a3f8e42",
+      "company": "Mapbox",
+      "position": "Director of Product, Maps",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "143532cb-44b1-43d3-914e-d68a180e3d0a",
+      "company": "Fanduel",
+      "position": "Lead Product Manager, New Ventures",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "efc6eef2-fb7a-48b2-afb6-d151fa5ae2a5",
+      "company": "Okta",
+      "position": "Principal Product Manager, Login",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "80fe4de7-be62-44c3-ba28-71fc2b3cf67b",
+      "company": "Twilio",
+      "position": "Director, Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "a481080f-405c-42cb-aacd-3f695e6f82ef",
+      "company": "People",
+      "position": "Principal Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "20b163b3-f8a0-4765-81df-097f4e1e632a",
+      "company": "Bombas",
+      "position": "Snr Director, Product Mgmt (Digital)",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "dce491b7-d51f-4170-a076-8c4006a224c6",
+      "company": "Stripe",
+      "position": "Product Lead, Connect",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "0045b508-6f0d-4547-8e00-2a4f89cfcd48",
+      "company": "Salesfocrce",
+      "position": "Director, Core Product, Agentic Commercialization",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "77db147e-9adc-4aca-80a6-92c49c6a8d00",
+      "company": "Toast",
+      "position": "Principal Product Manager - Toast IQ",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "9f9922f9-74c2-43fc-a700-03cad99b6c69",
+      "company": "Toast",
+      "position": "Product Lead, Toast Partner Ecosystem",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "6c47e8d4-2a58-4d8a-b684-69cda70319c9",
+      "company": "Samsara",
+      "position": "Director, Product Manager, Vehicle Platform",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "6b809795-5407-4477-b7aa-c14dc4b2feea",
+      "company": "Twilio",
+      "position": "Sr Principal Product Mgmt",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "27a4aced-c48f-443b-ac96-2c559d72ac77",
+      "company": "the Knot Worldwide",
+      "position": "product sr director (the bump)",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "77fb861d-8f3c-4fa6-a69b-0ca377480851",
+      "company": "Plaid",
+      "position": "Staff Product Manager - API & Developer Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "92d26fcc-fad2-4a96-ac08-a75421f85ead",
+      "company": "MongoDB",
+      "position": "Lead, Product Manager, API Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-10T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "9202f277-bddb-4fbb-aabb-e2774344ca25",
+      "company": "Fanatics",
+      "position": "Director Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "bbda3bc2-9074-48ee-b317-d9d4735ed986",
+      "company": "Blueflame AI, Datasite",
+      "position": "Dir of Product Delivery",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-12T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "d7df7062-e61f-4469-8920-2a9b129b139b",
+      "company": "Amazon",
+      "position": "Principal Product Manager - Technical, External Services, AWS Developer Tools",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-12T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "5f9f7e0e-a884-492a-8981-5d2d10e37964",
+      "company": "Otis",
+      "position": "Director, Digital Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-12T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "cd73f770-2087-4a5f-8625-929a103e44b1",
+      "company": "Hearst Magazines",
+      "position": "Director, Lifecycle Operations",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-12T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "43fb1bb0-9ab4-4ba8-bf8c-005b9575910f",
+      "company": "NBC Universal",
+      "position": "Sr Director Product Mobile Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-12T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "ebf66027-c903-4221-9d4f-7a78b0d01e79",
+      "company": "CD Baby",
+      "position": "Lead Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-12T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "6763ce7f-b8aa-4224-8dec-e6db063a6119",
+      "company": "OneMain Financial",
+      "position": "Director of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-17T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "0840edc3-0117-4670-a6f2-457c30aa4294",
+      "company": "Super.com",
+      "position": "Director of Product, Core Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-17T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "d03b333e-9943-4991-b162-4655847e3a07",
+      "company": "Nike",
+      "position": "Principal Technical Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-17T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "230743a4-9f24-40ac-b92e-dfddfb5bdf2a",
+      "company": "Motorola",
+      "position": "Director of Product Management,",
+      "scope": "Video",
+      "jobId": "R60857",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-17T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-12T18:57:38.031Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-12T18:57:38.031Z",
+      "location": "",
+      "endedAt": "2026-03-12"
+    },
+    {
+      "id": "901044c6-3102-408b-bc9c-ead6390ae35a",
+      "company": "Nielsen",
+      "position": "Director of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-17T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "d76f07bf-d88c-4984-90f9-da588b84d6d8",
+      "company": "Warner Bros",
+      "position": "Sr. Director, Converged Product - Platform & Data Services",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "95c84cb2-5c71-4172-905f-fc0930123e40",
+      "company": "iHeartRadio",
+      "position": "Product Manager",
+      "scope": "Advance Media",
+      "jobId": "",
+      "status": "screened",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        },
+        {
+          "status": "screened",
+          "date": "2026-03-11T22:29:25.070Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-12T17:36:59.756Z"
+    },
+    {
+      "id": "123f1648-cc38-4444-9edd-123889a400e2",
+      "company": "WorkHero",
+      "position": "Founding Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "069145fa-0861-4c9b-834c-6efe3c69b106",
+      "company": "Verifone",
+      "position": "Director of Product Innovation",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "1e625658-1db5-4cea-9b18-76a04e87ae3e",
+      "company": "Airbnb",
+      "position": "Product Manger, API Platform",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "cf3e8a7b-c145-4a36-9262-865fc0a94eea",
+      "company": "Appnovation",
+      "position": "Director Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "e364e37d-00e7-4496-ac54-3e1d4fcfa520",
+      "company": "Yahoo",
+      "position": "Principal Product Manager, Yahoo News Apps",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "7c768aaf-9cae-45e2-81c1-07f9d50c0f90",
+      "company": "Amex",
+      "position": "Director, Digital Product Mgmt, MIddle Market",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "0eca9a34-7632-4d24-9b26-8108fa172719",
+      "company": "Amex",
+      "position": "Sr Manager, Digital Product Mgmt",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "542edd4e-2fcc-4438-aaab-f44c277946e5",
+      "company": "Amex",
+      "position": "Strategic Planning & Digital Product Operations",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "d73b404d-2ee6-490d-8750-4262a2d9c043",
+      "company": "Wolters Kluwer",
+      "position": "Director Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "0f62061d-6008-471c-bb26-a667b47ef9ea",
+      "company": "Mattel",
+      "position": "Director of Product, Live Services",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-19T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "1da9cef9-0e53-4122-b063-7f7646fba4e8",
+      "company": "Disney",
+      "position": "Senior Product Mgr II",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-24T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "81b96f5f-fe44-4474-809a-30d7f1d8ad5e",
+      "company": "IMAX",
+      "position": "Senior Director, Alternative Content",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-24T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "3785aec4-a68d-47f6-bd4e-022f79f48e2a",
+      "company": "Disney",
+      "position": "Principal Product Manager, Content Mobilization-Disney Digital Entertainment",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-24T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "95c3c31f-cb43-44ef-b63f-9757e9673469",
+      "company": "NBCU",
+      "position": "Principal Product Manager, Content Experiences",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-24T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "02c969f4-e87d-45a9-9ece-95d644670fa2",
+      "company": "Moody's",
+      "position": "Associate Product Consultant",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-24T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "498de523-cd6d-429b-bfdb-2a2d17d6b628",
+      "company": "Moody's",
+      "position": "Asst Product Director",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-24T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "e379bc58-40fe-472d-a45c-484fcdb5e499",
+      "company": "Verizon",
+      "position": "Director Experience Management - My Verizon App",
+      "scope": "",
+      "jobId": "R-1090880",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-25T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "e3ab6f11-b7da-4e2f-8510-32959ff74402",
+      "company": "Bain & Company",
+      "position": "Lead Product Mgmt & Innovation",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-25T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "c1aa3c58-ea4b-48c9-8665-48408f911ed0",
+      "company": "Grubhub / Wonder?",
+      "position": "Staff Product Manager",
+      "scope": "",
+      "jobId": "JR100910",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-25T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "b9f11253-3810-405c-8cec-1aaa8c442431",
+      "company": "Grubhub / Wonder?",
+      "position": "Director, Product Management (Customer Experience)",
+      "scope": "",
+      "jobId": "JR100896",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-25T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "17bb9d88-6ae2-4275-993d-205a7246a49c",
+      "company": "Amazon",
+      "position": "Principal Product Manager - Technical, Alexa Communications",
+      "scope": "",
+      "jobId": "3136732",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-25T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "0d15513a-4cd4-4259-9e9b-559be3821771",
+      "company": "Amex",
+      "position": "Product Director - Digital Wallets, Amex Digital Labs",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-25T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "d9cf3804-19b7-4250-9fa5-bc7d28d2b455",
+      "company": "Amex",
+      "position": "Manager-Digital Product Management",
+      "scope": "",
+      "jobId": "25023062",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-25T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "ecc59f2d-21dc-454d-bf9c-ef11ebad85b2",
+      "company": "Instacart",
+      "position": "Director of Product, Platform",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "6f990c96-f8e0-4d11-9df4-0e6ca605c5f1",
+      "company": "Pubmatic",
+      "position": "Associate Director, Product Management - Gen AI",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "b11d0184-44bb-4a9b-99d2-374417a2dcfb",
+      "company": "Google",
+      "position": "Group Product Manager, Google Cloud - United States",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "bb5048e1-b45c-4e11-943f-6a267464ba5e",
+      "company": "Google",
+      "position": "Group Product Manager, Complex Journeys, Search",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "bc85f5a6-efbe-42f3-b99d-29e244de5a39",
+      "company": "Hudu",
+      "position": "Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "00d36d31-1053-4e38-b928-ba526467b6f3",
+      "company": "Solo",
+      "position": "Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "12ed5e9f-15b0-460c-a957-189d8a0861cb",
+      "company": "Twilio",
+      "position": "Staff Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "25a3f000-7d3c-457f-a62e-6cce0dd28e2c",
+      "company": "Salesforce",
+      "position": "Director of Product Management, Intelligent Process Automation",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "a1f2982a-3f11-415b-8e99-e62ac12b9f29",
+      "company": "Clear",
+      "position": "Director of Product, Travel",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-26T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "8eb7bcf4-876d-4d20-a4b6-8f9bd8f8d0bc",
+      "company": "Mastercard",
+      "position": "Director Product Management - Cyber",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-27T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "7082f4aa-decd-4712-9c6a-fcb5894da2c6",
+      "company": "Playlist",
+      "position": "Senior Director, Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-27T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "8e2c4660-947a-44a5-a11b-76d092c53798",
+      "company": "Concord",
+      "position": "Principal Product Manager, Fractional",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-02-27T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "6830bca9-9923-47b7-b904-701b405f65b3",
+      "company": "Confidxential",
+      "position": "Head of Product – Healthcare Conversational Systems",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "1658dbc3-1796-4de2-a95e-daa01b158122",
+      "company": "MLB",
+      "position": "Director Martech Product and Enablement",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "e7d4fcc6-2816-4fb0-8c64-45869deb3fe5",
+      "company": "Gap Inc",
+      "position": "Director Product Management - Loyalty Experience",
+      "scope": "",
+      "jobId": "R207884",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "5ecca99e-8a56-42a7-a15c-04edcc03d195",
+      "company": "Gap Inc",
+      "position": "Director, Product Management - Wayfinding",
+      "scope": "",
+      "jobId": "R207883",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "49663c67-f54f-4076-9f99-1f5356dc98fd",
+      "company": "Begin",
+      "position": "Head of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "f21c3578-9e11-44c2-aad4-156a5adb1cf1",
+      "company": "Bank of America",
+      "position": "Digital Director, Digital Wallets and Tokenization",
+      "scope": "",
+      "jobId": "26005143",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "e02941e7-6d8e-4151-b8a0-9f02994b5930",
+      "company": "Highmark Health",
+      "position": "Director Digital Product Management",
+      "scope": "",
+      "jobId": "J275237",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "26b05c7c-5a91-4a4f-84a6-890146e00aa8",
+      "company": "Dow Jones",
+      "position": "VP Product, Factiva",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "3f77e77f-bb23-42ce-8fc7-88b4bf9dbf72",
+      "company": "Dropbox",
+      "position": "Sr. Director, Product Management - Multi Product Ecosystem",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "33ef1267-2521-4138-b3b7-e511236bcb18",
+      "company": "Lattice",
+      "position": "Senior Director of Product, Platform AI",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "5c909951-1ee3-4b26-8a04-74483c97429c",
+      "company": "Seatgeek",
+      "position": "Senior Product Manager, Payments",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "3f81220b-f778-478f-9cdd-cb17c0c020de",
+      "company": "Mesh",
+      "position": "Director of Product Consumer Experience",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "479742a2-9347-45cb-ba49-fbba7086b586",
+      "company": "JP Morgan Chase",
+      "position": "Executive Director – AI Solutions Enablement, Product & Innovation",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "89c0dd0f-c3ad-4182-99fd-b82892dcf53d",
+      "company": "Axciom",
+      "position": "Senior Director Products (Remote)",
+      "scope": "",
+      "jobId": "JR013540",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "029ebbba-7b98-4dfb-b41e-7224cbd8faca",
+      "company": "Capital Group",
+      "position": "Product Manager Principal - AI Transformation Incubator",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "61732f9e-1ba9-429a-8c57-17a80c403c9d",
+      "company": "Anthropic",
+      "position": "Product Manager, Consumer",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "22874925-9cc8-4e5f-bb5f-77c051226a49",
+      "company": "Ripple",
+      "position": "Director of Product Operations",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "9162da48-0386-4e59-b401-f99cb561e476",
+      "company": "Adobe",
+      "position": "Principal Product Manager, Adobe Support & Services",
+      "scope": "",
+      "jobId": "R165499",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "c3b0bcd4-b5c3-4893-a3ce-bf847a833909",
+      "company": "Uber",
+      "position": "Lead Product Manager, Uber Direct",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "2ca1d2c1-255e-470b-8eca-40356d0c233f",
+      "company": "Andreesen Horowitz",
+      "position": "Partner 22 Growth Product",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "16065fbe-138b-4882-b08c-4f641fbef821",
+      "company": "Nextiva",
+      "position": "Director, Product, AI Agent Platform",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "6c53f6ab-ca08-4a53-bb6c-3d8b78911853",
+      "company": "Smartly",
+      "position": "Chief of Staff to the CPO",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "4bbb72f6-0a59-44db-a420-b1c2678923ef",
+      "company": "Fanatics",
+      "position": "Principal Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "2c284d22-f7bf-493b-9d7e-d392c5ede22e",
+      "company": "Scribd",
+      "position": "Director of Product, Search & Discovery",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "77f9452b-85a3-4357-9efd-45d20a9a1c5a",
+      "company": "WSJ / Dow Jones",
+      "position": "VP Product",
+      "scope": "",
+      "jobId": "Job_Req_51723",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "9291075b-e5e3-4c11-80c7-7b91f895b7cf",
+      "company": "Thomson Reuters",
+      "position": "Senior Director PM",
+      "scope": "",
+      "jobId": "JREQ197982",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-03T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "cb4da35b-375a-458d-ab2c-5dc9fbdfa60b",
+      "company": "Infobip",
+      "position": "Voice Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-04T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "3b669b0f-4ad2-4d78-b5b9-c09d139613e2",
+      "company": "Blackrock Financial",
+      "position": "Head of Product Ops, Aladdin Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "72207135-bb2b-4473-a678-0934c6ab767d",
+      "company": "Microsoft",
+      "position": "Principal Product Manager - Publisher Content Marketplace",
+      "scope": "",
+      "jobId": "200029311",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "ab23adfb-b42c-47ec-b24b-8f25d0ee1549",
+      "company": "Lyft",
+      "position": "Staff Product Manager, Mapping AI Experiences",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-04T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "404aa659-1f53-4fa5-b159-5244a86be6a7",
+      "company": "Forsyth Barnes",
+      "position": "Director of Product Mgmt",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-04T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "9ee28c13-d6db-4195-ab93-19c72ccd2115",
+      "company": "McQuarie Group",
+      "position": "Real Assets Digital and AI - Digital Solutions Owner",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "e02b473e-6bb1-4fec-a8c9-8fa62ecc8725",
+      "company": "Smarsh",
+      "position": "Senior Principal, Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-04T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "ff3a986a-3c5c-45a8-b865-aa65e9ba65f1",
+      "company": "Pearson",
+      "position": "Lead, Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-04T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "1141568f-71ec-4bf6-8889-d0fb1b62dc28",
+      "company": "TeamWorks",
+      "position": "Product Manager II",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "9588ddee-9d7b-427e-9efc-0e1f0dc7c6af",
+      "company": "Expedia Group",
+      "position": "Principal Product Manager, Cars",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "92a7f3a9-be0b-4e0b-9675-61bb5b36dec6",
+      "company": "Megaport",
+      "position": "Senior Director of Product & Network",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-05T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "80864c09-968a-4f57-ac8c-e5c9b6ddcc51",
+      "company": "Warner Bros Discovery",
+      "position": "Staff Product Manager, Commerce Capabilities",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-05T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-12T17:43:16.120Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-12T17:43:16.119Z",
+      "endedAt": "2026-03-11"
+    },
+    {
+      "id": "d6ee7992-0a4a-425a-a1bc-4c2b434b550e",
+      "company": "Hasbro",
+      "position": "Principal Technical Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-05T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "e6b880bb-a5f7-46ca-add0-c61509a45a6a",
+      "company": "Chanel",
+      "position": "Group Director, Client Data Product Owner",
+      "scope": "",
+      "jobId": "JOBREQ00110241",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-05T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "33535093-0a3d-4cb7-858d-67c414380b21",
+      "company": "CVS Health",
+      "position": "Director, Technology Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-05T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "7ad5bfd0-c7d9-4b54-b75d-1aae71fa1b77",
+      "company": "NBCU",
+      "position": "Product Operations Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "not_hired",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-05T12:00:00.000Z"
+        },
+        {
+          "status": "not_hired",
+          "date": "2026-03-11T22:14:05.212Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:14:05.212Z"
+    },
+    {
+      "id": "d40fe5f1-f9c5-4700-bad0-6b51c0f121ab",
+      "company": "Daily Racing Form",
+      "position": "Director of Product Management",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "06384aa4-cc61-4f94-a4eb-c580b91c6cba",
+      "company": "ServiceNow",
+      "position": "Director of Product Management, Google Product Partnership",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "950245e1-481c-45af-8d49-2154a611f860",
+      "company": "Autodesk",
+      "position": "Principal Platform Product Manager, Digital Messaging",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "125d2c8e-f8ab-49bf-8a92-239378252f78",
+      "company": "Octus",
+      "position": "Director, Product Strategy",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "6058820f-a108-402b-9841-116dbf2ddf26",
+      "company": "SpotOn",
+      "position": "Sr Director of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "e31f29fe-6349-4894-bd24-de501c38e150",
+      "company": "Warner Bros",
+      "position": "VP Product, CMS Innovation",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "83420e69-6dc0-4858-82e0-d0bb99da90c1",
+      "company": "Taco Bell / Yum! Brands",
+      "position": "Director Digital Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "05c7425b-b25e-439b-ae68-fd2c5d635c31",
+      "company": "Ancestry",
+      "position": "Principal Product Manager, Storytelling",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "bc44b150-27b7-4721-bd83-09156d8bf405",
+      "company": "eZCater",
+      "position": "Principal Product Manager, Emerging Opportunities (Remote)",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "e7e099ef-431e-4912-9ee5-3011a0c9316c",
+      "company": "The Trade Desk",
+      "position": "Unspecified Position",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "b3c36d9f-507b-4901-bc9b-544cd2da2486",
+      "company": "Amex",
+      "position": "Director - Digital Product Management",
+      "scope": "",
+      "jobId": "26002909",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "17f86e86-01c5-46a3-ba51-c1fca32103b6",
+      "company": "Roku",
+      "position": "Director, Product Management, Business Applications",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "c55cff4c-7a37-4745-8aef-9ae0f6e710f1",
+      "company": "OP",
+      "position": "Principal Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "1b54401b-2304-43e1-83b5-fbf513dabff1",
+      "company": "SciPro",
+      "position": "Head of Product",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "82defd2f-f48b-463a-a9d5-e030363f6053",
+      "company": "Roku",
+      "position": "Senior Director, Product Management, Video Ad Platform",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-10T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "fa30afa5-ff08-41c4-a7db-3f088c4217a5",
+      "company": "Amex",
+      "position": "Product Director - Digital Wallets Amex Digital Labs",
+      "scope": "",
+      "jobId": "26004373",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.417Z",
+      "updatedAt": "2026-03-11T22:03:09.417Z"
+    },
+    {
+      "id": "f137d7e3-fbc4-469f-b2e4-aa7e80a31afa",
+      "company": "Stripe",
+      "position": "Product Lead, AI",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.416Z",
+      "updatedAt": "2026-03-11T22:03:09.416Z"
+    },
+    {
+      "id": "b9346571-8f68-4904-b6f3-882e6cbcd076",
+      "company": "FICO",
+      "position": "VP - Platform Product Management - Core Platform Ecosystem - Zero-to-One SaaS initiatives",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.416Z",
+      "updatedAt": "2026-03-11T22:03:09.416Z"
+    },
+    {
+      "id": "ca21cafd-e7a2-4be7-82f6-8e065175d50c",
+      "company": "Blackbird Labs",
+      "position": "Product Manager",
+      "scope": "",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.413Z",
+      "updatedAt": "2026-03-11T22:03:09.413Z"
+    },
+    {
+      "id": "64d6faea-a1da-43f1-b0e7-e0beb82f190d",
+      "company": "Microsoft",
+      "position": "Principal Product Manager",
+      "scope": "",
+      "jobId": "200001463",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T12:00:00.000Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "originalListingDate": "",
+      "atsSystem": "",
+      "resumeVersion": "",
+      "coverLetterUsed": "",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:03:09.413Z",
+      "updatedAt": "2026-03-11T22:03:09.413Z"
+    },
+    {
+      "id": "2beb8896-681c-413f-88fd-d0c63c2291da",
+      "company": "Hinge",
+      "position": "Head of Product & Tech Operations",
+      "scope": "Tech Operations",
+      "jobId": "",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T22:02:41.738Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "eric_obrien_cover_letter_260311.pdf",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T22:02:41.738Z",
+      "updatedAt": "2026-03-11T22:02:41.738Z"
+    },
+    {
+      "id": "aee4c70e-f3db-4d27-a122-0ae65219e1a5",
+      "company": "Microsoft",
+      "position": "Principal Product Manager",
+      "scope": "",
+      "jobId": "200001463",
+      "status": "applied",
+      "statusHistory": [
+        {
+          "status": "applied",
+          "date": "2026-03-11T21:48:50.017Z"
+        }
+      ],
+      "sourceId": "linkedin",
+      "atsSystem": "company_site",
+      "resumeVersion": "eric_obrien_resume_compact_cai_260227.pdf",
+      "coverLetterUsed": "eric_obrien_cover_letter_260311.pdf",
+      "customCoverLetter": false,
+      "customResume": false,
+      "createdAt": "2026-03-11T21:48:50.017Z",
+      "updatedAt": "2026-03-11T22:47:32.008Z"
+    }
+  ],
+  "companies": [
+    "Adobe",
+    "Airbnb",
+    "Amazon",
+    "Amazon Sports",
+    "Amex",
+    "Ancestry",
+    "Andreesen Horowitz",
+    "Anthropic",
+    "Appnovation",
+    "ASAPP",
+    "Autodesk",
+    "Axciom",
+    "Bain & Company",
+    "Bank of America",
+    "Begin",
+    "Blackbird Labs",
+    "Blackrock Financial",
+    "Blueflame AI, Datasite",
+    "Bombas",
+    "Bronx District Attorney's Office",
+    "Capital Group",
+    "CD Baby",
+    "Chanel",
+    "City of New York",
+    "Clear",
+    "Coca Cola Co",
+    "comcast",
+    "Concord",
+    "Confidxential",
+    "CVS Health",
+    "Daily Racing Form",
+    "Datadog",
+    "DirecTV",
+    "Disney",
+    "Dow Jones",
+    "Dropbox",
+    "Early Warning",
+    "Elevate",
+    "Elucid",
+    "Expedia Group",
+    "eZCater",
+    "Fanatics",
+    "Fanduel",
+    "FICO",
+    "Fidelity Investments",
+    "Forsyth Barnes",
+    "Fox",
+    "Gap Inc",
+    "Gartner",
+    "Geico",
+    "Github",
+    "Google",
+    "Grubhub / Wonder?",
+    "Gusto",
+    "Hasbro",
+    "Hearst",
+    "Hearst Magazines",
+    "Hearth",
+    "Highmark Health",
+    "Hinge",
+    "Hudu",
+    "iHeartRadio",
+    "IMAX",
+    "Industrious",
+    "Infobip",
+    "Instacart",
+    "JP Morgan Chase",
+    "Lattice",
+    "LinkedIn",
+    "LonelyPlanet",
+    "Lyft",
+    "Major League Soccer",
+    "Mapbox",
+    "Mastercard",
+    "Mattel",
+    "McQuarie Group",
+    "Megaport",
+    "Mesh",
+    "Microsoft",
+    "MLB",
+    "MongoDB",
+    "Moody's",
+    "morgan & morgan",
+    "Motorola",
+    "Mozilla",
+    "MTA",
+    "National Womens' Soccer League",
+    "NBC",
+    "NBC Universal",
+    "NBCU",
+    "Netflix",
+    "Nextiva",
+    "Nielsen",
+    "Nike",
+    "Octus",
+    "Okta",
+    "OneMain Financial",
+    "OP",
+    "Opentable",
+    "Otis",
+    "Pearson",
+    "People",
+    "Plaid",
+    "Playlist",
+    "Posh",
+    "Profound",
+    "Pubmatic",
+    "Raya",
+    "Ripple",
+    "Roku",
+    "Salesfocrce",
+    "Salesforce",
+    "SambaTV",
+    "Samsara",
+    "SciPro",
+    "Scribd",
+    "Seatgeek",
+    "ServiceNow",
+    "Shoplift",
+    "Smarsh",
+    "Smartly",
+    "Solo",
+    "SpotOn",
+    "StockX",
+    "Stripe",
+    "Stubhub",
+    "Sunbit",
+    "Super.com",
+    "Taco Bell / Yum! Brands",
+    "TeamWorks",
+    "Teleskope",
+    "the Knot Worldwide",
+    "The New York Times Company",
+    "The Trade Desk",
+    "Thomson Reuters",
+    "Toast",
+    "Twilio",
+    "Uber",
+    "Unity",
+    "USA Today",
+    "Verifone",
+    "Verizon",
+    "Versant",
+    "Walmart",
+    "Warner Bros",
+    "Warner Bros Discovery",
+    "Warner Brothers",
+    "Western Union",
+    "Wizards of the Coast",
+    "Wolters Kluwer",
+    "Wonder",
+    "WorkHero",
+    "WSJ / Dow Jones",
+    "Yahoo"
+  ],
+  "locations": [
+    "Boston, MA",
+    "Hoboken, NJ",
+    "Los Angeles Metro",
+    "New York City"
+  ],
+  "exportedAt": "2026-03-12T19:40:29.989Z"
+}

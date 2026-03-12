@@ -21,6 +21,13 @@ function getAtsLabel(value) {
   return opt ? opt.label : value
 }
 
+function getAppliedDateValue(application) {
+  const d = (application.statusHistory?.[0]?.date) || application.createdAt
+  if (!d) return ''
+  const str = typeof d === 'string' ? d : new Date(d).toISOString()
+  return str.slice(0, 10)
+}
+
 export default function ApplicationItem({ application, onUpdate, onDelete }) {
   const [editing, setEditing] = useState(false)
   const [company, setCompany] = useState(application.company)
@@ -29,6 +36,7 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
   const [jobId, setJobId] = useState(application.jobId || '')
   const [status, setStatus] = useState(application.status)
   const [sourceId, setSourceId] = useState(application.sourceId || 'linkedin')
+  const [appliedDate, setAppliedDate] = useState(getAppliedDateValue(application))
   const [originalListingDate, setOriginalListingDate] = useState(
     application.originalListingDate || ''
   )
@@ -52,6 +60,7 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
       jobId: jobId.trim(),
       status,
       sourceId,
+      appliedDate: appliedDate.trim() || undefined,
       originalListingDate: originalListingDate.trim() || undefined,
       atsSystem: atsSystem.trim(),
       resumeVersion: resumeVersion.trim(),
@@ -69,6 +78,7 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
     setJobId(application.jobId || '')
     setStatus(application.status)
     setSourceId(application.sourceId || 'linkedin')
+    setAppliedDate(getAppliedDateValue(application))
     setOriginalListingDate(application.originalListingDate || '')
     setAtsSystem(application.atsSystem || '')
     setResumeVersion(application.resumeVersion || '')
@@ -144,6 +154,14 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
             </div>
           </div>
           <div className="form-row">
+            <div className="form-group">
+              <label>Applied date</label>
+              <input
+                type="date"
+                value={appliedDate}
+                onChange={(e) => setAppliedDate(e.target.value)}
+              />
+            </div>
             <div className="form-group">
               <label>Original listing date</label>
               <input
