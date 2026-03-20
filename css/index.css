@@ -563,3 +563,56 @@ label {
   background: #0d0d0d;
   border: 1px dashed #444;
 }
+
+/* Company stats tab */
+.company-stats-hint {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  max-width: 52rem;
+}
+
+.company-stats-content {
+  overflow-x: auto;
+}
+
+.company-stats-table-wrap {
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #0d0d0d;
+  overflow: hidden;
+}
+
+.company-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.company-stats-table th,
+.company-stats-table td {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.company-stats-table th {
+  background: #141414;
+  color: #d4d4d4;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.company-stats-table th.num,
+.company-stats-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.company-stats-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.company-stats-table tbody tr:hover td {
+  background: #121212;
+}

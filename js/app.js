@@ -1042,6 +1042,95 @@
     });
   }
 
+  function displayCompanyNameForStats(raw) {
+    var key = companyKey(raw);
+    if (!key) return '(No company)';
+    for (var i = 0; i < companies.length; i++) {
+      if (companyKey(companies[i]) === key) return companies[i];
+    }
+    return (raw || '').trim() || '(No company)';
+  }
+
+  function escapeHtmlCompanyStats(s) {
+    if (s == null) return '';
+    var div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  function renderCompanyStats() {
+    var container = document.getElementById('company-stats-content');
+    if (!container) return;
+    var byKey = {};
+    applications.forEach(function (app) {
+      var key = companyKey(app.company);
+      if (!key) key = '__none__';
+      if (!byKey[key]) {
+        byKey[key] = {
+          key: key,
+          applied: 0,
+          responded: 0,
+          notHired: 0,
+          closed: 0,
+        };
+      }
+      var row = byKey[key];
+      row.applied++;
+      var status = app.status || 'to_apply';
+      if (status !== 'to_apply' && status !== 'applied') row.responded++;
+      if (status === 'not_hired') row.notHired++;
+      if (status === 'closed') row.closed++;
+    });
+    var rows = Object.keys(byKey).map(function (k) {
+      var r = byKey[k];
+      var sampleName = '';
+      if (k !== '__none__') {
+        for (var i = 0; i < applications.length; i++) {
+          if (companyKey(applications[i].company) === k && (applications[i].company || '').trim()) {
+            sampleName = applications[i].company;
+            break;
+          }
+        }
+      }
+      r.displayName = displayCompanyNameForStats(sampleName);
+      return r;
+    });
+    rows.sort(function (a, b) {
+      if (b.applied !== a.applied) return b.applied - a.applied;
+      return a.displayName.localeCompare(b.displayName, undefined, { sensitivity: 'base' });
+    });
+    container.innerHTML = '';
+    if (rows.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.textContent = 'No applications yet.';
+      container.appendChild(empty);
+      return;
+    }
+    var wrap = document.createElement('div');
+    wrap.className = 'company-stats-table-wrap';
+    var table = document.createElement('table');
+    table.className = 'company-stats-table';
+    table.setAttribute('role', 'table');
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th scope="col">Company</th><th scope="col" class="num">Applied</th><th scope="col" class="num">Responded</th><th scope="col" class="num">Not hired</th><th scope="col" class="num">Closed</th></tr>';
+    table.appendChild(thead);
+    var tbody = document.createElement('tbody');
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td>' + escapeHtmlCompanyStats(r.displayName) + '</td>' +
+        '<td class="num">' + r.applied + '</td>' +
+        '<td class="num">' + r.responded + '</td>' +
+        '<td class="num">' + r.notHired + '</td>' +
+        '<td class="num">' + r.closed + '</td>';
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    container.appendChild(wrap);
+  }
+
   function getTodayETDateString() {
     return new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
   }
@@ -1107,6 +1196,8 @@
     var total = applications.length;
     var totalAdvanced = 0;
     var totalNotHired = 0;
+    var totalScreenedOrInterviewed = 0;
+    var closeDurationsDays = [];
     var respondedCount = 0;
     var waitingCount = 0;
     var openAges = [];
@@ -1114,6 +1205,31 @@
     var earliest = null;
     var latest = null;
     var today = new Date();
+
+    function everHadStatus(app, s) {
+      if ((app.status || '') === s) return true;
+      var hist = app.statusHistory || [];
+      for (var i = 0; i < hist.length; i++) {
+        if ((hist[i].status || '') === s) return true;
+      }
+      return false;
+    }
+
+    function firstDateAppReachedStatus(app, statuses) {
+      var hist = app.statusHistory || [];
+      for (var i = 0; i < hist.length; i++) {
+        var st = (hist[i] && hist[i].status) || '';
+        if (statuses.indexOf(st) >= 0) {
+          var dt = hist[i] && hist[i].date;
+          if (dt) return new Date(dt);
+        }
+      }
+      // Fallback: endedAt is a yyyy-mm-dd date field entered by user
+      if (app.endedAt && String(app.endedAt).length >= 10) {
+        return new Date(String(app.endedAt).slice(0, 10) + 'T00:00:00Z');
+      }
+      return null;
+    }
 
     applications.forEach(function (app) {
       var appliedStr = getAppliedDateValue(app);
@@ -1130,6 +1246,14 @@
       if (status !== 'to_apply' && status !== 'applied') respondedCount++;
       if (status !== 'to_apply' && status !== 'applied') totalAdvanced++;
       if (status === 'not_hired') totalNotHired++;
+      if (everHadStatus(app, 'interviewed') || everHadStatus(app, 'screened')) totalScreenedOrInterviewed++;
+      if (appliedDate && !isNaN(appliedDate.getTime())) {
+        var closeDate = firstDateAppReachedStatus(app, ['not_hired', 'closed']);
+        if (closeDate && !isNaN(closeDate.getTime())) {
+          var closeDiffMs = closeDate - appliedDate;
+          if (closeDiffMs >= 0) closeDurationsDays.push(closeDiffMs / 86400000);
+        }
+      }
       if (status === 'to_apply' || status === 'applied') {
         waitingCount++;
         if (appliedDate && !isNaN(appliedDate.getTime())) {
@@ -1146,6 +1270,10 @@
 
     var avgAge = openAges.length
       ? (openAges.reduce(function (sum, v) { return sum + v; }, 0) / openAges.length).toFixed(1)
+      : '0.0';
+
+    var avgClose = closeDurationsDays.length
+      ? (closeDurationsDays.reduce(function (sum, v) { return sum + v; }, 0) / closeDurationsDays.length).toFixed(1)
       : '0.0';
 
     var dates = Object.keys(dailyCounts).sort();
@@ -1167,9 +1295,13 @@
     var m3 = document.createElement('div');
     m3.className = 'summary-metric';
     m3.innerHTML = '<h3>Not hired (all time)</h3><div class="value">' + totalNotHired + '</div><div class="sub">' + pct(totalNotHired, total) + ' of all</div>';
+    var m4 = document.createElement('div');
+    m4.className = 'summary-metric';
+    m4.innerHTML = '<h3>Screened or interviewed</h3><div class="value">' + totalScreenedOrInterviewed + '</div><div class="sub">' + pct(totalScreenedOrInterviewed, total) + ' of all</div>';
     totalsSection.appendChild(m1);
     totalsSection.appendChild(m2);
     totalsSection.appendChild(m3);
+    totalsSection.appendChild(m4);
     container.appendChild(totalsSection);
 
     var pctSection = document.createElement('div');
@@ -1191,10 +1323,14 @@
     var p4 = document.createElement('div');
     p4.className = 'summary-metric';
     p4.innerHTML = '<h3>Avg age of open apps</h3><div class="value">' + avgAge + ' days</div>';
+    var p5 = document.createElement('div');
+    p5.className = 'summary-metric';
+    p5.innerHTML = '<h3>Avg time to close</h3><div class="value">' + avgClose + ' days</div><div class="sub">based on ' + closeDurationsDays.length + ' closed</div>';
     pctGrid.appendChild(p1);
     pctGrid.appendChild(p2);
     pctGrid.appendChild(p3);
     pctGrid.appendChild(p4);
+    pctGrid.appendChild(p5);
     pctSection.appendChild(pctGrid);
     container.appendChild(pctSection);
 
@@ -1267,15 +1403,17 @@
     var listTab = document.querySelector('.tabs [data-tab="list"]');
     var addTab = document.querySelector('.tabs [data-tab="add"]');
     var companiesTab = document.querySelector('.tabs [data-tab="companies"]');
+    var companyStatsTab = document.querySelector('.tabs [data-tab="company-stats"]');
     var summaryTab = document.querySelector('.tabs [data-tab="summary"]');
     var todayTab = document.querySelector('.tabs [data-tab="today"]');
     var listPanel = document.getElementById('tab-list');
     var addPanel = document.getElementById('tab-add');
     var companiesPanel = document.getElementById('tab-companies');
+    var companyStatsPanel = document.getElementById('tab-company-stats');
     var summaryPanel = document.getElementById('tab-summary');
     var todayPanel = document.getElementById('tab-today');
-    var tabs = [listTab, addTab, companiesTab, summaryTab, todayTab];
-    var panels = [listPanel, addPanel, companiesPanel, summaryPanel, todayPanel];
+    var tabs = [listTab, addTab, companiesTab, companyStatsTab, summaryTab, todayTab];
+    var panels = [listPanel, addPanel, companiesPanel, companyStatsPanel, summaryPanel, todayPanel];
     tabs.forEach(function (t) { if (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); } });
     panels.forEach(function (p) { if (p) p.classList.remove('active'); });
     if (tabId === 'list' && listTab && listPanel) {
@@ -1288,6 +1426,10 @@
       companiesTab.classList.add('active'); companiesTab.setAttribute('aria-selected', 'true');
       companiesPanel.classList.add('active');
       renderCompaniesList();
+    } else if (tabId === 'company-stats' && companyStatsTab && companyStatsPanel) {
+      companyStatsTab.classList.add('active'); companyStatsTab.setAttribute('aria-selected', 'true');
+      companyStatsPanel.classList.add('active');
+      renderCompanyStats();
     } else if (tabId === 'summary' && summaryTab && summaryPanel) {
       summaryTab.classList.add('active'); summaryTab.setAttribute('aria-selected', 'true');
       summaryPanel.classList.add('active');
@@ -1303,11 +1445,13 @@
     var listBtn = document.getElementById('tab-btn-list');
     var addBtn = document.getElementById('tab-btn-add');
     var companiesBtn = document.getElementById('tab-btn-companies');
+    var companyStatsBtn = document.getElementById('tab-btn-company-stats');
     var summaryBtn = document.getElementById('tab-btn-summary');
     var todayBtn = document.getElementById('tab-btn-today');
     if (listBtn) listBtn.addEventListener('click', function () { switchToTab('list'); });
     if (addBtn) addBtn.addEventListener('click', function () { switchToTab('add'); });
     if (companiesBtn) companiesBtn.addEventListener('click', function () { switchToTab('companies'); });
+    if (companyStatsBtn) companyStatsBtn.addEventListener('click', function () { switchToTab('company-stats'); });
     if (summaryBtn) summaryBtn.addEventListener('click', function () { switchToTab('summary'); });
     if (todayBtn) todayBtn.addEventListener('click', function () { switchToTab('today'); });
 

@@ -2,8 +2,7 @@
 
 Summary of what was built in this thread so you can pick up where you left off.
 
-**Last session:** Added experimental “Import from URL” (fetch + parse job page → pre-fill add form) and styled “To apply” list rows lighter with a left border so they stand out.
-
+**Last session:** Added **Today's summary** tab (count and bullet list of applications set to Applied today in ET, descending by time applied). Added **Avature** to ATS/recruiting options. Export local data button on Summary tab; if it doesn't respond in normal Safari, allow downloads for localhost or use Private window. README documents backing up local data to `localdata/`. User runs app at `http://localhost:8080/index.html`.
 ## Project: Application Tracker
 
 - **Location:** `WebstormProjects/application-tracker`
@@ -14,7 +13,7 @@ Summary of what was built in this thread so you can pick up where you left off.
 
 | Path | Purpose |
 |------|--------|
-| `index.html` | Main app (vanilla JS) — tabs: List, Add, Companies; Add tab includes “Import from URL” (experimental) |
+| `index.html` | Main app (vanilla JS) — tabs: List, Add, Companies, **Company stats**, Summary, Today’s summary; Add tab includes “Import from URL” (experimental) |
 | `css/index.css` | Styles (dark theme, tag styles including `.tag.link` for posting URL) |
 | `js/app.js` | All app logic, add/edit/delete, filter, import, company merge, datalists |
 | `parse-pdf.html` | Upload job-history PDF → parse by date + job lines → download JSON |
@@ -35,7 +34,7 @@ Summary of what was built in this thread so you can pick up where you left off.
 
 ## UI and behavior
 
-- **Tabs:** List | Add | Companies | **Summary**. List shows applications; Add has form + import; Companies shows A–Z list of companies applied to; Summary shows a report and export.
+- **Tabs:** List | Add | Companies | **Company stats** | **Summary** | **Today's summary**. List shows applications; Add has form + import; Companies shows A–Z list of companies applied to; **Company stats** table: per company — applied count, responded (beyond applied), not hired, closed — sorted by most applications first, then A–Z; Summary shows a report and Export local data; Today's summary shows count and list (Company — Role) of apps set to Applied today (ET), sorted newest first.
 - **List sort:** Applications sorted by applied date descending (newest first). Uses more horizontal viewport.
 - **Applied date:** Add and edit forms include an "Applied date" field so you can set or change when you applied; this updates the first status-history date used for sorting and display.
 - **End date:** Optional “End date” (endedAt) per application (e.g. when notified not hired); in add/edit forms and list.
@@ -46,11 +45,12 @@ Summary of what was built in this thread so you can pick up where you left off.
 - **Import from URL (experimental):** On Add tab, paste a public job URL → “Fetch & parse” fetches via CORS proxy (api.allorigins.win), parses HTML for JSON-LD JobPosting (title, hiringOrganization, identifier, datePosted) and fallbacks (og:title, og:site_name, h1, data-job-id), then pre-fills the add form. User reviews and submits.
 - **“To apply” emphasis:** List rows with status `to_apply` get class `application-item--to-apply`: lighter background (#1c1c1c) and left border accent (#6b7280) so they stand out; other statuses unchanged.
 - **Summary tab:** Shows totals (total apps, advanced beyond applied, not_hired counts and %), outcomes (% responded beyond applied, % not_hired, % still waiting, average age of open apps), and a per-day applications chart from earliest applied date.
-- **Export local data:** On the Summary tab, **Export local data** downloads a JSON snapshot of `applications`, `companies`, and `locations` (`localdata-backup-YYYYMMDD.json`) that you can move into `localdata/` and commit.
+- **Export local data:** On the Summary tab, **Export local data** downloads a JSON snapshot of `applications`, `companies`, and `locations` (`localdata-backup-YYYYMMDD.json`) that you can move into `localdata/` and commit. If the button doesn't respond in normal Safari, allow downloads for the site (Safari → Settings for This Website) or use a Private window.
+- **Today's summary tab:** Shows today's date in ET, total count of applications whose "Applied" status falls on today (ET), and a bullet list of Company — Role descending by time applied (getAppliedToday; date comparison via America/New_York).
 
 ## ATS / recruiting system options
 
-In `js/app.js` and `src/schema.js`: Teamworks, Greenhouse, Workday, Lever, **Rippling**, iCIMS, **Oracle**, Taleo, **Company site**, Other.
+In `js/app.js` and `src/schema.js`: **Avature**, Teamworks, Greenhouse, Workday, Lever, **Rippling**, iCIMS, **Oracle**, Taleo, **Company site**, Other.
 
 ## One-time / backfill flows (already run or available)
 
