@@ -56,61 +56,58 @@
           <input id="company" name="company" type="text" list="company-list" placeholder="Company name (adds to index if new)" required />
           <datalist id="company-list"></datalist>
         </div>
-        <div class="form-group">
-          <label for="position">Position</label>
-          <input id="position" name="position" type="text" placeholder="Job title / role" />
-        </div>
-        <div class="form-group">
-          <label for="scope">Scope</label>
-          <input id="scope" name="scope" type="text" placeholder="Department, product, etc." />
-        </div>
-        <div class="form-group">
-          <label for="location">Location</label>
-          <input id="location" name="location" type="text" list="location-list" placeholder="City / region (e.g. New York City)" />
-          <datalist id="location-list"></datalist>
-        </div>
-        <div class="form-group">
-          <label for="jobId">Job ID</label>
-          <input id="jobId" name="jobId" type="text" placeholder="Requisition ID from career site" />
-        </div>
-        <div class="form-row">
+        <div class="form-row form-row-position-scope">
           <div class="form-group">
-            <label for="status">Status</label>
-            <select id="status" name="status"></select>
+            <label for="position">Position</label>
+            <input id="position" name="position" type="text" placeholder="Job title / role" />
           </div>
           <div class="form-group">
-            <label for="sourceId">Source</label>
-            <select id="sourceId" name="sourceId"></select>
+            <label for="scope">Scope</label>
+            <input id="scope" name="scope" type="text" placeholder="Department, product, etc." />
           </div>
         </div>
-        <div class="form-row">
+        <div class="form-group">
+          <label for="originalPostingUrl">Original posting URL <span class="experimental-badge">Experimental</span></label>
+          <div class="posting-url-row">
+            <input id="originalPostingUrl" name="originalPostingUrl" type="url" class="posting-url-input" placeholder="https://..." />
+            <button type="button" id="import-from-url-btn" class="secondary">Import from URL</button>
+          </div>
+          <p id="import-url-status" class="import-url-status" aria-live="polite"></p>
+        </div>
+        <div class="form-group">
+          <label for="atsSystem">ATS / Recruiting system</label>
+          <select id="atsSystem" name="atsSystem"></select>
+        </div>
+        <div class="form-row form-row-location-attendance">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input id="location" name="location" type="text" list="location-list" placeholder="City / region (e.g. New York City)" />
+            <datalist id="location-list"></datalist>
+          </div>
           <div class="form-group">
             <label for="attendancePolicy">Attendance policy</label>
             <select id="attendancePolicy" name="attendancePolicy"></select>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="appliedDate">Applied date</label>
-            <input id="appliedDate" name="appliedDate" type="date" title="When you applied (leave blank for today)" />
-          </div>
-          <div class="form-group">
-            <label for="originalListingDate">Original listing date</label>
-            <input id="originalListingDate" name="originalListingDate" type="date" />
-          </div>
-          <div class="form-group">
-            <label for="endedAt">End date</label>
-            <input id="endedAt" name="endedAt" type="date" placeholder="e.g. when you were notified (not hired, etc.)" />
-          </div>
+        <div class="form-group">
+          <label for="jobId">Job ID</label>
+          <input id="jobId" name="jobId" type="text" placeholder="Requisition ID from career site" />
         </div>
         <div class="form-group">
-          <label for="originalPostingUrl">Original posting URL</label>
-          <input id="originalPostingUrl" name="originalPostingUrl" type="url" placeholder="https://..." />
+          <label for="status">Status</label>
+          <select id="status" name="status"></select>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="atsSystem">ATS / Recruiting system</label>
-            <select id="atsSystem" name="atsSystem"></select>
+        <div class="form-row form-row-dates" role="group" aria-label="Application dates">
+          <label for="appliedDate" class="date-field-label">Applied date</label>
+          <div class="date-input-with-today">
+            <input id="appliedDate" name="appliedDate" type="date" />
+            <button type="button" class="btn-set-today secondary" data-target="appliedDate" aria-label="Set applied date to today">Today</button>
+          </div>
+          <span class="date-dates-sep" aria-hidden="true"></span>
+          <label for="endedAt" class="date-field-label">End date</label>
+          <div class="date-input-with-today">
+            <input id="endedAt" name="endedAt" type="date" />
+            <button type="button" class="btn-set-today secondary" data-target="endedAt" aria-label="Set end date to today">Today</button>
           </div>
         </div>
         <div class="form-group">
@@ -133,18 +130,12 @@
             Custom resume
           </label>
         </div>
+        <div class="form-group">
+          <label for="sourceId">Source</label>
+          <select id="sourceId" name="sourceId"></select>
+        </div>
         <button type="submit" class="primary">Add application</button>
       </form>
-
-      <div class="import-section import-from-url">
-        <h2>Import from URL <span class="experimental-badge">Experimental</span></h2>
-        <p class="import-hint">Paste a public job posting URL to try to extract company, position, and job ID into the form above. Works best with pages that use standard job schema (e.g. LinkedIn, Greenhouse, Workday).</p>
-        <div class="url-import-row">
-          <input type="url" id="import-url-input" placeholder="https://..." />
-          <button type="button" id="import-url-btn" class="primary">Fetch &amp; parse</button>
-        </div>
-        <p id="import-url-status" class="import-url-status" aria-live="polite"></p>
-      </div>
 
       <div class="import-section">
         <h2>Import backfill</h2>

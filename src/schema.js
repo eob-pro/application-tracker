@@ -32,6 +32,7 @@ export const ATS_OPTIONS = [
   { value: 'greenhouse', label: 'Greenhouse' },
   { value: 'workday', label: 'Workday' },
   { value: 'lever', label: 'Lever' },
+  { value: 'linkedin_easy_apply', label: 'LinkedIn Easy Apply' },
   { value: 'rippling', label: 'Rippling' },
   { value: 'icims', label: 'iCIMS' },
   { value: 'oracle', label: 'Oracle' },

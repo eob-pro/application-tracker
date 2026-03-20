@@ -258,6 +258,22 @@ button.primary {
   border-color: #fff;
 }
 
+button.secondary {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  border: 1px solid #666;
+  background: #2a2a2a;
+  color: #e8e8e8;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+button.secondary:hover {
+  border-color: #888;
+  background: #333;
+}
+
 button.primary:hover {
   background: #e0e0e0;
   border-color: #e0e0e0;
@@ -388,6 +404,7 @@ label {
   margin: 0;
 }
 
+.add-form .experimental-badge,
 .import-from-url .experimental-badge {
   font-size: 0.7rem;
   font-weight: 600;
@@ -396,6 +413,79 @@ label {
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   margin-left: 0.35rem;
+}
+
+.posting-url-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.posting-url-input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Single-line row: Applied date + Today | End date + Today */
+.form-row.form-row-dates {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.45rem 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+}
+
+.form-row.form-row-dates .date-field-label {
+  flex-shrink: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #d4d4d4;
+  white-space: nowrap;
+}
+
+.form-row.form-row-dates .date-dates-sep {
+  flex-shrink: 0;
+  width: 1px;
+  height: 1.35rem;
+  margin: 0 0.15rem;
+  background: #444;
+  align-self: center;
+}
+
+.form-row.form-row-dates .date-input-with-today {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.form-row.form-row-dates .date-input-with-today input[type="date"] {
+  min-width: 0;
+  width: auto;
+}
+
+/* Inline edit form uses same classes inside .application-item */
+.application-item .form-row.form-row-dates {
+  max-width: 100%;
+}
+
+.date-input-with-today {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.date-input-with-today input[type="date"] {
+  min-width: 0;
 }
 
 .import-from-url .url-import-row {
@@ -469,6 +559,17 @@ label {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+
+.form-row.form-row-position-scope .form-group input[type="text"] {
+  width: 100%;
+  min-width: 0;
+}
+
+.form-row.form-row-location-attendance .form-group input[type="text"],
+.form-row.form-row-location-attendance .form-group select {
+  width: 100%;
+  min-width: 0;
 }
 
 .checkboxes {

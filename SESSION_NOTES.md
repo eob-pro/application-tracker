@@ -13,7 +13,7 @@ Summary of what was built in this thread so you can pick up where you left off.
 
 | Path | Purpose |
 |------|--------|
-| `index.html` | Main app (vanilla JS) — tabs: List, Add, Companies, **Company stats**, Summary, Today’s summary; Add tab includes “Import from URL” (experimental) |
+| `index.html` | Main app (vanilla JS) — tabs include List, Add, Companies, Company stats, Summary, Today’s summary; Add: posting URL is 3rd field with **Import from URL** beside it, **ATS** directly under; default status Applied; applied date defaults to today; **Today** on date fields; no original listing date on add |
 | `css/index.css` | Styles (dark theme, tag styles including `.tag.link` for posting URL) |
 | `js/app.js` | All app logic, add/edit/delete, filter, import, company merge, datalists |
 | `parse-pdf.html` | Upload job-history PDF → parse by date + job lines → download JSON |
@@ -34,13 +34,14 @@ Summary of what was built in this thread so you can pick up where you left off.
 
 ## UI and behavior
 
-- **Tabs:** List | Add | Companies | **Company stats** | **Summary** | **Today's summary**. List shows applications; Add has form + import; Companies shows A–Z list of companies applied to; **Company stats** table: per company — applied count, responded (beyond applied), not hired, closed — sorted by most applications first, then A–Z; Summary shows a report and Export local data; Today's summary shows count and list (Company — Role) of apps set to Applied today (ET), sorted newest first.
+- **Tabs:** List | Add | Companies | **Summary** | **Today's summary**. List shows applications; Add has form + import; Companies shows A–Z list of companies applied to; Summary shows a report and Export local data; Today's summary shows count and list (Company — Role) of apps set to Applied today (ET), sorted newest first.
 - **List sort:** Applications sorted by applied date descending (newest first). Uses more horizontal viewport.
-- **Applied date:** Add and edit forms include an "Applied date" field so you can set or change when you applied; this updates the first status-history date used for sorting and display.
-- **End date:** Optional “End date” (endedAt) per application (e.g. when notified not hired); in add/edit forms and list.
-- **Original posting URL:** Optional URL per application; add/edit forms; in list, shown as a “Posting” link tag (`.tag.link`).
+- **Applied date:** Add and edit forms include an "Applied date" field (add defaults to **today**); **Today** buttons set any date field to the current local date. Updates first status-history date used for sorting and display.
+- **End date:** Optional “End date” (endedAt); on add/edit it sits **next to** applied date. Shown in list. Choosing status **Not hired** or **Closed** sets end date to **today** by default (still editable).
+- **Original listing date:** Not on add/edit forms; still stored if present on imported/legacy records and may show as “Listed:” tag in list.
+- **Original posting URL:** Optional URL per application; add/edit forms; in list, shown as a “Posting” link tag (`.tag.link`). **ATS auto-detect:** typing/pasting URL or **Import from URL** sets ATS when the host matches known patterns (Workday, Greenhouse, Lever, iCIMS, Taleo, Avature, Rippling, Teamworks, Oracle Cloud / some Oracle job paths) or when past saved applications with the same hostname had an ATS recorded (majority vote; walks up parent domains).
 - **Location:** Add and edit forms include a **Location** text + datalist field. The datalist is seeded with “New York City” and “Los Angeles Metro” and grows as you add new locations; location is displayed inline in the list.
-- **Attendance policy:** Add and edit forms include an **Attendance policy** select with options: —, Hybrid, Remote, In-person. Shown as a tag in the list.
+- **Attendance policy:** Add form: **Attendance policy** select on the **same row** as **Location** (after Job ID in field order). Options: —, Hybrid, Remote, In-person; shown as a tag in the list. **Source** alone at bottom before Submit.
 - **Resume version & cover letter:** Add and edit forms have **datalists** populated from previously used values (getResumeVersions / getCoverLetterValues; fillResumeVersionDatalist / fillCoverLetterDatalist).
 - **Import from URL (experimental):** On Add tab, paste a public job URL → “Fetch & parse” fetches via CORS proxy (api.allorigins.win), parses HTML for JSON-LD JobPosting (title, hiringOrganization, identifier, datePosted) and fallbacks (og:title, og:site_name, h1, data-job-id), then pre-fills the add form. User reviews and submits.
 - **“To apply” emphasis:** List rows with status `to_apply` get class `application-item--to-apply`: lighter background (#1c1c1c) and left border accent (#6b7280) so they stand out; other statuses unchanged.
@@ -50,7 +51,7 @@ Summary of what was built in this thread so you can pick up where you left off.
 
 ## ATS / recruiting system options
 
-In `js/app.js` and `src/schema.js`: **Avature**, Teamworks, Greenhouse, Workday, Lever, **Rippling**, iCIMS, **Oracle**, Taleo, **Company site**, Other.
+In `js/app.js` and `src/schema.js`: **Avature**, Teamworks, Greenhouse, Workday, Lever, **LinkedIn Easy Apply**, **Rippling**, iCIMS, **Oracle**, Taleo, **Company site**, Other.
 
 ## One-time / backfill flows (already run or available)
 

@@ -35,6 +35,22 @@
     { value: 'in_person', label: 'In-person' },
   ];
 
+  function todayLocalYYYYMMDD() {
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + day;
+  }
+
+  /** When status is terminal, default end date to today (add/edit forms). */
+  function applyEndDateDefaultForStatus(statusValue, endDateInput) {
+    if (!endDateInput) return;
+    if (statusValue === 'not_hired' || statusValue === 'closed') {
+      endDateInput.value = todayLocalYYYYMMDD();
+    }
+  }
+
   var ATS_OPTIONS = [
     { value: '', label: '—' },
     { value: 'avature', label: 'Avature' },
@@ -42,6 +58,7 @@
     { value: 'greenhouse', label: 'Greenhouse' },
     { value: 'workday', label: 'Workday' },
     { value: 'lever', label: 'Lever' },
+    { value: 'linkedin_easy_apply', label: 'LinkedIn Easy Apply' },
     { value: 'rippling', label: 'Rippling' },
     { value: 'icims', label: 'iCIMS' },
     { value: 'oracle', label: 'Oracle' },
@@ -216,6 +233,137 @@
   mergeCompaniesByCase();
   var statusFilter = 'all';
   var editingId = null;
+
+  var VALID_ATS_VALUES = {};
+  ATS_OPTIONS.forEach(function (o) {
+    if (o.value) VALID_ATS_VALUES[o.value] = true;
+  });
+
+  /** Parse URL for hostname/path; returns null if invalid. */
+  function parsePostingUrlHostnamePath(url) {
+    if (!url || typeof url !== 'string') return null;
+    var trimmed = url.trim();
+    if (!trimmed) return null;
+    try {
+      var toParse = trimmed;
+      if (!/^https?:\/\//i.test(toParse)) toParse = 'https://' + toParse.replace(/^\/\//, '');
+      var u = new URL(toParse);
+      return {
+        host: (u.hostname || '').toLowerCase(),
+        path: (u.pathname || '').toLowerCase(),
+      };
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /**
+   * Known ATS URL patterns (host/path). Checked before learned history.
+   */
+  function staticInferAtsFromHostPath(host, path) {
+    if (!host) return '';
+    var p = path || '';
+    if (host.indexOf('myworkdayjobs.com') !== -1) return 'workday';
+    if (host.indexOf('greenhouse.io') !== -1) return 'greenhouse';
+    if (host.indexOf('lever.co') !== -1) return 'lever';
+    if (host.indexOf('icims.com') !== -1) return 'icims';
+    if (host.indexOf('taleo') !== -1) return 'taleo';
+    if (host.indexOf('avature') !== -1) return 'avature';
+    if (host.indexOf('rippling.com') !== -1) return 'rippling';
+    if (host.indexOf('teamworks') !== -1) return 'teamworks';
+    if (host.indexOf('oraclecloud.com') !== -1) return 'oracle';
+    if (host.indexOf('oracle.com') !== -1 && (p.indexOf('requisition') !== -1 || p.indexOf('jobdetail') !== -1 || p.indexOf('/job/') !== -1 || p.indexOf('hcm') !== -1 || p.indexOf('candidate') !== -1)) {
+      return 'oracle';
+    }
+    return '';
+  }
+
+  function buildLearnedHostAtsMap(apps) {
+    var map = {};
+    for (var i = 0; i < apps.length; i++) {
+      var app = apps[i];
+      var url = (app.originalPostingUrl || '').trim();
+      var ats = (app.atsSystem || '').trim();
+      if (!url || !ats || !VALID_ATS_VALUES[ats]) continue;
+      var parsed = parsePostingUrlHostnamePath(url);
+      if (!parsed || !parsed.host) continue;
+      var host = parsed.host;
+      if (!map[host]) map[host] = {};
+      map[host][ats] = (map[host][ats] || 0) + 1;
+    }
+    return map;
+  }
+
+  function pickMajorityAts(counts) {
+    var best = '';
+    var bestN = 0;
+    for (var k in counts) {
+      if (!VALID_ATS_VALUES[k]) continue;
+      if (counts[k] > bestN) {
+        bestN = counts[k];
+        best = k;
+      }
+    }
+    return best;
+  }
+
+  /**
+   * From saved apps: same hostname (then parent domains) → most common atsSystem.
+   */
+  function inferAtsFromLearnedHost(host, map) {
+    if (!host || !map) return '';
+    var h = host;
+    for (var guard = 0; guard < 8; guard++) {
+      var counts = map[h];
+      if (counts) {
+        var pick = pickMajorityAts(counts);
+        if (pick) return pick;
+      }
+      var dot = h.indexOf('.');
+      if (dot < 0) break;
+      h = h.slice(dot + 1);
+      if (h.split('.').length < 2) break;
+    }
+    return '';
+  }
+
+  /**
+   * Infer ATS from posting URL: static URL rules first, then majority vote from past applications on same host.
+   */
+  function inferAtsFromPostingUrl(url, apps) {
+    var parsed = parsePostingUrlHostnamePath(url);
+    if (!parsed) return '';
+    var fromStatic = staticInferAtsFromHostPath(parsed.host, parsed.path);
+    if (fromStatic) return fromStatic;
+    var learnMap = buildLearnedHostAtsMap(apps || applications);
+    return inferAtsFromLearnedHost(parsed.host, learnMap);
+  }
+
+  function applyInferredAtsToAddForm() {
+    var urlEl = document.getElementById('originalPostingUrl');
+    var atsEl = document.getElementById('atsSystem');
+    if (!urlEl || !atsEl) return;
+    var inf = inferAtsFromPostingUrl(urlEl.value, applications);
+    if (inf) atsEl.value = inf;
+  }
+
+  function initAtsInferenceFromPostingUrl() {
+    var urlInput = document.getElementById('originalPostingUrl');
+    var atsSelect = document.getElementById('atsSystem');
+    if (!urlInput || !atsSelect) return;
+    var timer;
+    function schedule() {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var inf = inferAtsFromPostingUrl(urlInput.value, applications);
+        if (inf) atsSelect.value = inf;
+      }, 320);
+    }
+    urlInput.addEventListener('input', schedule);
+    urlInput.addEventListener('paste', function () {
+      setTimeout(schedule, 0);
+    });
+  }
 
   function ensureCompany(name) {
     var trimmed = (name || '').trim();
@@ -549,16 +697,11 @@
     var wrap = document.createElement('div');
     wrap.className = 'edit-fields';
 
-    var fields = [
-      { id: 'edit-company', label: 'Company', value: app.company, type: 'text' },
-      { id: 'edit-position', label: 'Position', value: app.position || '', type: 'text' },
-      { id: 'edit-scope', label: 'Scope', value: app.scope || '', type: 'text' },
-      { id: 'edit-jobId', label: 'Job ID', value: app.jobId || '', type: 'text' },
-    ];
-    fields.forEach(function (f) {
+    function appendFormField(parent, f) {
       var g = document.createElement('div');
       g.className = 'form-group';
       var label = document.createElement('label');
+      label.setAttribute('for', f.id);
       label.textContent = f.label;
       var input = document.createElement('input');
       input.id = f.id;
@@ -566,8 +709,18 @@
       input.value = f.value;
       g.appendChild(label);
       g.appendChild(input);
-      wrap.appendChild(g);
-    });
+      parent.appendChild(g);
+    }
+
+    appendFormField(wrap, { id: 'edit-company', label: 'Company', value: app.company, type: 'text' });
+
+    var positionScopeRow = document.createElement('div');
+    positionScopeRow.className = 'form-row form-row-position-scope';
+    appendFormField(positionScopeRow, { id: 'edit-position', label: 'Position', value: app.position || '', type: 'text' });
+    appendFormField(positionScopeRow, { id: 'edit-scope', label: 'Scope', value: app.scope || '', type: 'text' });
+    wrap.appendChild(positionScopeRow);
+
+    appendFormField(wrap, { id: 'edit-jobId', label: 'Job ID', value: app.jobId || '', type: 'text' });
 
     var locationGroup = document.createElement('div');
     locationGroup.className = 'form-group';
@@ -621,36 +774,67 @@
     wrap.appendChild(row1);
 
     var row2 = document.createElement('div');
-    row2.className = 'form-row';
-    var appliedDateGroup = document.createElement('div');
-    appliedDateGroup.className = 'form-group';
-    appliedDateGroup.innerHTML = '<label>Applied date</label>';
+    row2.className = 'form-row form-row-dates';
+    row2.setAttribute('role', 'group');
+    row2.setAttribute('aria-label', 'Application dates');
+    var appliedLabel = document.createElement('label');
+    appliedLabel.className = 'date-field-label';
+    appliedLabel.setAttribute('for', 'edit-appliedDate');
+    appliedLabel.textContent = 'Applied date';
+    row2.appendChild(appliedLabel);
+    var appliedWrap = document.createElement('div');
+    appliedWrap.className = 'date-input-with-today';
     var appliedDateInput = document.createElement('input');
     appliedDateInput.id = 'edit-appliedDate';
     appliedDateInput.type = 'date';
     appliedDateInput.value = getAppliedDateValue(app);
-    appliedDateGroup.appendChild(appliedDateInput);
-    var dateGroup = document.createElement('div');
-    dateGroup.className = 'form-group';
-    dateGroup.innerHTML = '<label>Original listing date</label>';
-    var dateInput = document.createElement('input');
-    dateInput.id = 'edit-originalListingDate';
-    dateInput.type = 'date';
-    dateInput.value = app.originalListingDate || '';
-    dateGroup.appendChild(dateInput);
-    var endedGroup = document.createElement('div');
-    endedGroup.className = 'form-group';
-    endedGroup.innerHTML = '<label>End date</label>';
+    var appliedTodayBtn = document.createElement('button');
+    appliedTodayBtn.type = 'button';
+    appliedTodayBtn.className = 'btn-set-today secondary';
+    appliedTodayBtn.setAttribute('data-target', 'edit-appliedDate');
+    appliedTodayBtn.setAttribute('aria-label', 'Set applied date to today');
+    appliedTodayBtn.textContent = 'Today';
+    appliedWrap.appendChild(appliedDateInput);
+    appliedWrap.appendChild(appliedTodayBtn);
+    row2.appendChild(appliedWrap);
+    var dateSep = document.createElement('span');
+    dateSep.className = 'date-dates-sep';
+    dateSep.setAttribute('aria-hidden', 'true');
+    row2.appendChild(dateSep);
+    var endedLabel = document.createElement('label');
+    endedLabel.className = 'date-field-label';
+    endedLabel.setAttribute('for', 'edit-endedAt');
+    endedLabel.textContent = 'End date';
+    row2.appendChild(endedLabel);
+    var endedWrap = document.createElement('div');
+    endedWrap.className = 'date-input-with-today';
     var endedInput = document.createElement('input');
     endedInput.id = 'edit-endedAt';
     endedInput.type = 'date';
     endedInput.placeholder = 'e.g. when you were notified (not hired, etc.)';
     endedInput.value = app.endedAt ? app.endedAt.slice(0, 10) : '';
-    endedGroup.appendChild(endedInput);
-    row2.appendChild(appliedDateGroup);
-    row2.appendChild(dateGroup);
-    row2.appendChild(endedGroup);
+    var endedTodayBtn = document.createElement('button');
+    endedTodayBtn.type = 'button';
+    endedTodayBtn.className = 'btn-set-today secondary';
+    endedTodayBtn.setAttribute('data-target', 'edit-endedAt');
+    endedTodayBtn.setAttribute('aria-label', 'Set end date to today');
+    endedTodayBtn.textContent = 'Today';
+    endedWrap.appendChild(endedInput);
+    endedWrap.appendChild(endedTodayBtn);
+    row2.appendChild(endedWrap);
     wrap.appendChild(row2);
+
+    statusSelect.addEventListener('change', function () {
+      applyEndDateDefaultForStatus(statusSelect.value, endedInput);
+    });
+
+    wrap.addEventListener('click', function (ev) {
+      var t = ev.target.closest('.btn-set-today');
+      if (!t || !wrap.contains(t)) return;
+      var tid = t.getAttribute('data-target');
+      var el = tid && document.getElementById(tid);
+      if (el && el.type === 'date') el.value = todayLocalYYYYMMDD();
+    });
     var urlGroup = document.createElement('div');
     urlGroup.className = 'form-group';
     urlGroup.innerHTML = '<label>Original posting URL</label>';
@@ -659,6 +843,22 @@
     urlInput.type = 'url';
     urlInput.placeholder = 'https://...';
     urlInput.value = app.originalPostingUrl || '';
+    urlInput.addEventListener('input', function () {
+      clearTimeout(urlInput._atsInferTimer);
+      urlInput._atsInferTimer = setTimeout(function () {
+        var inf = inferAtsFromPostingUrl(urlInput.value, applications);
+        var sel = document.getElementById('edit-atsSystem');
+        if (inf && sel) sel.value = inf;
+      }, 320);
+    });
+    urlInput.addEventListener('paste', function () {
+      var self = urlInput;
+      setTimeout(function () {
+        var inf = inferAtsFromPostingUrl(self.value, applications);
+        var sel = document.getElementById('edit-atsSystem');
+        if (inf && sel) sel.value = inf;
+      }, 0);
+    });
     urlGroup.appendChild(urlInput);
     wrap.appendChild(urlGroup);
     var atsGroup = document.createElement('div');
@@ -750,7 +950,6 @@
         sourceId: document.getElementById('edit-sourceId').value,
         location: document.getElementById('edit-location').value.trim(),
         appliedDate: document.getElementById('edit-appliedDate').value.trim() || undefined,
-        originalListingDate: document.getElementById('edit-originalListingDate').value.trim() || undefined,
         originalPostingUrl: document.getElementById('edit-originalPostingUrl').value.trim() || undefined,
         endedAt: document.getElementById('edit-endedAt').value.trim() || undefined,
         atsSystem: document.getElementById('edit-atsSystem').value.trim(),
@@ -809,6 +1008,26 @@
 
     var form = document.getElementById('add-form');
     if (!form) return;
+
+    form.addEventListener('click', function (ev) {
+      var btn = ev.target.closest('.btn-set-today');
+      if (!btn || !form.contains(btn)) return;
+      var tid = btn.getAttribute('data-target');
+      var el = tid && document.getElementById(tid);
+      if (el && el.type === 'date') el.value = todayLocalYYYYMMDD();
+    });
+
+    var ad = form.querySelector('#appliedDate');
+    var st = form.querySelector('#status');
+    var endedAtAdd = form.querySelector('#endedAt');
+    if (ad) ad.value = todayLocalYYYYMMDD();
+    if (st) st.value = 'applied';
+    if (st && endedAtAdd) {
+      st.addEventListener('change', function () {
+        applyEndDateDefaultForStatus(st.value, endedAtAdd);
+      });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var company = (form.company && form.company.value || '').trim();
@@ -818,11 +1037,10 @@
         position: (form.position && form.position.value || '').trim(),
         scope: (form.scope && form.scope.value || '').trim(),
         jobId: (form.jobId && form.jobId.value || '').trim(),
-        status: (form.status && form.status.value) || 'to_apply',
+        status: (form.status && form.status.value) || 'applied',
         sourceId: (form.sourceId && form.sourceId.value) || 'linkedin',
         location: (form.location && form.location.value || '').trim(),
         appliedDate: (form.appliedDate && form.appliedDate.value || '').trim() || undefined,
-        originalListingDate: (form.originalListingDate && form.originalListingDate.value || '').trim() || undefined,
         originalPostingUrl: (form.originalPostingUrl && form.originalPostingUrl.value || '').trim() || undefined,
         endedAt: (form.endedAt && form.endedAt.value || '').trim() || undefined,
         atsSystem: (form.atsSystem && form.atsSystem.value || '').trim(),
@@ -833,10 +1051,14 @@
         customResume: !!(form.customResume && form.customResume.checked),
       });
       form.reset();
-      form.status.value = 'to_apply';
+      form.status.value = 'applied';
       form.sourceId.value = 'linkedin';
       form.atsSystem.value = '';
       form.attendancePolicy.value = '';
+      var appliedAfter = form.querySelector('#appliedDate');
+      if (appliedAfter) appliedAfter.value = todayLocalYYYYMMDD();
+      var statusEl = document.getElementById('import-url-status');
+      if (statusEl) { statusEl.textContent = ''; statusEl.className = 'import-url-status'; }
       fillCompanyDatalist();
       fillLocationDatalist();
       fillResumeVersionDatalist();
@@ -959,12 +1181,12 @@
     if (data.scope) { var s = form.querySelector('[name="scope"]'); if (s) s.value = data.scope; }
     if (data.jobId) { var j = form.querySelector('[name="jobId"]'); if (j) j.value = data.jobId; }
     if (data.originalPostingUrl) { var u = form.querySelector('[name="originalPostingUrl"]'); if (u) u.value = data.originalPostingUrl; }
-    if (data.originalListingDate) { var d = form.querySelector('[name="originalListingDate"]'); if (d) d.value = data.originalListingDate; }
+    applyInferredAtsToAddForm();
   }
 
   function initImportFromUrl() {
-    var input = document.getElementById('import-url-input');
-    var btn = document.getElementById('import-url-btn');
+    var input = document.getElementById('originalPostingUrl');
+    var btn = document.getElementById('import-from-url-btn');
     var statusEl = document.getElementById('import-url-status');
     if (!btn || !input) return;
     btn.addEventListener('click', function () {
@@ -982,7 +1204,7 @@
           var parsed = parseJobPage(html, url);
           fillAddFormFromParsed(parsed);
           if (statusEl) {
-            statusEl.textContent = 'Parsed. Review the form above and submit to add.';
+            statusEl.textContent = 'Parsed. Review the form and submit to add.';
             statusEl.className = 'import-url-status success';
           }
         })
@@ -1463,6 +1685,7 @@
 
   // --- Init
   initForm();
+  initAtsInferenceFromPostingUrl();
   initImport();
   initImportFromUrl();
   initTabs();
