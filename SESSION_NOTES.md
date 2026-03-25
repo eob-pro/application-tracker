@@ -2,7 +2,7 @@
 
 Summary of what was built in this thread so you can pick up where you left off.
 
-**Last session:** Added **Today's summary** tab (count and bullet list of applications set to Applied today in ET, descending by time applied). Added **Avature** to ATS/recruiting options. Export local data button on Summary tab; if it doesn't respond in normal Safari, allow downloads for localhost or use Private window. README documents backing up local data to `localdata/`. User runs app at `http://localhost:8080/index.html`.
+**Last session (wrap-up):** **Company stats** tab; Summary metrics (**Screened or interviewed**, **Avg time to close**); add-form UX (URL + Import, ATS under URL, defaults, single-line dates, position/scope row, location+attendance row, source at bottom, end date auto on not hired/closed); **ATS from URL** (static + learned history); **LinkedIn Easy Apply** ATS option; `apple-touch-icon.png`; desktop session log `cursor-sessions/session-2026-03-17.md`. User runs app at `http://localhost:8080/index.html` (Python `http.server` on 8080).
 ## Project: Application Tracker
 
 - **Location:** `WebstormProjects/application-tracker`
@@ -34,7 +34,7 @@ Summary of what was built in this thread so you can pick up where you left off.
 
 ## UI and behavior
 
-- **Tabs:** List | Add | Companies | **Summary** | **Today's summary**. List shows applications; Add has form + import; Companies shows A–Z list of companies applied to; Summary shows a report and Export local data; Today's summary shows count and list (Company — Role) of apps set to Applied today (ET), sorted newest first.
+- **Tabs:** List | Add | Companies | **Company stats** | **Summary** | **Today's summary**. Company stats = per-company applied / responded / not hired / closed table. Summary = metrics (incl. screened-or-interviewed, avg time to close), chart, Export local data. Today's summary = applied-today (ET) list.
 - **List sort:** Applications sorted by applied date descending (newest first). Uses more horizontal viewport.
 - **Applied date:** Add and edit forms include an "Applied date" field (add defaults to **today**); **Today** buttons set any date field to the current local date. Updates first status-history date used for sorting and display.
 - **End date:** Optional “End date” (endedAt); on add/edit it sits **next to** applied date. Shown in list. Choosing status **Not hired** or **Closed** sets end date to **today** by default (still editable).
@@ -45,7 +45,7 @@ Summary of what was built in this thread so you can pick up where you left off.
 - **Resume version & cover letter:** Add and edit forms have **datalists** populated from previously used values (getResumeVersions / getCoverLetterValues; fillResumeVersionDatalist / fillCoverLetterDatalist).
 - **Import from URL (experimental):** On Add tab, paste a public job URL → “Fetch & parse” fetches via CORS proxy (api.allorigins.win), parses HTML for JSON-LD JobPosting (title, hiringOrganization, identifier, datePosted) and fallbacks (og:title, og:site_name, h1, data-job-id), then pre-fills the add form. User reviews and submits.
 - **“To apply” emphasis:** List rows with status `to_apply` get class `application-item--to-apply`: lighter background (#1c1c1c) and left border accent (#6b7280) so they stand out; other statuses unchanged.
-- **Summary tab:** Shows totals (total apps, advanced beyond applied, not_hired counts and %), outcomes (% responded beyond applied, % not_hired, % still waiting, average age of open apps), and a per-day applications chart from earliest applied date.
+- **Summary tab:** **Funnel** table — stages from all applications through waiting, responded, ever screened/interviewed, any terminal (not hired or closed), then split **→ Not hired** and **→ Closed**; columns: Apps, % of all apps, Companies, % of all companies (`companyKey`). **Timing** row below: avg age of open apps, avg time to close, open within avg close period. Per-day chart + Export local data unchanged.
 - **Export local data:** On the Summary tab, **Export local data** downloads a JSON snapshot of `applications`, `companies`, and `locations` (`localdata-backup-YYYYMMDD.json`) that you can move into `localdata/` and commit. If the button doesn't respond in normal Safari, allow downloads for the site (Safari → Settings for This Website) or use a Private window.
 - **Today's summary tab:** Shows today's date in ET, total count of applications whose "Applied" status falls on today (ET), and a bullet list of Company — Role descending by time applied (getAppliedToday; date comparison via America/New_York).
 

@@ -1418,6 +1418,7 @@
     var total = applications.length;
     var totalAdvanced = 0;
     var totalNotHired = 0;
+    var totalClosed = 0;
     var totalScreenedOrInterviewed = 0;
     var closeDurationsDays = [];
     var respondedCount = 0;
@@ -1468,6 +1469,7 @@
       if (status !== 'to_apply' && status !== 'applied') respondedCount++;
       if (status !== 'to_apply' && status !== 'applied') totalAdvanced++;
       if (status === 'not_hired') totalNotHired++;
+      if (status === 'closed') totalClosed++;
       if (everHadStatus(app, 'interviewed') || everHadStatus(app, 'screened')) totalScreenedOrInterviewed++;
       if (appliedDate && !isNaN(appliedDate.getTime())) {
         var closeDate = firstDateAppReachedStatus(app, ['not_hired', 'closed']);
@@ -1490,13 +1492,95 @@
       return ((part / whole) * 100).toFixed(1) + '%';
     };
 
+    /** Whole-number %, rounded up (for funnel table). */
+    var pctCeil = function (part, whole) {
+      if (!whole || part <= 0) return '0%';
+      var n = Math.ceil((part / whole) * 100);
+      if (n > 100) n = 100;
+      return n + '%';
+    };
+
     var avgAge = openAges.length
       ? (openAges.reduce(function (sum, v) { return sum + v; }, 0) / openAges.length).toFixed(1)
       : '0.0';
 
-    var avgClose = closeDurationsDays.length
-      ? (closeDurationsDays.reduce(function (sum, v) { return sum + v; }, 0) / closeDurationsDays.length).toFixed(1)
-      : '0.0';
+    var avgCloseDaysNum = closeDurationsDays.length
+      ? closeDurationsDays.reduce(function (sum, v) { return sum + v; }, 0) / closeDurationsDays.length
+      : null;
+    var avgClose = avgCloseDaysNum != null ? avgCloseDaysNum.toFixed(1) : '0.0';
+
+    var openWithinAvgClosePeriod = 0;
+    if (avgCloseDaysNum != null) {
+      applications.forEach(function (app) {
+        if ((app.status || 'to_apply') !== 'applied') return;
+        if ((app.endedAt || '').trim()) return;
+        var as = getAppliedDateValue(app);
+        if (!as) return;
+        var ad = new Date(as + 'T00:00:00Z');
+        if (isNaN(ad.getTime())) return;
+        var ageDays = (today - ad) / 86400000;
+        if (ageDays < 0) return;
+        if (ageDays < avgCloseDaysNum) openWithinAvgClosePeriod++;
+      });
+    }
+
+    function countUniqueCompanies(predicate) {
+      var keys = {};
+      for (var ci = 0; ci < applications.length; ci++) {
+        var a = applications[ci];
+        if (!predicate(a)) continue;
+        var ck = companyKey(a.company);
+        if (!ck) ck = '__none__';
+        keys[ck] = true;
+      }
+      return Object.keys(keys).length;
+    }
+
+    var uAll = countUniqueCompanies(function () { return true; });
+    var uAdvanced = countUniqueCompanies(function (a) {
+      var s = a.status || 'to_apply';
+      return s !== 'to_apply' && s !== 'applied';
+    });
+    var uNotHired = countUniqueCompanies(function (a) {
+      return (a.status || 'to_apply') === 'not_hired';
+    });
+    var uClosed = countUniqueCompanies(function (a) {
+      return (a.status || 'to_apply') === 'closed';
+    });
+    var uTerminal = countUniqueCompanies(function (a) {
+      var s = a.status || 'to_apply';
+      return s === 'not_hired' || s === 'closed';
+    });
+    var totalTerminalApps = totalNotHired + totalClosed;
+    var uScreenedOrInterviewed = countUniqueCompanies(function (a) {
+      return everHadStatus(a, 'interviewed') || everHadStatus(a, 'screened');
+    });
+    var uWaiting = countUniqueCompanies(function (a) {
+      var s = a.status || 'to_apply';
+      return s === 'to_apply' || s === 'applied';
+    });
+    var uClosedForAvg = countUniqueCompanies(function (a) {
+      var as = getAppliedDateValue(a);
+      var ad = as ? new Date(as + 'T00:00:00Z') : null;
+      if (!ad || isNaN(ad.getTime())) return false;
+      var cdt = firstDateAppReachedStatus(a, ['not_hired', 'closed']);
+      if (!cdt || isNaN(cdt.getTime())) return false;
+      return (cdt - ad) >= 0;
+    });
+    var uOpenWithinAvg = 0;
+    if (avgCloseDaysNum != null) {
+      uOpenWithinAvg = countUniqueCompanies(function (a) {
+        if ((a.status || 'to_apply') !== 'applied') return false;
+        if ((a.endedAt || '').trim()) return false;
+        var as = getAppliedDateValue(a);
+        if (!as) return false;
+        var ad = new Date(as + 'T00:00:00Z');
+        if (isNaN(ad.getTime())) return false;
+        var ageDays = (today - ad) / 86400000;
+        if (ageDays < 0) return false;
+        return ageDays < avgCloseDaysNum;
+      });
+    }
 
     var dates = Object.keys(dailyCounts).sort();
     var maxCount = 0;
@@ -1506,55 +1590,94 @@
 
     container.innerHTML = '';
 
-    var totalsSection = document.createElement('div');
-    totalsSection.className = 'summary-grid';
-    var m1 = document.createElement('div');
-    m1.className = 'summary-metric';
-    m1.innerHTML = '<h3>Total applications</h3><div class="value">' + total + '</div>';
-    var m2 = document.createElement('div');
-    m2.className = 'summary-metric';
-    m2.innerHTML = '<h3>Advanced beyond applied</h3><div class="value">' + totalAdvanced + '</div><div class="sub">' + pct(totalAdvanced, total) + ' of all</div>';
-    var m3 = document.createElement('div');
-    m3.className = 'summary-metric';
-    m3.innerHTML = '<h3>Not hired (all time)</h3><div class="value">' + totalNotHired + '</div><div class="sub">' + pct(totalNotHired, total) + ' of all</div>';
-    var m4 = document.createElement('div');
-    m4.className = 'summary-metric';
-    m4.innerHTML = '<h3>Screened or interviewed</h3><div class="value">' + totalScreenedOrInterviewed + '</div><div class="sub">' + pct(totalScreenedOrInterviewed, total) + ' of all</div>';
-    totalsSection.appendChild(m1);
-    totalsSection.appendChild(m2);
-    totalsSection.appendChild(m3);
-    totalsSection.appendChild(m4);
-    container.appendChild(totalsSection);
+    var funnelTitle = document.createElement('h3');
+    funnelTitle.className = 'summary-section-title';
+    funnelTitle.textContent = 'Funnel: applications → terminal outcomes';
+    container.appendChild(funnelTitle);
 
-    var pctSection = document.createElement('div');
-    var pctTitle = document.createElement('h3');
-    pctTitle.className = 'summary-section-title';
-    pctTitle.textContent = 'Outcomes for applied jobs';
-    pctSection.appendChild(pctTitle);
-    var pctGrid = document.createElement('div');
-    pctGrid.className = 'summary-grid';
-    var p1 = document.createElement('div');
-    p1.className = 'summary-metric';
-    p1.innerHTML = '<h3>Responded in any way</h3><div class="value">' + pct(respondedCount, total) + '</div><div class="sub">' + respondedCount + ' of ' + total + '</div>';
-    var p2 = document.createElement('div');
-    p2.className = 'summary-metric';
-    p2.innerHTML = '<h3>Ended as not hired</h3><div class="value">' + pct(totalNotHired, total) + '</div><div class="sub">' + totalNotHired + ' of ' + total + '</div>';
-    var p3 = document.createElement('div');
-    p3.className = 'summary-metric';
-    p3.innerHTML = '<h3>Still waiting</h3><div class="value">' + pct(waitingCount, total) + '</div><div class="sub">' + waitingCount + ' open</div>';
-    var p4 = document.createElement('div');
-    p4.className = 'summary-metric';
-    p4.innerHTML = '<h3>Avg age of open apps</h3><div class="value">' + avgAge + ' days</div>';
-    var p5 = document.createElement('div');
-    p5.className = 'summary-metric';
-    p5.innerHTML = '<h3>Avg time to close</h3><div class="value">' + avgClose + ' days</div><div class="sub">based on ' + closeDurationsDays.length + ' closed</div>';
-    pctGrid.appendChild(p1);
-    pctGrid.appendChild(p2);
-    pctGrid.appendChild(p3);
-    pctGrid.appendChild(p4);
-    pctGrid.appendChild(p5);
-    pctSection.appendChild(pctGrid);
-    container.appendChild(pctSection);
+    var funnelHint = document.createElement('p');
+    funnelHint.className = 'summary-funnel-hint';
+    funnelHint.textContent = 'Rows are pipeline milestones (not mutually exclusive subsets). Terminal rows are current status Not hired or Closed.';
+    container.appendChild(funnelHint);
+
+    var funnelWrap = document.createElement('div');
+    funnelWrap.className = 'summary-funnel-wrap';
+    var funnelTable = document.createElement('table');
+    funnelTable.className = 'summary-funnel-table';
+    funnelTable.setAttribute('role', 'table');
+    funnelTable.innerHTML =
+      '<thead><tr>' +
+      '<th scope="col">Stage</th>' +
+      '<th scope="col" class="num">Apps</th>' +
+      '<th scope="col" class="num">% apps</th>' +
+      '<th scope="col" class="num">Companies</th>' +
+      '<th scope="col" class="num">% cos.</th>' +
+      '</tr></thead>';
+    var tbody = document.createElement('tbody');
+
+    function funnelRow(stageLabel, apps, cos, opts) {
+      opts = opts || {};
+      var tr = document.createElement('tr');
+      if (opts.terminal) tr.className = 'summary-funnel-terminal';
+      var tdStage = document.createElement('td');
+      tdStage.className = 'funnel-stage' + (opts.indent ? ' funnel-indent' : '');
+      tdStage.textContent = stageLabel;
+      var tdApps = document.createElement('td');
+      tdApps.className = 'num';
+      tdApps.textContent = String(apps);
+      var tdPctApps = document.createElement('td');
+      tdPctApps.className = 'num';
+      tdPctApps.textContent = pctCeil(apps, total);
+      var tdCos = document.createElement('td');
+      tdCos.className = 'num';
+      tdCos.textContent = String(cos);
+      var tdPctCos = document.createElement('td');
+      tdPctCos.className = 'num';
+      tdPctCos.textContent = pctCeil(cos, uAll);
+      tr.appendChild(tdStage);
+      tr.appendChild(tdApps);
+      tr.appendChild(tdPctApps);
+      tr.appendChild(tdCos);
+      tr.appendChild(tdPctCos);
+      tbody.appendChild(tr);
+    }
+
+    funnelRow('All applications', total, uAll, {});
+    funnelRow('Still waiting (to apply / applied)', waitingCount, uWaiting, { indent: true });
+    funnelRow('Responded (beyond applied)', respondedCount, uAdvanced, { indent: true });
+    funnelRow('Ever screened or interviewed', totalScreenedOrInterviewed, uScreenedOrInterviewed, { indent: true });
+    funnelRow('Any terminal (not hired or closed)', totalTerminalApps, uTerminal, { indent: true });
+    funnelRow('→ Not hired', totalNotHired, uNotHired, { indent: true, terminal: true });
+    funnelRow('→ Closed', totalClosed, uClosed, { indent: true, terminal: true });
+
+    funnelTable.appendChild(tbody);
+    funnelWrap.appendChild(funnelTable);
+    container.appendChild(funnelWrap);
+
+    var timingTitle = document.createElement('h3');
+    timingTitle.className = 'summary-section-title summary-timing-title';
+    timingTitle.textContent = 'Timing';
+    container.appendChild(timingTitle);
+
+    var timingGrid = document.createElement('div');
+    timingGrid.className = 'summary-grid';
+    var t1 = document.createElement('div');
+    t1.className = 'summary-metric';
+    t1.innerHTML = '<h3>Avg age of open apps</h3><div class="value">' + avgAge + ' days</div><div class="sub">' + waitingCount + ' open apps, ' + uWaiting + ' companies</div>';
+    var t2 = document.createElement('div');
+    t2.className = 'summary-metric';
+    t2.innerHTML = '<h3>Avg time to close</h3><div class="value">' + avgClose + ' days</div><div class="sub">' + closeDurationsDays.length + ' closed apps · ' + uClosedForAvg + ' of ' + uAll + ' companies</div>';
+    var t3 = document.createElement('div');
+    t3.className = 'summary-metric';
+    if (avgCloseDaysNum != null) {
+      t3.innerHTML = '<h3>Open within avg close period</h3><div class="value">' + openWithinAvgClosePeriod + ' apps</div><div class="sub">' + uOpenWithinAvg + ' of ' + uAll + ' cos. · applied, no end date, age &lt; ' + avgClose + 'd</div>';
+    } else {
+      t3.innerHTML = '<h3>Open within avg close period</h3><div class="value">—</div><div class="sub">Needs ≥1 closed app to set avg</div>';
+    }
+    timingGrid.appendChild(t1);
+    timingGrid.appendChild(t2);
+    timingGrid.appendChild(t3);
+    container.appendChild(timingGrid);
 
     var chartTitle = document.createElement('h3');
     chartTitle.className = 'summary-section-title';

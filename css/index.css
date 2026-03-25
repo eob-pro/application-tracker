@@ -123,6 +123,125 @@ body {
   color: #e5e7eb;
 }
 
+.summary-content .summary-section-title:first-of-type {
+  margin-bottom: 0.25rem;
+}
+
+.summary-timing-title {
+  margin-top: 2.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.summary-funnel-hint {
+  margin: 0.5rem 0 1.25rem;
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  max-width: 52rem;
+  line-height: 1.5;
+}
+
+.summary-funnel-wrap {
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  background: #09090b;
+  overflow-x: auto;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.summary-funnel-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.summary-funnel-table thead th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 2px solid #475569;
+  vertical-align: bottom;
+  background: #1e293b;
+  color: #f1f5f9;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.summary-funnel-table thead th:first-child {
+  border-radius: 6px 0 0 0;
+}
+
+.summary-funnel-table thead th:last-child {
+  border-radius: 0 6px 0 0;
+}
+
+.summary-funnel-table tbody td {
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid #27272a;
+  vertical-align: middle;
+}
+
+.summary-funnel-table tbody tr:nth-child(odd) {
+  background: #111113;
+}
+
+.summary-funnel-table tbody tr:nth-child(even) {
+  background: #18181b;
+}
+
+.summary-funnel-table tbody tr.summary-funnel-terminal:nth-child(odd) {
+  background: #1a1625;
+}
+
+.summary-funnel-table tbody tr.summary-funnel-terminal:nth-child(even) {
+  background: #221d2e;
+}
+
+.summary-funnel-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.summary-funnel-table tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 6px;
+}
+
+.summary-funnel-table tbody tr:last-child td:last-child {
+  border-radius: 0 0 6px 0;
+}
+
+.summary-funnel-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.summary-funnel-table .funnel-stage.funnel-indent {
+  padding-left: 2rem;
+}
+
+.summary-funnel-table tr.summary-funnel-terminal .funnel-stage {
+  color: #e5e7eb;
+  border-left: 3px solid #818cf8;
+  padding-left: calc(1.25rem - 3px);
+}
+
+.summary-funnel-table tr.summary-funnel-terminal .funnel-stage.funnel-indent {
+  padding-left: calc(2rem - 3px);
+}
+
+.summary-funnel-table tbody tr:hover td {
+  filter: brightness(1.12);
+}
+
+.summary-funnel-table tbody tr.summary-funnel-terminal:hover td {
+  filter: brightness(1.08);
+}
+
 .summary-chart {
   margin-top: 0.5rem;
   border-radius: 6px;
