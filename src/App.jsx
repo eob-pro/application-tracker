@@ -27,15 +27,32 @@ function saveJson(key, data) {
   }
 }
 
+function notesFromApp(app) {
+  return app.notes != null ? String(app.notes) : ''
+}
+
+function sliceDateYYYYMMDD(v) {
+  if (v == null || v === '') return ''
+  const s = String(v).trim()
+  return s.length >= 10 ? s.slice(0, 10) : s
+}
+
 // Migrate old app records to new schema
 function migrateApplication(app) {
-  if (app.statusHistory && Array.isArray(app.statusHistory)) return app
+  if (app.statusHistory && Array.isArray(app.statusHistory)) {
+    return {
+      ...app,
+      notes: notesFromApp(app),
+      selects: !!app.selects,
+      keepAliveEmailAt: sliceDateYYYYMMDD(app.keepAliveEmailAt),
+    }
+  }
   const status = app.status || 'to_apply'
   const statusHistory = app.appliedDate
     ? [{ status: 'applied', date: new Date(app.appliedDate).toISOString() }]
     : [createStatusHistoryEntry(status)]
   const statusMap = { interviewing: 'interviewed', rejected: 'not_hired', offer: 'interviewed' }
-  const mappedStatus = statusMap[app.status] || (['to_apply', 'applied', 'screened', 'interviewed', 'not_hired', 'closed'].includes(app.status) ? app.status : status)
+  const mappedStatus = statusMap[app.status] || (['to_apply', 'applied', 'screened', 'interviewed', 'not_hired', 'closed', 'closed_on_job_board'].includes(app.status) ? app.status : status)
   return {
     id: app.id,
     company: app.company || '',
@@ -51,6 +68,9 @@ function migrateApplication(app) {
     coverLetterUsed: app.coverLetterUsed ?? '',
     customCoverLetter: app.customCoverLetter ?? false,
     customResume: app.customResume ?? false,
+    notes: notesFromApp(app),
+    selects: app.selects === true,
+    keepAliveEmailAt: sliceDateYYYYMMDD(app.keepAliveEmailAt),
     createdAt: app.createdAt || new Date().toISOString(),
     updatedAt: app.updatedAt || new Date().toISOString(),
   }
@@ -114,6 +134,9 @@ export default function App() {
         coverLetterUsed: (application.coverLetterUsed || '').trim(),
         customCoverLetter: !!application.customCoverLetter,
         customResume: !!application.customResume,
+        selects: !!application.selects,
+        keepAliveEmailAt: sliceDateYYYYMMDD(application.keepAliveEmailAt) || undefined,
+        notes: (application.notes != null ? String(application.notes) : '').trim(),
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       },

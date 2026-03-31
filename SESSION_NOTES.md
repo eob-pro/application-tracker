@@ -27,10 +27,10 @@ Summary of what was built in this thread so you can pick up where you left off.
 
 ## Data model (localStorage)
 
-- **application-tracker-applications** — array of apps: company, position, scope, jobId, status, statusHistory, sourceId, originalListingDate, **originalPostingUrl**, atsSystem, **location**, **attendancePolicy**, resumeVersion, coverLetterUsed, customCoverLetter, customResume, **endedAt**, createdAt, updatedAt.
+- **application-tracker-applications** — array of apps: company, position, scope, jobId, status, statusHistory, sourceId, originalListingDate, **originalPostingUrl**, atsSystem, **location**, **attendancePolicy**, resumeVersion, coverLetterUsed, customCoverLetter, customResume, **selects** (boolean, “good match”), **keepAliveEmailAt** (optional `YYYY-MM-DD`, “still reviewing”–type email), **notes** (free-text, optional), **endedAt**, createdAt, updatedAt.
 - **application-tracker-companies** — unique company names (index for add-form datalist). **Uniqueness is by lowercased name;** case variants (e.g. Disney / disney) are merged to one canonical spelling (most frequent in apps). Migration `mergeCompaniesByCase()` runs on load.
 - **application-tracker-locations** — unique location names (used to power the location datalist; seeded with “New York City” and “Los Angeles Metro”, then extended from apps).
-- Statuses: to_apply | applied | screened | interviewed | not_hired | **closed**. Each status change has a timestamp in `statusHistory`.
+- Statuses: to_apply | applied | screened | interviewed | not_hired | **closed** | **closed_on_job_board** (label “Closed on job board”). Each status change has a timestamp in `statusHistory`.
 
 ## UI and behavior
 
@@ -45,7 +45,7 @@ Summary of what was built in this thread so you can pick up where you left off.
 - **Resume version & cover letter:** Add and edit forms have **datalists** populated from previously used values (getResumeVersions / getCoverLetterValues; fillResumeVersionDatalist / fillCoverLetterDatalist).
 - **Import from URL (experimental):** On Add tab, paste a public job URL → “Fetch & parse” fetches via CORS proxy (api.allorigins.win), parses HTML for JSON-LD JobPosting (title, hiringOrganization, identifier, datePosted) and fallbacks (og:title, og:site_name, h1, data-job-id), then pre-fills the add form. User reviews and submits.
 - **“To apply” emphasis:** List rows with status `to_apply` get class `application-item--to-apply`: lighter background (#1c1c1c) and left border accent (#6b7280) so they stand out; other statuses unchanged.
-- **Summary tab:** **Funnel** table — stages from all applications through waiting, responded, ever screened/interviewed, any terminal (not hired or closed), then split **→ Not hired** and **→ Closed**; columns: Apps, % of all apps, Companies, % of all companies (`companyKey`). **Timing** row below: avg age of open apps, avg time to close, open within avg close period. Per-day chart + Export local data unchanged.
+- **Summary tab:** **Funnel** table — stages from all applications through waiting, **Responded** (status beyond Applied **or** `keepAliveEmailAt`), **Got keep-alive email** (apps & companies with that date), ever screened/interviewed, any terminal (not hired or closed), then split **→ Not hired** / **→ Closed** / **→ Closed on job board**; columns: Apps, % of all apps, Companies, % of all companies (`companyKey`). **Still waiting** excludes applied/to-apply rows that have keep-alive logged. **Timing**: avg age of open apps / open within avg close use the same “no keep-alive” rule for **applied** rows. Per-day chart + Export local data unchanged.
 - **Export local data:** On the Summary tab, **Export local data** downloads a JSON snapshot of `applications`, `companies`, and `locations` (`localdata-backup-YYYYMMDD.json`) that you can move into `localdata/` and commit. If the button doesn't respond in normal Safari, allow downloads for the site (Safari → Settings for This Website) or use a Private window.
 - **Today's summary tab:** Shows today's date in ET, total count of applications whose "Applied" status falls on today (ET), and a bullet list of Company — Role descending by time applied (getAppliedToday; date comparison via America/New_York).
 

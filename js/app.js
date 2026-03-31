@@ -12,7 +12,11 @@
     { value: 'interviewed', label: 'Interviewed' },
     { value: 'not_hired', label: 'Not hired' },
     { value: 'closed', label: 'Closed' },
+    { value: 'closed_on_job_board', label: 'Closed on job board' },
   ];
+
+  /** Outcomes that default end date and count as terminal in Summary funnel / timing. */
+  var TERMINAL_OUTCOME_STATUSES = ['not_hired', 'closed', 'closed_on_job_board'];
 
   var STATUS_OPTIONS_WITH_ALL = [
     { value: 'all', label: 'All' },
@@ -46,7 +50,7 @@
   /** When status is terminal, default end date to today (add/edit forms). */
   function applyEndDateDefaultForStatus(statusValue, endDateInput) {
     if (!endDateInput) return;
-    if (statusValue === 'not_hired' || statusValue === 'closed') {
+    if (TERMINAL_OUTCOME_STATUSES.indexOf(statusValue) >= 0) {
       endDateInput.value = todayLocalYYYYMMDD();
     }
   }
@@ -89,11 +93,23 @@
     }
   }
 
+  function sliceDateYYYYMMDD(v) {
+    if (v == null || v === '') return '';
+    var s = String(v).trim();
+    return s.length >= 10 ? s.slice(0, 10) : s;
+  }
+
   function migrateApplication(app) {
-    if (app.statusHistory && Array.isArray(app.statusHistory)) return app;
+    if (app.statusHistory && Array.isArray(app.statusHistory)) {
+      return Object.assign({}, app, {
+        notes: app.notes != null ? String(app.notes) : '',
+        selects: !!app.selects,
+        keepAliveEmailAt: sliceDateYYYYMMDD(app.keepAliveEmailAt),
+      });
+    }
     var status = app.status || 'to_apply';
     var statusMap = { interviewing: 'interviewed', rejected: 'not_hired', offer: 'interviewed' };
-    var mappedStatus = statusMap[app.status] || (['to_apply', 'applied', 'screened', 'interviewed', 'not_hired', 'closed'].indexOf(app.status) >= 0 ? app.status : status);
+    var mappedStatus = statusMap[app.status] || (['to_apply', 'applied', 'screened', 'interviewed', 'not_hired', 'closed', 'closed_on_job_board'].indexOf(app.status) >= 0 ? app.status : status);
     var statusHistory = app.appliedDate
       ? [{ status: 'applied', date: new Date(app.appliedDate).toISOString() }]
       : [createStatusHistoryEntry(mappedStatus)];
@@ -115,7 +131,10 @@
       coverLetterUsed: app.coverLetterUsed ?? '',
       customCoverLetter: app.customCoverLetter ?? false,
       customResume: app.customResume ?? false,
+      selects: app.selects === true,
       endedAt: app.endedAt ?? '',
+      keepAliveEmailAt: sliceDateYYYYMMDD(app.keepAliveEmailAt),
+      notes: app.notes != null ? String(app.notes) : '',
       createdAt: app.createdAt || new Date().toISOString(),
       updatedAt: app.updatedAt || new Date().toISOString(),
     };
@@ -417,7 +436,10 @@
       coverLetterUsed: (payload.coverLetterUsed || '').trim(),
       customCoverLetter: !!payload.customCoverLetter,
       customResume: !!payload.customResume,
+      selects: !!payload.selects,
       endedAt: (payload.endedAt || '').trim() || undefined,
+      keepAliveEmailAt: sliceDateYYYYMMDD(payload.keepAliveEmailAt) || undefined,
+      notes: (payload.notes != null ? String(payload.notes) : '').trim(),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     });
@@ -643,11 +665,21 @@
       tags.appendChild(link);
     }
     if (app.endedAt) tags.appendChild(makeTag('Ended: ' + formatDate(app.endedAt), 'ended'));
+    if (app.keepAliveEmailAt) {
+      tags.appendChild(makeTag('Keep-alive email: ' + formatDate(app.keepAliveEmailAt), 'keep-alive'));
+    }
     if (app.resumeVersion) tags.appendChild(makeTag('Resume: ' + app.resumeVersion));
     if (app.coverLetterUsed) tags.appendChild(makeTag('CL: ' + app.coverLetterUsed));
     if (app.customCoverLetter) tags.appendChild(makeTag('Custom CL'));
     if (app.customResume) tags.appendChild(makeTag('Custom resume'));
+    if (app.selects) tags.appendChild(makeTag('Selects', 'selects'));
     meta.appendChild(tags);
+    if ((app.notes || '').trim()) {
+      var notesEl = document.createElement('div');
+      notesEl.className = 'application-notes';
+      notesEl.textContent = app.notes;
+      meta.appendChild(notesEl);
+    }
     li.appendChild(meta);
 
     var itemActions = document.createElement('div');
@@ -824,6 +856,36 @@
     row2.appendChild(endedWrap);
     wrap.appendChild(row2);
 
+    var rowKeepAlive = document.createElement('div');
+    rowKeepAlive.className = 'form-row form-row-dates form-row-keepalive';
+    rowKeepAlive.setAttribute('role', 'group');
+    rowKeepAlive.setAttribute('aria-label', 'Keep-alive email date');
+    var keepAliveLabel = document.createElement('label');
+    keepAliveLabel.className = 'date-field-label';
+    keepAliveLabel.setAttribute('for', 'edit-keepAliveEmailAt');
+    keepAliveLabel.textContent = 'Keep-alive email';
+    rowKeepAlive.appendChild(keepAliveLabel);
+    var keepAliveWrap = document.createElement('div');
+    keepAliveWrap.className = 'date-input-with-today';
+    var keepAliveInput = document.createElement('input');
+    keepAliveInput.id = 'edit-keepAliveEmailAt';
+    keepAliveInput.type = 'date';
+    keepAliveInput.value = app.keepAliveEmailAt ? sliceDateYYYYMMDD(app.keepAliveEmailAt) : '';
+    var keepAliveTodayBtn = document.createElement('button');
+    keepAliveTodayBtn.type = 'button';
+    keepAliveTodayBtn.className = 'btn-set-today secondary';
+    keepAliveTodayBtn.setAttribute('data-target', 'edit-keepAliveEmailAt');
+    keepAliveTodayBtn.setAttribute('aria-label', 'Set keep-alive email date to today');
+    keepAliveTodayBtn.textContent = 'Today';
+    keepAliveWrap.appendChild(keepAliveInput);
+    keepAliveWrap.appendChild(keepAliveTodayBtn);
+    rowKeepAlive.appendChild(keepAliveWrap);
+    var keepAliveHint = document.createElement('span');
+    keepAliveHint.className = 'keepalive-hint';
+    keepAliveHint.textContent = 'e.g. “still reviewing”';
+    rowKeepAlive.appendChild(keepAliveHint);
+    wrap.appendChild(rowKeepAlive);
+
     statusSelect.addEventListener('change', function () {
       applyEndDateDefaultForStatus(statusSelect.value, endedInput);
     });
@@ -912,6 +974,21 @@
     clGroup.appendChild(clDatalist);
     wrap.appendChild(clGroup);
 
+    var notesGroup = document.createElement('div');
+    notesGroup.className = 'form-group';
+    var notesLabel = document.createElement('label');
+    notesLabel.setAttribute('for', 'edit-notes');
+    notesLabel.textContent = 'Notes';
+    var notesTa = document.createElement('textarea');
+    notesTa.id = 'edit-notes';
+    notesTa.name = 'notes';
+    notesTa.rows = 4;
+    notesTa.placeholder = 'Free-form notes (referrals, contacts, follow-ups, etc.)';
+    notesTa.value = app.notes != null ? String(app.notes) : '';
+    notesGroup.appendChild(notesLabel);
+    notesGroup.appendChild(notesTa);
+    wrap.appendChild(notesGroup);
+
     var checkGroup = document.createElement('div');
     checkGroup.className = 'form-group checkboxes';
     var customCL = document.createElement('label');
@@ -930,8 +1007,17 @@
     resCheck.checked = !!app.customResume;
     customRes.appendChild(resCheck);
     customRes.appendChild(document.createTextNode(' Custom resume'));
+    var selectsLab = document.createElement('label');
+    selectsLab.className = 'checkbox-label';
+    var selectsCheck = document.createElement('input');
+    selectsCheck.type = 'checkbox';
+    selectsCheck.id = 'edit-selects';
+    selectsCheck.checked = !!app.selects;
+    selectsLab.appendChild(selectsCheck);
+    selectsLab.appendChild(document.createTextNode(' Selects (good match)'));
     checkGroup.appendChild(customCL);
     checkGroup.appendChild(customRes);
+    checkGroup.appendChild(selectsLab);
     wrap.appendChild(checkGroup);
 
     var actions = document.createElement('div');
@@ -952,11 +1038,14 @@
         appliedDate: document.getElementById('edit-appliedDate').value.trim() || undefined,
         originalPostingUrl: document.getElementById('edit-originalPostingUrl').value.trim() || undefined,
         endedAt: document.getElementById('edit-endedAt').value.trim() || undefined,
+        keepAliveEmailAt: sliceDateYYYYMMDD(document.getElementById('edit-keepAliveEmailAt').value) || undefined,
         atsSystem: document.getElementById('edit-atsSystem').value.trim(),
         resumeVersion: document.getElementById('edit-resumeVersion').value.trim(),
         coverLetterUsed: document.getElementById('edit-coverLetterUsed').value.trim(),
         customCoverLetter: document.getElementById('edit-customCoverLetter').checked,
         customResume: document.getElementById('edit-customResume').checked,
+        selects: document.getElementById('edit-selects').checked,
+        notes: (document.getElementById('edit-notes').value || '').trim(),
       });
       editingId = null;
       renderList();
@@ -1043,12 +1132,15 @@
         appliedDate: (form.appliedDate && form.appliedDate.value || '').trim() || undefined,
         originalPostingUrl: (form.originalPostingUrl && form.originalPostingUrl.value || '').trim() || undefined,
         endedAt: (form.endedAt && form.endedAt.value || '').trim() || undefined,
+        keepAliveEmailAt: sliceDateYYYYMMDD(form.keepAliveEmailAt && form.keepAliveEmailAt.value) || undefined,
         atsSystem: (form.atsSystem && form.atsSystem.value || '').trim(),
         attendancePolicy: (form.attendancePolicy && form.attendancePolicy.value || '').trim(),
         resumeVersion: (form.resumeVersion && form.resumeVersion.value || '').trim(),
         coverLetterUsed: (form.coverLetterUsed && form.coverLetterUsed.value || '').trim(),
         customCoverLetter: !!(form.customCoverLetter && form.customCoverLetter.checked),
         customResume: !!(form.customResume && form.customResume.checked),
+        selects: !!(form.selects && form.selects.checked),
+        notes: (form.notes && form.notes.value != null ? String(form.notes.value) : '').trim(),
       });
       form.reset();
       form.status.value = 'applied';
@@ -1086,7 +1178,8 @@
       var key = company + '|' + position + '|' + appliedDate;
       if (existingKeys[key]) return;
       existingKeys[key] = true;
-      var status = row.status === 'not_hired' ? 'not_hired' : 'applied';
+      var importStatus = (row.status || '').trim();
+      var status = ['not_hired', 'closed', 'closed_on_job_board'].indexOf(importStatus) >= 0 ? importStatus : 'applied';
       var statusHistory = Array.isArray(row.statusHistory) && row.statusHistory.length
         ? row.statusHistory
         : [{ status: status, date: (appliedDate ? appliedDate + (appliedDate.length === 10 ? 'T12:00:00.000Z' : '') : new Date().toISOString()) }];
@@ -1109,6 +1202,9 @@
         coverLetterUsed: (row.coverLetterUsed || '').trim(),
         customCoverLetter: !!row.customCoverLetter,
         customResume: !!row.customResume,
+        selects: !!row.selects,
+        notes: (row.notes != null ? String(row.notes) : '').trim(),
+        keepAliveEmailAt: sliceDateYYYYMMDD(row.keepAliveEmailAt) || undefined,
         createdAt: row.createdAt || new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       });
@@ -1294,6 +1390,7 @@
           responded: 0,
           notHired: 0,
           closed: 0,
+          closedOnJobBoard: 0,
         };
       }
       var row = byKey[key];
@@ -1302,6 +1399,7 @@
       if (status !== 'to_apply' && status !== 'applied') row.responded++;
       if (status === 'not_hired') row.notHired++;
       if (status === 'closed') row.closed++;
+      if (status === 'closed_on_job_board') row.closedOnJobBoard++;
     });
     var rows = Object.keys(byKey).map(function (k) {
       var r = byKey[k];
@@ -1335,7 +1433,7 @@
     table.className = 'company-stats-table';
     table.setAttribute('role', 'table');
     var thead = document.createElement('thead');
-    thead.innerHTML = '<tr><th scope="col">Company</th><th scope="col" class="num">Applied</th><th scope="col" class="num">Responded</th><th scope="col" class="num">Not hired</th><th scope="col" class="num">Closed</th></tr>';
+    thead.innerHTML = '<tr><th scope="col">Company</th><th scope="col" class="num">Applied</th><th scope="col" class="num">Responded</th><th scope="col" class="num">Not hired</th><th scope="col" class="num">Closed</th><th scope="col" class="num">Closed (board)</th></tr>';
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     rows.forEach(function (r) {
@@ -1345,7 +1443,8 @@
         '<td class="num">' + r.applied + '</td>' +
         '<td class="num">' + r.responded + '</td>' +
         '<td class="num">' + r.notHired + '</td>' +
-        '<td class="num">' + r.closed + '</td>';
+        '<td class="num">' + r.closed + '</td>' +
+        '<td class="num">' + r.closedOnJobBoard + '</td>';
       tbody.appendChild(tr);
     });
     table.appendChild(tbody);
@@ -1416,9 +1515,10 @@
     var container = document.getElementById('summary-content');
     if (!container) return;
     var total = applications.length;
-    var totalAdvanced = 0;
+    var totalKeepAliveApps = 0;
     var totalNotHired = 0;
     var totalClosed = 0;
+    var totalClosedOnJobBoard = 0;
     var totalScreenedOrInterviewed = 0;
     var closeDurationsDays = [];
     var respondedCount = 0;
@@ -1428,6 +1528,10 @@
     var earliest = null;
     var latest = null;
     var today = new Date();
+
+    function hasKeepAliveEmail(app) {
+      return !!sliceDateYYYYMMDD(app.keepAliveEmailAt);
+    }
 
     function everHadStatus(app, s) {
       if ((app.status || '') === s) return true;
@@ -1465,20 +1569,23 @@
       }
 
       var status = app.status || 'to_apply';
-      // Consider a job as "responded" only if it advanced beyond "applied"
-      if (status !== 'to_apply' && status !== 'applied') respondedCount++;
-      if (status !== 'to_apply' && status !== 'applied') totalAdvanced++;
+      var statusBeyondApplied = status !== 'to_apply' && status !== 'applied';
+      // Any employer signal: advanced pipeline, or logged keep-alive / "still reviewing" email date
+      if (statusBeyondApplied || hasKeepAliveEmail(app)) respondedCount++;
+      if (hasKeepAliveEmail(app)) totalKeepAliveApps++;
       if (status === 'not_hired') totalNotHired++;
       if (status === 'closed') totalClosed++;
+      if (status === 'closed_on_job_board') totalClosedOnJobBoard++;
       if (everHadStatus(app, 'interviewed') || everHadStatus(app, 'screened')) totalScreenedOrInterviewed++;
       if (appliedDate && !isNaN(appliedDate.getTime())) {
-        var closeDate = firstDateAppReachedStatus(app, ['not_hired', 'closed']);
+        var closeDate = firstDateAppReachedStatus(app, TERMINAL_OUTCOME_STATUSES);
         if (closeDate && !isNaN(closeDate.getTime())) {
           var closeDiffMs = closeDate - appliedDate;
           if (closeDiffMs >= 0) closeDurationsDays.push(closeDiffMs / 86400000);
         }
       }
-      if (status === 'to_apply' || status === 'applied') {
+      var waitingNoSignal = (status === 'to_apply' || status === 'applied') && !hasKeepAliveEmail(app);
+      if (waitingNoSignal) {
         waitingCount++;
         if (appliedDate && !isNaN(appliedDate.getTime())) {
           var diffMs = today - appliedDate;
@@ -1514,6 +1621,7 @@
       applications.forEach(function (app) {
         if ((app.status || 'to_apply') !== 'applied') return;
         if ((app.endedAt || '').trim()) return;
+        if (hasKeepAliveEmail(app)) return;
         var as = getAppliedDateValue(app);
         if (!as) return;
         var ad = new Date(as + 'T00:00:00Z');
@@ -1539,31 +1647,35 @@
     var uAll = countUniqueCompanies(function () { return true; });
     var uAdvanced = countUniqueCompanies(function (a) {
       var s = a.status || 'to_apply';
-      return s !== 'to_apply' && s !== 'applied';
+      return (s !== 'to_apply' && s !== 'applied') || hasKeepAliveEmail(a);
     });
+    var uKeepAlive = countUniqueCompanies(hasKeepAliveEmail);
     var uNotHired = countUniqueCompanies(function (a) {
       return (a.status || 'to_apply') === 'not_hired';
     });
     var uClosed = countUniqueCompanies(function (a) {
       return (a.status || 'to_apply') === 'closed';
     });
+    var uClosedOnJobBoard = countUniqueCompanies(function (a) {
+      return (a.status || 'to_apply') === 'closed_on_job_board';
+    });
     var uTerminal = countUniqueCompanies(function (a) {
       var s = a.status || 'to_apply';
-      return s === 'not_hired' || s === 'closed';
+      return TERMINAL_OUTCOME_STATUSES.indexOf(s) >= 0;
     });
-    var totalTerminalApps = totalNotHired + totalClosed;
+    var totalTerminalApps = totalNotHired + totalClosed + totalClosedOnJobBoard;
     var uScreenedOrInterviewed = countUniqueCompanies(function (a) {
       return everHadStatus(a, 'interviewed') || everHadStatus(a, 'screened');
     });
     var uWaiting = countUniqueCompanies(function (a) {
       var s = a.status || 'to_apply';
-      return s === 'to_apply' || s === 'applied';
+      return (s === 'to_apply' || s === 'applied') && !hasKeepAliveEmail(a);
     });
     var uClosedForAvg = countUniqueCompanies(function (a) {
       var as = getAppliedDateValue(a);
       var ad = as ? new Date(as + 'T00:00:00Z') : null;
       if (!ad || isNaN(ad.getTime())) return false;
-      var cdt = firstDateAppReachedStatus(a, ['not_hired', 'closed']);
+      var cdt = firstDateAppReachedStatus(a, TERMINAL_OUTCOME_STATUSES);
       if (!cdt || isNaN(cdt.getTime())) return false;
       return (cdt - ad) >= 0;
     });
@@ -1572,6 +1684,7 @@
       uOpenWithinAvg = countUniqueCompanies(function (a) {
         if ((a.status || 'to_apply') !== 'applied') return false;
         if ((a.endedAt || '').trim()) return false;
+        if (hasKeepAliveEmail(a)) return false;
         var as = getAppliedDateValue(a);
         if (!as) return false;
         var ad = new Date(as + 'T00:00:00Z');
@@ -1597,7 +1710,7 @@
 
     var funnelHint = document.createElement('p');
     funnelHint.className = 'summary-funnel-hint';
-    funnelHint.textContent = 'Rows are pipeline milestones (not mutually exclusive subsets). Terminal rows are current status Not hired or Closed.';
+    funnelHint.textContent = 'Rows are pipeline milestones (not mutually exclusive subsets). “Responded” includes status beyond Applied and applications with a keep-alive email date. “Still waiting” excludes applied/to-apply jobs that have logged keep-alive. Terminal rows are current status Not hired, Closed, or Closed on job board.';
     container.appendChild(funnelHint);
 
     var funnelWrap = document.createElement('div');
@@ -1644,11 +1757,13 @@
 
     funnelRow('All applications', total, uAll, {});
     funnelRow('Still waiting (to apply / applied)', waitingCount, uWaiting, { indent: true });
-    funnelRow('Responded (beyond applied)', respondedCount, uAdvanced, { indent: true });
+    funnelRow('Responded (beyond applied or keep-alive)', respondedCount, uAdvanced, { indent: true });
+    funnelRow('Got keep-alive email', totalKeepAliveApps, uKeepAlive, { indent: true });
     funnelRow('Ever screened or interviewed', totalScreenedOrInterviewed, uScreenedOrInterviewed, { indent: true });
-    funnelRow('Any terminal (not hired or closed)', totalTerminalApps, uTerminal, { indent: true });
+    funnelRow('Any terminal (not hired, closed, or listing closed)', totalTerminalApps, uTerminal, { indent: true });
     funnelRow('→ Not hired', totalNotHired, uNotHired, { indent: true, terminal: true });
     funnelRow('→ Closed', totalClosed, uClosed, { indent: true, terminal: true });
+    funnelRow('→ Closed on job board', totalClosedOnJobBoard, uClosedOnJobBoard, { indent: true, terminal: true });
 
     funnelTable.appendChild(tbody);
     funnelWrap.appendChild(funnelTable);
@@ -1670,7 +1785,7 @@
     var t3 = document.createElement('div');
     t3.className = 'summary-metric';
     if (avgCloseDaysNum != null) {
-      t3.innerHTML = '<h3>Open within avg close period</h3><div class="value">' + openWithinAvgClosePeriod + ' apps</div><div class="sub">' + uOpenWithinAvg + ' of ' + uAll + ' cos. · applied, no end date, age &lt; ' + avgClose + 'd</div>';
+      t3.innerHTML = '<h3>Open within avg close period</h3><div class="value">' + openWithinAvgClosePeriod + ' apps</div><div class="sub">' + uOpenWithinAvg + ' of ' + uAll + ' cos. · applied, no end date, no keep-alive, age &lt; ' + avgClose + 'd</div>';
     } else {
       t3.innerHTML = '<h3>Open within avg close period</h3><div class="value">—</div><div class="sub">Needs ≥1 closed app to set avg</div>';
     }
@@ -1786,6 +1901,24 @@
     }
   }
 
+  function syncAppHeaderStickyOffset() {
+    var h = document.querySelector('.app-header');
+    if (!h) return;
+    document.documentElement.style.setProperty('--app-header-height', h.offsetHeight + 'px');
+  }
+
+  function initStickyHeaderOffset() {
+    var h = document.querySelector('.app-header');
+    if (!h) return;
+    syncAppHeaderStickyOffset();
+    window.addEventListener('resize', syncAppHeaderStickyOffset);
+    window.addEventListener('load', syncAppHeaderStickyOffset);
+    if (typeof ResizeObserver !== 'undefined') {
+      var ro = new ResizeObserver(syncAppHeaderStickyOffset);
+      ro.observe(h);
+    }
+  }
+
   function initTabs() {
     var listBtn = document.getElementById('tab-btn-list');
     var addBtn = document.getElementById('tab-btn-add');
@@ -1812,6 +1945,8 @@
   initImport();
   initImportFromUrl();
   initTabs();
+  initStickyHeaderOffset();
   renderFilterBar();
   renderList();
+  syncAppHeaderStickyOffset();
 })();

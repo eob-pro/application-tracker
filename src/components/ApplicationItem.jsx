@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   STATUS_OPTIONS,
   SOURCE_OPTIONS,
@@ -28,6 +28,12 @@ function getAppliedDateValue(application) {
   return str.slice(0, 10)
 }
 
+function sliceDateYYYYMMDD(v) {
+  if (v == null || v === '') return ''
+  const s = String(v).trim()
+  return s.length >= 10 ? s.slice(0, 10) : s
+}
+
 export default function ApplicationItem({ application, onUpdate, onDelete }) {
   const [editing, setEditing] = useState(false)
   const [company, setCompany] = useState(application.company)
@@ -51,6 +57,28 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
     !!application.customCoverLetter
   )
   const [customResume, setCustomResume] = useState(!!application.customResume)
+  const [notes, setNotes] = useState(
+    application.notes != null ? String(application.notes) : ''
+  )
+  const [selects, setSelects] = useState(!!application.selects)
+  const [keepAliveEmailAt, setKeepAliveEmailAt] = useState(
+    sliceDateYYYYMMDD(application.keepAliveEmailAt)
+  )
+
+  useEffect(() => {
+    if (editing) return
+    setNotes(application.notes != null ? String(application.notes) : '')
+  }, [application.id, application.notes, editing])
+
+  useEffect(() => {
+    if (editing) return
+    setSelects(!!application.selects)
+  }, [application.id, application.selects, editing])
+
+  useEffect(() => {
+    if (editing) return
+    setKeepAliveEmailAt(sliceDateYYYYMMDD(application.keepAliveEmailAt))
+  }, [application.id, application.keepAliveEmailAt, editing])
 
   function handleSave() {
     onUpdate(application.id, {
@@ -67,6 +95,9 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
       coverLetterUsed: coverLetterUsed.trim(),
       customCoverLetter,
       customResume,
+      notes: notes.trim(),
+      selects,
+      keepAliveEmailAt: sliceDateYYYYMMDD(keepAliveEmailAt) || undefined,
     })
     setEditing(false)
   }
@@ -85,6 +116,9 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
     setCoverLetterUsed(application.coverLetterUsed || '')
     setCustomCoverLetter(!!application.customCoverLetter)
     setCustomResume(!!application.customResume)
+    setNotes(application.notes != null ? String(application.notes) : '')
+    setSelects(!!application.selects)
+    setKeepAliveEmailAt(sliceDateYYYYMMDD(application.keepAliveEmailAt))
     setEditing(false)
   }
 
@@ -185,6 +219,30 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
             </div>
           </div>
           <div className="form-group">
+            <label>Keep-alive email</label>
+            <div className="date-input-with-today">
+              <input
+                type="date"
+                value={keepAliveEmailAt}
+                onChange={(e) => setKeepAliveEmailAt(e.target.value)}
+              />
+              <button
+                type="button"
+                className="secondary"
+                onClick={() => {
+                  const d = new Date()
+                  const y = d.getFullYear()
+                  const m = String(d.getMonth() + 1).padStart(2, '0')
+                  const day = String(d.getDate()).padStart(2, '0')
+                  setKeepAliveEmailAt(`${y}-${m}-${day}`)
+                }}
+              >
+                Today
+              </button>
+            </div>
+            <span className="keepalive-hint">e.g. “still reviewing”</span>
+          </div>
+          <div className="form-group">
             <label>Resume version</label>
             <input
               value={resumeVersion}
@@ -198,6 +256,15 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
               value={coverLetterUsed}
               onChange={(e) => setCoverLetterUsed(e.target.value)}
               placeholder="Filename or description"
+            />
+          </div>
+          <div className="form-group">
+            <label>Notes</label>
+            <textarea
+              rows={4}
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="Free-form notes (referrals, contacts, follow-ups, etc.)"
             />
           </div>
           <div className="form-group checkboxes">
@@ -216,6 +283,14 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
                 onChange={(e) => setCustomResume(e.target.checked)}
               />
               Custom resume
+            </label>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={selects}
+                onChange={(e) => setSelects(e.target.checked)}
+              />
+              Selects <span className="checkbox-hint">(good match)</span>
             </label>
           </div>
           <div className="actions">
@@ -273,7 +348,18 @@ export default function ApplicationItem({ application, onUpdate, onDelete }) {
           {application.customResume && (
             <span className="tag">Custom resume</span>
           )}
+          {application.selects && (
+            <span className="tag selects">Selects</span>
+          )}
+          {application.keepAliveEmailAt && (
+            <span className="tag keep-alive">
+              Keep-alive: {formatDate(application.keepAliveEmailAt)}
+            </span>
+          )}
         </div>
+        {(application.notes || '').trim() && (
+          <div className="application-notes">{application.notes}</div>
+        )}
       </div>
       <div className="item-actions">
         <span className={`status-badge status-${application.status}`}>

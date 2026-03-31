@@ -220,9 +220,11 @@
         var company=(row.company||'').trim(), position=(row.position||row.role||'').trim(), appliedDate=row.appliedDate||'';
         if(!company&&!position) return;
         var key=company+'|'+position+'|'+appliedDate; if(existingKeys[key]) return; existingKeys[key]=true;
-        var status = row.status==='not_hired'?'not_hired':'applied';
+        var _st = (row.status||'').trim();
+        var status = (['not_hired','closed','closed_on_job_board'].indexOf(_st)>=0)?_st:'applied';
         var dateStr = appliedDate.length===10 ? appliedDate+'T12:00:00.000Z' : new Date().toISOString();
-        applications.unshift({ id: (typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(36).slice(2), company:company, position:position, scope:'', jobId:(row.jobId||'').trim(), status:status, statusHistory:[{status:status,date:dateStr}], sourceId:'linkedin', originalListingDate:'', atsSystem:'', resumeVersion:'', coverLetterUsed:'', customCoverLetter:false, customResume:false, createdAt:row.createdAt||new Date().toISOString(), updatedAt:new Date().toISOString() });
+        var _ka = (row.keepAliveEmailAt != null && String(row.keepAliveEmailAt).trim()) ? String(row.keepAliveEmailAt).trim().slice(0, 10) : '';
+        applications.unshift({ id: (typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(36).slice(2), company:company, position:position, scope:'', jobId:(row.jobId||'').trim(), status:status, statusHistory:[{status:status,date:dateStr}], sourceId:'linkedin', originalListingDate:'', atsSystem:'', resumeVersion:'', coverLetterUsed:'', customCoverLetter:false, customResume:false, selects:!!row.selects, keepAliveEmailAt:_ka||undefined, createdAt:row.createdAt||new Date().toISOString(), updatedAt:new Date().toISOString() });
         ensureCompany(companies, company); added++;
       });
       saveJson(STORAGE_APPS, applications);

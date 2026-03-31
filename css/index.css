@@ -28,7 +28,14 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #000;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
 }
 
 .app-header h1 {
@@ -475,6 +482,15 @@ label {
   color: #b0b0b0;
 }
 
+.application-notes {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 100%;
+}
+
 .status-badge {
   display: inline-block;
   padding: 0.25rem 0.5rem;
@@ -489,6 +505,8 @@ label {
 .status-screened { background: #818cf8; color: #fff; }
 .status-interviewed { background: #fbbf24; color: #000; }
 .status-not_hired { background: #f87171; color: #000; }
+.status-closed { background: #94a3b8; color: #000; }
+.status-closed_on_job_board { background: #c4b5fd; color: #000; }
 
 .actions {
   display: flex;
@@ -595,6 +613,19 @@ label {
   max-width: 100%;
 }
 
+.form-row.form-row-dates.form-row-keepalive {
+  flex-wrap: wrap;
+  row-gap: 0.35rem;
+}
+
+.keepalive-hint {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  flex: 1 1 100%;
+  line-height: 1.35;
+  margin: 0;
+}
+
 .date-input-with-today {
   display: flex;
   gap: 0.5rem;
@@ -637,6 +668,13 @@ label {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  position: sticky;
+  top: var(--app-header-height, 5.5rem);
+  z-index: 50;
+  background: #000;
+  padding-bottom: 0.65rem;
+  margin-top: 0;
+  border-bottom: 1px solid #2a2a2a;
 }
 
 .filter-bar button {
@@ -754,6 +792,14 @@ label {
 .tag.ended { background: #451a1a; color: #fca5a5; border-color: #b91c1c; }
 .tag.link { background: #0f172a; color: #7dd3fc; border-color: #0ea5e9; text-decoration: none; }
 .tag.link:hover { text-decoration: underline; }
+.tag.selects { background: #14532d; color: #86efac; border-color: #22c55e; }
+.tag.keep-alive { background: #164e63; color: #a5f3fc; border-color: #22d3ee; }
+
+.checkbox-hint {
+  font-weight: 400;
+  color: #888;
+  font-size: 0.9em;
+}
 
 .application-item {
   flex-wrap: wrap;

@@ -142,6 +142,8 @@ label {
 .status-screened { background: #818cf8; color: #fff; }
 .status-interviewed { background: #fbbf24; color: #000; }
 .status-not_hired { background: #f87171; color: #000; }
+.status-closed { background: #94a3b8; color: #000; }
+.status-closed_on_job_board { background: #c4b5fd; color: #000; }
 
 .actions {
   display: flex;
@@ -256,6 +258,22 @@ label {
 
 .tag.source { background: #1e3a5f; color: #93c5fd; border-color: #3b82f6; }
 .tag.ats { background: #312e81; color: #a5b4fc; border-color: #6366f1; }
+.tag.selects { background: #14532d; color: #86efac; border-color: #22c55e; }
+.tag.keep-alive { background: #164e63; color: #a5f3fc; border-color: #22d3ee; }
+
+.checkbox-hint {
+  font-weight: 400;
+  color: #888;
+  font-size: 0.9em;
+}
+
+.keepalive-hint,
+.form-hint-below {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  margin: 0.35rem 0 0;
+  line-height: 1.35;
+}
 
 .application-item {
   flex-wrap: wrap;

@@ -19,6 +19,9 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
   const [coverLetterUsed, setCoverLetterUsed] = useState('')
   const [customCoverLetter, setCustomCoverLetter] = useState(false)
   const [customResume, setCustomResume] = useState(false)
+  const [notes, setNotes] = useState('')
+  const [selects, setSelects] = useState(false)
+  const [keepAliveEmailAt, setKeepAliveEmailAt] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -39,6 +42,9 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
       coverLetterUsed: coverLetterUsed.trim(),
       customCoverLetter,
       customResume,
+      notes: notes.trim(),
+      selects,
+      keepAliveEmailAt: keepAliveEmailAt.trim() || undefined,
     })
     setCompany('')
     setPosition('')
@@ -53,6 +59,9 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
     setCoverLetterUsed('')
     setCustomCoverLetter(false)
     setCustomResume(false)
+    setNotes('')
+    setSelects(false)
+    setKeepAliveEmailAt('')
   }
 
   return (
@@ -178,6 +187,35 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
       </div>
 
       <div className="form-group">
+        <label htmlFor="keepAliveEmailAt">Keep-alive email</label>
+        <div className="date-input-with-today">
+          <input
+            id="keepAliveEmailAt"
+            type="date"
+            value={keepAliveEmailAt}
+            onChange={(e) => setKeepAliveEmailAt(e.target.value)}
+            title='Date you received a "still reviewing"–type message'
+          />
+          <button
+            type="button"
+            className="secondary"
+            onClick={() => {
+              const d = new Date()
+              const y = d.getFullYear()
+              const m = String(d.getMonth() + 1).padStart(2, '0')
+              const day = String(d.getDate()).padStart(2, '0')
+              setKeepAliveEmailAt(`${y}-${m}-${day}`)
+            }}
+          >
+            Today
+          </button>
+        </div>
+        <p className="keepalive-hint form-hint-below">
+          e.g. “still reviewing applications”
+        </p>
+      </div>
+
+      <div className="form-group">
         <label htmlFor="resumeVersion">Resume version</label>
         <input
           id="resumeVersion"
@@ -199,6 +237,17 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
         />
       </div>
 
+      <div className="form-group">
+        <label htmlFor="notes">Notes</label>
+        <textarea
+          id="notes"
+          rows={4}
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="Free-form notes (referrals, contacts, follow-ups, etc.)"
+        />
+      </div>
+
       <div className="form-group checkboxes">
         <label className="checkbox-label">
           <input
@@ -215,6 +264,14 @@ export default function ApplicationForm({ companies, onSubmit, onNewCompany }) {
             onChange={(e) => setCustomResume(e.target.checked)}
           />
           Custom resume
+        </label>
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={selects}
+            onChange={(e) => setSelects(e.target.checked)}
+          />
+          Selects <span className="checkbox-hint">(good match)</span>
         </label>
       </div>
 

@@ -32,7 +32,7 @@
 
       <div id="tab-company-stats" class="tab-panel" role="tabpanel">
         <h2 class="panel-title">Company stats</h2>
-        <p class="company-stats-hint">Per company: applications, responded (beyond applied), not hired, closed. Sorted by most applications first, then A–Z.</p>
+        <p class="company-stats-hint">Per company: applications, responded (beyond applied), not hired, closed, closed on job board. Sorted by most applications first, then A–Z.</p>
         <div id="company-stats-content" class="company-stats-content"></div>
       </div>
 
@@ -110,6 +110,14 @@
             <button type="button" class="btn-set-today secondary" data-target="endedAt" aria-label="Set end date to today">Today</button>
           </div>
         </div>
+        <div class="form-row form-row-dates form-row-keepalive" role="group" aria-label="Keep-alive email date">
+          <label for="keepAliveEmailAt" class="date-field-label">Keep-alive email</label>
+          <div class="date-input-with-today">
+            <input id="keepAliveEmailAt" name="keepAliveEmailAt" type="date" />
+            <button type="button" class="btn-set-today secondary" data-target="keepAliveEmailAt" aria-label="Set keep-alive email date to today">Today</button>
+          </div>
+          <span class="keepalive-hint">Date you got a “still reviewing”–type message</span>
+        </div>
         <div class="form-group">
           <label for="resumeVersion">Resume version</label>
           <input id="resumeVersion" name="resumeVersion" type="text" list="resumeVersion-list" placeholder="Filename or e.g. LinkedIn" />
@@ -120,6 +128,10 @@
           <input id="coverLetterUsed" name="coverLetterUsed" type="text" list="coverLetterUsed-list" placeholder="Filename or description" />
           <datalist id="coverLetterUsed-list"></datalist>
         </div>
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Free-form notes (referrals, contacts, follow-ups, etc.)"></textarea>
+        </div>
         <div class="form-group checkboxes">
           <label class="checkbox-label">
             <input id="customCoverLetter" name="customCoverLetter" type="checkbox" />
@@ -128,6 +140,10 @@
           <label class="checkbox-label">
             <input id="customResume" name="customResume" type="checkbox" />
             Custom resume
+          </label>
+          <label class="checkbox-label">
+            <input id="selects" name="selects" type="checkbox" />
+            Selects <span class="checkbox-hint">(good match)</span>
           </label>
         </div>
         <div class="form-group">

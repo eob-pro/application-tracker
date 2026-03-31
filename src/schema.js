@@ -6,6 +6,14 @@ export const STATUS_OPTIONS = [
   { value: 'interviewed', label: 'Interviewed' },
   { value: 'not_hired', label: 'Not hired' },
   { value: 'closed', label: 'Closed' },
+  { value: 'closed_on_job_board', label: 'Closed on job board' },
+]
+
+/** Terminal outcomes (end-date default, funnel/timing in Summary). */
+export const TERMINAL_OUTCOME_STATUSES = [
+  'not_hired',
+  'closed',
+  'closed_on_job_board',
 ]
 
 export const STATUS_OPTIONS_WITH_ALL = [
@@ -60,5 +68,8 @@ export function getDefaultApplication() {
     coverLetterUsed: '',
     customCoverLetter: false,
     customResume: false,
+    notes: '',
+    selects: false,
+    keepAliveEmailAt: '',
   }
 }
